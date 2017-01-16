@@ -1,8 +1,8 @@
 ---
 title: "R for Reproducible Scientific Analysis"
 output:
-  html_notebook: default
   html_document: default
+  html_notebook: default
 date: "18 January 2017"
 ---
 
