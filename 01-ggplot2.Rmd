@@ -320,7 +320,7 @@ The graph produced in the previous section looks quite good, but it requires a r
 library(gganimate)
 p <- ggplot(data = gapminder) + 
   geom_point(mapping = aes(x = gdpPercap/10^3, y = lifeExp, size=pop/10^6, color=continent, frame=year)) +
-  geom_text(mapping = aes(x = 50000, y = 30, frame=year), label=as.character(gapminder$year), size = 16, color="grey") +
+  geom_text(mapping = aes(x = 40, y = 30, frame=year), label=as.character(gapminder$year), size = 16, color="grey") +
   scale_x_log10() +
   labs(title="Life Expectancy vs GDP per capita over time",
        subtitle="In the past 50 years, life expectancy has improved in most countries of the world",
