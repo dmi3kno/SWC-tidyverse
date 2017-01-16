@@ -140,10 +140,16 @@ Until now, we explored different aestetic properties of a graph mapped to certai
 
 ```{r}
 ggplot(data = gapminder) + 
-  geom_point(mapping = aes(x = gdpPercap, y = lifeExp), color="blue")
+  geom_point(mapping = aes(x = gdpPercap, y = lifeExp), alpha=0.1, size=2, color="blue")
 ```
 
 Once more, observe that the color is now not mapped to any particular variable from the `gapminder` dataset and applies equally to all datapoints, therefore it is ourside the `mapping` argument and is not wrapped into `aes()` function. Note that unmapped colors are supplied as characters (in quotes), size is a number (size of point in mm) and shape is the ordinal index of the shape in R's internal vocabulary (where square is 0, circle is 1, triangle is 2 and small filled circle is 20). Explore different shapes by varying the shape number between 0..25 or refer to `ggplot2` documentation, called [vignettes] (http://docs.ggplot2.org/current/vignettes/ggplot2-specs.html), for details. This document can be also called from within R by calling `vignette("ggplot2-specs")`. 
+
+> **Challenge 5.**
+> 
+> - Try mapping `color` aestetic to `continent` and to `year`. What do you notice? What might be the reason for different treatment of these variables by  `ggplot`?
+>
+> - Change the transparency of the datapoints inside and outside the aestetics. What can be the benefit of each one of these methods?
 
 ## Geometrical objects
 
@@ -212,6 +218,15 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color=contine
   scale_x_log10()
 ```
 
+> **Challenge 6.**
+> 
+> - Make a boxplot of life expectancy by year. Hint: You may need to wrap the `year` variable into the `as.character` or `as.factor` function. When was interquartile range of life expectancy the smallest? Make the same plot of `log(gdpPercap)` per year. Compared to 1952, is the world todat more or less diverse in terms of IQR of gdpPercapita?
+>
+> - Make a histogram of untransformed and transformed `gdpPercap`? What is the shape of the distribution? Why is bin parameter important for interpretation of the histogram? Build a density function. How would you compare density functions of different continents?
+>
+> - Based on graph produced using geom_density2d() function of GDP per capita vs life expectancy, how many clusters of datapoints can you identify? What if you look at it by continent?
+> 
+
 ## Faceting
 
 Multi-layered graphs employing several aestetics can look crowded. In order to avoid it, one can split the data into different graphs using panels of similar graphs. In `ggplot2` this method is called "faceting". Lets facet the graph above by continent and show the datapoints and the trend for each continent in a separate chart.
@@ -233,6 +248,12 @@ Reiterating our previously proposed `ggplot2` template and adding what we learne
   <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>)) + 
   <FACET_FUNCTION>`
 ```
+
+> **Challenge 7.**
+> 
+> - Try faceting by year, keeping the linear smoother. Is there any change in slope of the linear trend over the years? What if you look at linear models per continent?
+> 
+
 
 ## Statistical transformations
 
@@ -353,3 +374,11 @@ We conclude this lesson by reiterating our `ggplot2` data visualization template
 We learned about seven parameters of ggplot functions. However, it is very rare that all six of them need to specified in a given graphic or chart. Most of the time ggplot offers useful defaults for everything other than data, geoms and mappings.
 
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+> **Still bored?**
+> 
+> - Use several graphs and necessary filters to narrow down your search to those few outliers with high gdpPercap. What are those countries and in which years? What might be the reason?
+> 
+> *Hint: You may want to experiment with `geom_text()` to get the country labels to show on the chart*
+>
+> - Use several graphs and necessary filters to narrow down your search to those few outliers with extraordinaly low life expectancy. What are those countries and in which years? What might be the reason?
