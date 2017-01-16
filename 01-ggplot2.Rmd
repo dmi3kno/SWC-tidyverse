@@ -37,11 +37,15 @@ library("tidyverse")
 
 If above code produces an error "there is no package called ‘tidyverse’", uncomment (remove #) the line above and run `install.packages()`command before you load the library. You only need to install the package once, but you will have to reload it, using the `library()` command, every time you restart R. 
 
-Today we will be working with the `gapminder` dataset, which is the excerpt from the [GAPMINDER](http://www.gapminder.org/data/) data. First let's install and load the package containing the extracted data.
+Today we will be working with the `gapminder` dataset, which is the excerpt from the [GAPMINDER](http://www.gapminder.org/data/) data. First let's load the data. 
 
 ```{r}
-#install.packages("gapminder")
-library("gapminder")
+url1 <- "https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv"
+url2 <- "https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv"
+dir.create(file.path("data"))
+download.file(url1, file.path("data", "gapminder_long.csv"))
+download.file(url2, file.path("data", "gapminder_wide.csv"))
+gapminder <- read_csv(file.path("data", "gapminder_long.csv"))
 ```
 
 You can have a look at the content of the `gapminder` data frame by simply typing `gapminder` either in the R-chunk or in the console. Data frame is a rectangular collection of data, where variables are organized as columns and observations are listed as rows.
