@@ -1,0 +1,129 @@
+---
+title: "R for Reproducable Scientific Analysis"
+author: "18 January 2017"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library("tidyverse")
+gapminder <- readr::read_csv(file = "data/gapminder-FiveYearData.csv")
+gap_wide <- readr::read_csv(file = "data/gapminder_wide.csv")
+```
+
+# Dataframe manipulation with `tidyr`
+
+Researchers often want to manipulate their data from the 'wide' to the 'long' format, or *vice versa*. The 'long' format is where:
+
+* each column is a variable
+* each row is an observation
+
+In the 'long' format, you usually have one column for the observed variable and the other columns are ID variables.
+
+For the 'wide' format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). You may find data input may be simpler or some other applications may prefer the 'wide' format. However, many of `R`'s functions have been designed assuming you have 'long' format data. This tutorial will help you efficiently transform your data regardless of original format.
+
+These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
+
+# Key Points
+
+* Use the `tidyr` package to change the layout of dataframes.
+* Use `gather()` to go from wide to long format.
+
+# Getting started
+
+First, lets look at the structure of our original `gapminder` dataframe:
+
+```{r}
+gapminder
+```
+
+## Challenge 1
+
+Is `gapminder` a purely long, purely wide, or some intermediate format?
+
+The original `gapminder` data frame is in an intermediate format. It is not purely long since it had multiple observation variables (`pop`, `lifeExp`, `gdpPercap`).
+
+Sometimes, as with the `gapminder` dataset, we have multiple types of observed data. It is somewhere in between the purely 'long' and 'wide' data formats. We have 3 "ID variables" (`continent`, `country`, `year`) and 3 "Observation variables" (`pop`, `lifeExp`, `gdpPercap`). I usually prefer my data in this intermediate format in most cases despite not having ALL observations in 1 column given that all 3 observation variables have different units. There are few operations that would need us to stretch out this dataframe any longer (*i.e.* 4 ID variables and 1 Observation variable).
+
+While using many of the functions in R, which are often vector based, you usually do not want to do mathematical operations on values with different units. For example, using the purely long format, a single mean for all of the values of population, life expectancy, and GDP would not be meaningful since it would return the mean of values with 3 incompatible units. The solution is that we first manipulate the data either by grouping (see the lesson on dplyr), or we change the structure of the dataframe. **Note**: Some plotting functions in R actually work better in the wide format data.
+
+# From wide to long format with `gather()`
+
+Until now, we’ve been using the nicely formatted original gapminder dataset, but 'real' data (*i.e.* our own research data) will never be so well organized. Here let's start with the wide format version of the gapminder dataset.
+
+We'll first take a look at `gap_wide`:
+
+```{r}
+gap_wide
+```
+
+The first step towards getting our nice intermediate data format is to first convert from the wide to the long format. The `tidyr` function `gather()` will 'gather' your observation variables into a single variable.
+
+```{r}
+gap_long <- gap_wide %>%
+    gather(obstype_year, obs_values, 
+           starts_with("pop"), starts_with("lifeExp"), starts_with("gdpPercap"))
+gap_long
+```
+
+Here we have used piping syntax which is similar to what we were doing in the previous lesson with `dplyr`. In fact, these are compatible and you can use a mix of `tidyr` and `dplyr` functions by piping them together
+
+Inside `gather()` we first name the new column for the new ID variable (`obstype_year`), the name for the new amalgamated observation variable (`obs_value`), then the names of the old observation variable. We could have typed out all the observation variables, but we can use the `starts_with()` argument to select all variables that starts with the desired character string. Gather also allows the alternative syntax of using the `-` symbol to identify which variables are not to be gathered (*i.e.* ID variables)
+
+```{r}
+gap_long <- gap_wide %>% 
+  gather(obstype_year, obs_values, -continent, -country)
+gap_long
+```
+
+That may seem trivial with this particular dataframe, but sometimes you have 1 ID variable and 40 Observation variables with irregular variables names. The flexibility is a huge time saver!
+
+Now `obstype_year` actually contains 2 pieces of information, the observation type (`pop`, `lifeExp`, `gdpPercap`) and the year. We can use the `separate()` function to split the character strings into multiple variables
+
+```{r}
+gap_long <- gap_long %>% 
+  separate(obstype_year, into = c("obs_type", "year"), sep = "_") %>%
+  mutate(year=as.integer(year))
+gap_long
+```
+
+## Challenge 2
+
+Using `gap_long`, calculate the mean life expectancy, population, and gdpPercap for each continent. Hint: use the `group_by()` and `summarize()` functions we learned in the `dplyr` lesson.
+
+```{r}
+gap_long %>% 
+  group_by(continent, obs_type) %>%
+  summarize(means = mean(obs_values))
+```
+
+# From long to intermediate format with `spread()`
+
+It is always good to check work. So, let's use the opposite of `gather()` to spread our observation variables back out with the aptly named `spread()`. We can then spread our `gap_long()` to the original intermediate format.
+
+```{r}
+gap_normal <- gap_long %>% 
+  spread(obs_type, obs_values)
+gap_normal
+gapminder
+```
+
+Now we've got an intermediate dataframe `gap_normal` with the same dimensions as the original gapminder, but the order of the variables is different. Let's fix that before checking if they are `all.equal()`.
+
+```{r}
+gap_normal <- gap_normal %>% 
+  arrange(country, continent, year)
+
+all.equal(gap_normal, gapminder)
+```
+
+That's great! We've gone from the longest format back to the intermediate and we didn't introduce any errors in our code.
+
+# Key Points
+
+* Use the `tidyr` package to change the layout of dataframes.
+* Use `gather()` to go from wide to long format.
+* Use `spread()` to go from long to the wide format.

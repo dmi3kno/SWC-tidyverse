@@ -43,9 +43,9 @@ Today we will be working with the `gapminder` dataset, which is the excerpt from
 url1 <- "https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv"
 url2 <- "https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv"
 dir.create(file.path("data"))
-download.file(url1, file.path("data", "gapminder_long.csv"))
-download.file(url2, file.path("data", "gapminder_wide.csv"))
-gapminder <- read_csv(file.path("data", "gapminder_long.csv"))
+download.file(url1, "data/gapminder-FiveYearData.csv")
+download.file(url2, "data/gapminder_wide.csv")
+gapminder <- read_csv("data/gapminder-FiveYearData.csv")
 ```
 
 You can have a look at the content of the `gapminder` data frame by simply typing `gapminder` either in the R-chunk or in the console. Data frame is a rectangular collection of data, where variables are organized as columns and observations are listed as rows.

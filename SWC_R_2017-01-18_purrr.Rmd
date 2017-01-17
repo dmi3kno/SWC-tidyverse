@@ -1,0 +1,98 @@
+---
+title: "R for Reproducable Scientific Analysis"
+author: "18 January 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library("tidyverse")
+gapminder <- readr::read_csv(file = "data/gapminder-FiveYearData.csv")
+```
+
+# Using `dplyr`, `ggplot2` and `purrr` to explore a data set
+
+It is intruiging to investigate data sets like `gapminder` for patterns. In this case , we're going to focus on just three variables to answer the question "How does life expectancy (`lifeExp`) change over time (`year`) for each country (`country`)?". A good place to start is with a plot:
+
+```{r}
+gapminder %>% 
+  ggplot() + 
+  geom_line(mapping = aes(x = year, y = lifeExp, group = country, color = continent))
+```
+
+There seems to be an overall linear trend. Let's have a more detailed look, dividing the data set by continent:
+
+```{r}
+gapminder %>% 
+  ggplot() +
+    geom_line(mapping = aes(x = year, y = lifeExp, color = country)) +
+    geom_smooth(mapping = aes(x = year, y = lifeExp), method = "lm", color = "black") +
+    facet_wrap( ~ continent) +
+    theme(legend.position = "none")
+```
+
+There seems to be a good handful of countries with a pronounced irregularity. We will now produce a linear model for each country. But instead of repeating an action for each variable, we want to repeat an action for each country, a subset of rows. To do that, we need a new data structure: the nested data frame. To create a nested data frame we start with a grouped data frame, and "nest"" it:
+
+```{r}
+by_country <- gapminder %>% 
+  group_by(country, continent) %>% 
+  nest()
+by_country
+```
+
+Now that we have our nested data frame, we're in a good position to fit some models. We will use a model-fitting function which we want to apply it to every data frame. 
+
+```{r}
+country_model <- function(x) {
+  lm(formula = lifeExp ~ year, data = x)
+}
+```
+
+The data frames are in a list, so we can use `map()` to apply `country_model` to each element. Instead of creating a new object, we're going to create a new variable in the `by_country` data frame. That's a job for `mutate()`.
+
+```{r}
+by_country <- by_country %>% 
+  mutate(model = purrr::map(data, country_model))
+by_country
+```
+
+We have now created a linear model for every country! To take a better look at the model quality metrics, *e.g.* the R^2^, we will use the function `glance()` from the `broom` package, which is already loaded as part of `tidyverse`. If we apply it to a model, we get a data frame with a single row. We can use `mutate()` and `unnest()` to create a data frame with a row for each country. To suppress list columns (for data frames and models), we use `.drop = TRUE`.
+
+```{r}
+glance <- by_country %>% 
+  mutate(glance = map(model, broom::glance)) %>% 
+  unnest(glance, .drop = TRUE)
+glance
+```
+
+With this data frame in hand, we can start to look for models that don’t fit well:
+
+```{r}
+glance %>% 
+  arrange(r.squared)
+```
+
+The worst models all appear to be in Africa. Let's double check that with a plot. Here we have a relatively small number of observations and a discrete variable, so `geom_jitter()` is effective:
+
+```{r}
+glance %>% 
+  ggplot() + 
+    geom_jitter(mapping = aes(x = continent, y = r.squared, color = continent), width = 0.3)
+```
+
+We could pull out the countries with particularly bad R^2^ and plot the data:
+
+```{r}
+bad_fit <- glance %>% 
+  filter(r.squared < 0.5)
+
+gapminder %>% 
+  semi_join(bad_fit, by = "country") %>% 
+  ggplot() +
+    geom_line(mapping = aes(x = year, y = lifeExp, colour = country))
+```
+
+We see two main effects here: the tragedies of the HIV/AIDS epidemic and the Rwandan genocide.
