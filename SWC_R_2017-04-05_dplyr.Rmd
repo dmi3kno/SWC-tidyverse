@@ -1,0 +1,238 @@
+---
+title: "R for Reproducable Scientific Analysis"
+author: "5 April 2017"
+output:
+  html_document: default
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library("tidyverse")
+gapminder <- read_csv(file = "../Data/gapminder-FiveYearData.csv")
+```
+
+# Dataframe Manipulation with `dplyr`
+
+Manipulation of dataframes means many things to many researchers, we often select certain observations (rows) or variables (columns), we often group the data by a certain variable(s), or we even calculate summary statistics. Subsetting data sets can be challenging in base R, because there is a fair bit of repetition. Repeating yourself will cost you time, both now and later, and potentially introduce some nasty bugs.
+
+# Key Points
+
+* Use the `dplyr` package to manipulate dataframes.
+* Use `select()` to choose variables from a dataframe.
+* Use `filter()` to choose data based on values.
+* Use `group_by()` and `summarize()` to work with subsets of data.
+* Use `mutate()` to create new variables.
+
+# The `dplyr` package
+
+The [`dplyr`](https://cran.r-project.org/web/packages/dplyr/dplyr.pdf) package provides a number of very useful functions for manipulating dataframes in a way that will reduce the above repetition, reduce the probability of making errors, and probably even save you some typing. As an added bonus, you might even find the `dplyr` grammar easier to read.
+
+`dplyr` is part of the `tidyverse` package collection, so it should already be loaded. If you've started a new session, load the `tidyverse package:
+
+```{r}
+library("tidyverse")
+```
+
+# The pipe `%>%`
+
+We often want to string together a series of `dplyr` functions. This is achieved using `dplyr`'s pipe operator, `%>%`. This takes the value on the left, and passes it as the first argument to the function call on the right. 
+
+`%>%` isn’t limited to `dplyr` functions. It's an alternative way of writing any `R` code:
+
+```{r}
+rep("This is an example", times = 3)
+"This is an example" %>% rep(times = 3)
+```
+
+The shortcut to insert the pipe operator is `Ctrl`+`Shift`+`M` for Windows/Linux, and `Cmd`+`Shift`+`M` for Mac.
+
+# Using `select()`
+
+If, for example, we wanted to move forward with only a few of the variables in our dataframe we could use the `select()` function. This will keep only the variables you select.
+
+```{r}
+year_country_gdp <- select(gapminder, year, country, gdpPercap)
+year_country_gdp
+```
+
+## <span style="color:red">Show Figure 1</span>
+
+If we open up `year_country_gdp` we'll see that it only contains the `year`, `country` and `gdpPercap`. Above we used 'normal' grammar, but the strengths of `dplyr` lie in combining several functions using pipes. Since the pipes grammar is unlike anything we've seen in `R` before, let's repeat what we've done above using pipes.
+
+```{r}
+year_country_gdp <- gapminder %>% 
+  select(year, country, gdpPercap)
+year_country_gdp
+```
+
+To help you understand why we wrote that in that way, let's walk through it step by step. First we summon the `gapminder` dataframe and pass it on, using the pipe symbol (`%>%`), to the next step, which is the `select()` function. In this case we don't specify which data object we use in the `select()` function since in gets that from the previous pipe. Fun fact: There is a good chance you have encountered pipes before in the shell. In `R`, a pipe symbol is `%>%` while in the shell it is `|` but the concept is the same!
+
+# Using `filter()`
+
+The `filter` function is a intuitive way of subsetting data. For example, we can look at the population per continent in 2002:
+
+```{r}
+gapminder %>% 
+  filter(year == 2002) %>% 
+  ggplot(mapping = aes(x = continent, y = pop)) +
+  geom_boxplot()
+```
+
+If we now wanted to move forward with the above, but only with European countries, we can combine `select()` and `filter()`:
+
+```{r}
+year_country_gdp_euro <- gapminder %>% 
+  filter(continent == "Europe") %>%
+  select(year, country, gdpPercap)
+year_country_gdp_euro
+```
+
+## <span style="color:red">Challenge 1</span>
+
+Write a single command (which can span multiple lines and includes pipes) that will produce a dataframe that has the Norwegian values for `gdpPercap`, `lifeExp` and `year`, but not for other countries How many rows does your dataframe have and why?
+
+```{r}
+country_lifeExp_Norway <- gapminder %>%
+  filter(country == "Norway") %>%
+  select(year, lifeExp, gdpPercap)
+country_lifeExp_Norway
+```
+
+As with last time, first we pass the gapminder dataframe to the `filter()` function, then we pass the filtered version of the gapminder dataframe to the `select()` function. **Note**: The order of operations is very important in this case. If we used `select()` first, `filter()` would not be able to find the variable continent since we would have removed it in the previous step.
+
+# Using `group_by()`
+
+Now, we were supposed to be reducing the error prone repetitiveness of what can be done with base `R`, but up to now we haven't done that since we would have to repeat the above for each continent. Instead of `filter()`, which will only pass observations that meet your criteria (in the above: `continent == "Europe"`), we can use `group_by()`, which will essentially use every unique criteria that you could have used in filter.
+
+```{r}
+gapminder
+gapminder %>% 
+  group_by(continent)
+```
+
+## <span style="color:red">Show Figure 2</span>
+
+# Using `summarize()`
+
+The above was a bit on the uneventful side because `group_by()` much more exciting in conjunction with `summarize()`. This will allow use to create new variable(s) by using functions that repeat for each of the continent-specific data frames. That is to say, using the `group_by()` function, we split our original dataframe into multiple pieces, then we can run functions (e.g. `mean()` or `sd()`) within `summarize()`.
+
+```{r}
+gapminder %>% 
+  group_by(continent) %>%
+  summarize(mean_gdpPercap = mean(gdpPercap))
+```
+
+We can also use a pipe to directly "feed" our processed data into `ggplot2`:
+
+```{r}
+gapminder %>% 
+  group_by(continent) %>%
+  summarize(mean_gdpPercap = mean(gdpPercap)) %>% 
+  ggplot(mapping = aes(x = continent, y = mean_gdpPercap)) +
+  geom_point()
+```
+
+## <span style="color:red">Show Figure 3</span>
+
+That allowed us to calculate the mean `gdpPercap` for each continent, but it gets even better.
+
+## <span style="color:red">Challenge 2</span>
+
+Calculate the average life expectancy per country in Asia. Which has the longest average life expectancy and which has the shortest average life expectancy?
+
+```{r}
+gapminder %>% 
+  filter(continent == "Asia") %>% 
+  group_by(country) %>%
+  summarize(mean_lifeExp = mean(lifeExp)) %>% 
+  filter(mean_lifeExp == min(mean_lifeExp) | mean_lifeExp == max(mean_lifeExp))
+```
+
+The function `group_by()` allows us to group by multiple variables. Let's group by year and continent.
+
+```{r}
+gapminder %>% 
+  group_by(continent, year) %>%
+  summarize(mean_gdpPercap = mean(gdpPercap))
+```
+
+That is already quite powerful, but it gets even better! You're not limited to defining one new variable in `summarize()`.
+
+```{r}
+gapminder %>% 
+  group_by(continent, year) %>%
+  summarize(mean_gdpPercap = mean(gdpPercap),
+            sd_gdpPercap = sd(gdpPercap),
+            mean_pop = mean(pop),
+            sd_pop = sd(pop))
+```
+
+# Using `mutate()`
+
+We can also create new variables prior to (or even after) summarizing information using `mutate()`.
+
+```{r}
+gapminder %>% 
+  mutate(gdp_billion = gdpPercap * pop / 10^9)
+
+gapminder %>% 
+  mutate(gdp_billion = gdpPercap * pop / 10^9) %>%
+  group_by(continent, year) %>%
+  summarize(mean_gdpPercap = mean(gdpPercap),
+            sd_gdpPercap = sd(gdpPercap),
+            mean_pop = mean(pop),
+            sd_pop = sd(pop),
+            mean_gdp_billion = mean(gdp_billion),
+            sd_gdp_billion = sd(gdp_billion))
+```
+
+## <span style="color:red">Challenge 3</span>
+
+Calculate the average life expectancy and GDP in 1987 for each continent.
+
+```{r}
+gapminder %>% 
+  mutate(gdp_billion = gdpPercap * pop / 10^9) %>%
+  filter(year == 1987) %>%
+  group_by(continent) %>%
+  summarize(mean_lifeExp = mean(lifeExp),
+            mean_gdp_billion = mean(gdp_billion))
+```
+
+# Using `dplyr` and `ggplot2` to visualize average global life expectancy
+
+We will now demonstrate how to use functions from both `dplyr`and `ggplot2` to visualize the average life expectancy of countries that are part of the `gapminder` data set.
+
+First, we need to calculate the average life expectancy for each country using the `summarize()` function:
+
+```{r}
+gapminder_country_summary <- gapminder %>% 
+  group_by(country) %>%
+  summarize(mean_lifeExp = mean(lifeExp))
+gapminder_country_summary
+```
+
+Next, we use a database for mapping coordinates (`install.packages("maps")`) to align with the average life expectancy data from above. We can directly use the output and pipe it into `ggplot()`! 
+
+```{r}
+map_data("world") %>% 
+  rename(country = region) %>% 
+  left_join(gapminder_country_summary, by = "country") %>% 
+  ggplot() +
+  geom_polygon(aes(x = long, y = lat, group = group, fill = mean_lifeExp)) +
+  scale_fill_gradient(low = "blue", high = "red") +
+  coord_equal()
+```
+
+Note that "grey" countries are not part of `gapminder` or appear under a different name and hence only appear as `NA`'s.
+
+# Key Points
+
+* Use the `dplyr` package to manipulate dataframes.
+* Use `select()` to choose variables from a dataframe.
+* Use `filter()` to choose data based on values.
+* Use `group_by()` and `summarize()` to work with subsets of data.
+* Use `mutate()` to create new variables.
