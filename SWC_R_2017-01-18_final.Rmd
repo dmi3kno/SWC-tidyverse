@@ -1,0 +1,105 @@
+---
+title: "Final Project"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE}
+p <- gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
+  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) %>% 
+  gather(key=att, value=val, -c(year,country)) %>% 
+  ggplot()+
+  geom_line(mapping = aes(x=year, y=val, group=country, color=country))+
+  geom_text(data=. %>% filter(year==2007) %>% group_by(att) %>% mutate(max_val=max(val)) %>% filter(val==max_val),
+            mapping = aes(x=year, y=max_val, label=country, color=country), hjust="right")+
+  facet_wrap(~att, scales = "free_y")+
+  theme_bw()+
+  labs(title="Key parameters for selected African countries",
+       subtitle="with over 2 mln baby deaths in 2007",
+       caption="Fertility and Infant mortality in # babies per 1000 population, GDP in USD mln, GDP per capita in USD, 
+       Life Expectancy in years, Population in million people",
+       x="Year") + theme(legend.position = "none") + ylab(NULL)
+ggsave("fig/plot.png", p, width = 10, height = 8)
+```
+```
+
+
+## Final project
+
+![finalchart](img/plot.png)
+First we want to get to that subset of data
+
+```{r cars}
+gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country)
+```
+
+We also need the full dataset and produce new variables that you can see on panels
+
+```{r}
+gapminder_plus %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6)
+```
+
+We need these two datasets joined, or rather limit the full dataset to include only those countries in the first subset
+
+```{r}
+gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
+  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) 
+```
+
+Now, you observe that faceting is slightly unusual - it is faceted by variable. So you want variables be in a column. What can we do? yes, `gather`
+
+```{r}
+gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
+  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) %>% 
+  gather(key=att, value=val, -c(year,country))
+```
+
+Off to ploting
+
+```{r}
+gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
+  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) %>% 
+  gather(key=att, value=val, -c(year,country)) %>% 
+  ggplot()+
+  geom_line(mapping = aes(x=year, y=val, group=country, color=country))+
+  facet_wrap(~att, scales = "free_y")+
+```
+
+Now we need labels for the highest value observation, which means we need to subset the data, but only in one layer
+
+```{r}
+gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
+  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) %>% 
+  gather(key=att, value=val, -c(year,country)) %>% 
+  ggplot()+
+  geom_line(mapping = aes(x=year, y=val, group=country, color=country))+
+  geom_text(data=. %>% filter(year==2007) %>% group_by(att) %>% mutate(max_val=max(val)) %>% filter(val==max_val),
+            mapping = aes(x=year, y=max_val, label=country, color=country), hjust="right")+
+  facet_wrap(~att, scales = "free_y")
+  
+```
+
+
+and adding some beauty
+
+```{r}
+gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
+  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) %>% 
+  gather(key=att, value=val, -c(year,country)) %>% 
+  ggplot()+
+  geom_line(mapping = aes(x=year, y=val, group=country, color=country))+
+  geom_text(data=. %>% filter(year==2007) %>% group_by(att) %>% mutate(max_val=max(val)) %>% filter(val==max_val),
+            mapping = aes(x=year, y=max_val, label=country, color=country), hjust="right")+
+  facet_wrap(~att, scales = "free_y")+
+  theme_bw()+
+  labs(title="Key parameters for selected African countries",
+       subtitle="with over 2 mln baby deaths in 2007",
+       caption="Fertility and Infant mortality in # babies per 1000 population, GDP in USD mln, GDP per capita in USD, 
+       Life Expectancy in years, Population in million people",
+       x="Year") + theme(legend.position = "none") + ylab(NULL)
+```
+
+
