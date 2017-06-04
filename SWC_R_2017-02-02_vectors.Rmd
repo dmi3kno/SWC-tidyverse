@@ -1,0 +1,223 @@
+---
+title: "R for Reproducible Scientific Analysis"
+author: "18 January 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+gapminder <- gapminder::gapminder
+```
+
+In this lesson we will step back a little to look closer at the basic data structure in R - a **vector**.
+
+## Vectors
+
+Vectors are everywhere in R. A single number is just a vector of length 1 and R will be very happy to let you add more numbers into it. Picking out elements of the vector for inspection or modification is accomplished with *square brackets*. 
+
+> Indexing begins at 1 in R, unlike other programming languages, that index from 0 
+
+```{r cars}
+x <- 5 * 6
+x
+is.vector(x)
+length(x)
+
+x[2] <- 31
+x
+x[5] <- 44
+x
+x[11]
+x[0]
+```
+
+R is built to work with vectors - most of the functions are "vectorized". They are written to encapsulate (hide) "for loop" functionality, which makes it possible for R user to focus on *what* instead of *how*. Below is an example of "verbose" (and likely slow implementation) of the loop and a vectorized equivalent that accomplishes the same thing more clearly and concisely.
+
+```{r}
+x <- 1:4
+
+# vectorized version
+(y <- x^2)
+
+# for loop version
+z <- vector(mode=mode(x), length=length(x))
+for (i in seq_along(x)){
+  z[i] <- x[i]^2
+}
+z
+
+# check if result is the same
+all.equal(y,z)
+```
+
+> **Assignment 1**
+>
+> Many arguments to functions can take vectors. Use help to accomplish the next assignment. 
+>
+> Write a shortest possible expression for generating 5 random numbers drawn from a normal distributions with means of 9, 27, 81 and 729.
+>
+> Remember the operator precedence!
+
+When talking about vectors in R two important concepts need to be mentioned: recycling and coersion.
+
+R is built by statisticians for interactive data analysis. It is designed to give the answers quickly and allows the knowledgeable user to "cut corners". R is notoriously loose about many requirements that are strictly monitored in other languages. Recycling and coersion are two fine examplex of this inherent flexibility of R.
+
+### Recycling
+
+Lets make two vectors and perform some simple operations on them. What happened?
+
+```{r}
+(x <- 1:5)
+(y <- 3:7)
+x+y
+z <- y[-5]
+x+z
+m <-1:10
+x+m
+```
+
+> **Discussion 1** 
+>
+> How is "recycling" useful? Is it "avoidable"? What do you think happens when a vector get multiplied by a scalar? What is the alternative?
+
+### Coersion
+
+Concatenation function `c()` is the main function for making vectors. `str()` is a useful function for inspection of objects in R (including vectors). Examples below
+
+```{r}
+str(c("hello", "world", "!", "This is a vector"))
+str(c(9:11, 200, x))
+```
+
+These "plain vanilla" vectors are called "atomic". They are capable of containing elements of the same type. What happens if we violate this requirement and try putting different things into a vector?
+
+```{r}
+(x <- c("cabbage", pi, 2:4, pi>3))
+str(x)
+length(x)
+mode(x)
+class(x)
+```
+
+R pick the "lowest common denominator" for reconciling the type conflict among the members of the vector and "demotes" its elements into this type. Coersion into character is ofter the fallback option for R. Logical vectors are easily coercible into 0s and 1s.
+
+```{r}
+(x <- 1:5)
+(y <- runif(5) > 0.6)
+x*y
+is.logical(y)
+as.logical(x*y)
+```
+
+As mentioned earlier, square brackets can be used for indexing a vector, i.e. for addressing individual elements in a vector. There are other ways to index a vector
+
+ - with a logical vector
+ - vector of positive numbers for specifying the indices of the elements you want to keep
+ - vector of negative numbers for specifying the indices of the elements you want to drop
+ - character vector specifying the names of the elements you want to keep
+ 
+ 
+```{r}
+(w <- round(rnorm(10),2))
+seq_along(w)
+names(w) <- letters[seq_along(w)]
+w
+which(w<0)
+w[w<0]
+seq(from=1, to=length(w), by=2)
+w[seq(from=1, to=length(w), by=2)]
+w[-c(2,5)]
+w[c('c', 'a', 'f', 'f')]
+```
+
+## Lists
+
+Lists are non-atomic vectors, which means that they are not bound by this requirements of all elements being of the same type. List are more complex to operate on, but they are also much more flexible.  Lets try to put our earlier example into a list.
+
+```{r}
+(x <- list("cabbage", pi, 2:4, pi>3))
+str(x)
+length(x)
+mode(x)
+class(x)
+
+# lists can also be named
+
+x <- list(vegetable="cabbage", waist=pi, series=2:4, telling=pi>3)
+x
+str(x)
+length(x)
+class(x)
+is.vector(x) # note that list is a special type of vector
+```
+
+Lists can contain other lists as elements. This can be very useful for storing semi-structured data (similar to XML) or just for organizing things based on certain logic. Lets look at nested lists.
+
+
+```{r}
+y <- list(vegetables=list("cabbage", "carrot", "selery"),
+          waist=list(c(pi, 0, 2.12, NA)), 
+          series=list(list(2:4, 3:5)),
+          telling=pi>3)
+y
+str(y)
+length(y)
+class(y)
+is.vector(y) # note that list is a special type of vector
+```
+
+Indexing vectors is also slightly more complex. The key concept to remember is:
+
+ - **single brackets** will always return a **list** and 
+ 
+ - **double brackets (or $)** typically return an **atomic vector** (i.e. the content of a list element).
+ 
+ The Lists of condiments pictures in [R for Data Science](http://r4ds.had.co.nz/vectors.html#lists-of-condiments) illustrate this concept really well.
+ 
+> **Assignment 2**
+>
+> Given a linear model, e.g., `mod <- lm(lifeExp ~ gdpPercap, data = gapminder)`, extract the residual degrees of freedom. Try using both `[[` and `$` notation
+>
+> Extract the R squared from the model summary `(summary(mod))`
+
+### Data Frames
+
+Consider the fact that data.frames (tibbles) are a list of atomic vectors of the same length (rectangular lists). Similar to any list, data frame can contain vectors of any type, including lists, which, among other things mean that a data frame can contain a column of data frames. We will come back to "nested" data frames in the next lesson. Lets try to index data frame as a list
+
+```{r}
+is.list(gapminder)
+typeof(gapminder[[2]])
+mode(gapminder[[2]])
+class(gapminder[[2]]) #what is going on?
+str(gapminder[[2]])
+str(gapminder[2]) # list retained
+str(gapminder[1,])
+all.equal(gapminder[[2]], gapminder$continent)
+gapminder[[4]][12] # life expectancy in Afganistan in 2007
+gapminder[["lifeExp"]][12] # life expectancy in Afganistan in 2007
+
+```
+
+Since data frames represent "rectangular" data structures they can be also considered a two-dimensional vector (normally called `matrix` in R). In this sense, data frame has rows and columns and can be indexed by combination of those. Subsetting of this "rectangular" data structure is done using `[ , ]` notation, where index before comma indicates a row (observation) and index after comma indicates a column (variable).
+
+Alternatively, subsetting (indexing) can be done using logical vectors. If you pass logical vector in place of numerical index into the `[ , ]`, R will keep the rows/columns corresponding to the `TRUE` values of the vector.
+
+
+```{r}
+# character subsetting (list-like behaviour)
+gapminder$lifeExp[12]
+
+# integer subsetting
+gapminder[12, 4] # life expectancy in Afganistan in 2007
+
+# logical subsetting
+logical_vector_rows <- gapminder$year==2007 & gapminder$country == "Afghanistan"
+which(logical_vector_rows)
+logical_vector_cols <- colnames(gapminder) == "lifeExp"
+which(logical_vector_cols)
+gapminder[logical_vector_rows, logical_vector_cols]
+
+```
+
+More details about subsetting and data structures can be found in [Advanced R](http://adv-r.had.co.nz/Subsetting.html) by Hadley Wickham.
+
