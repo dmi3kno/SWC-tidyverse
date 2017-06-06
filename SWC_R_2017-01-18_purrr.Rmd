@@ -10,6 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 
 ```{r, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+gapminder <- gapminder::gapminder
+
 keys <- tribble( ~key, ~var_name,
   "1oq3r8W7ajenKFgoAYoOf2MXeTWWNPpudR-Fo5m2-o30", "fert",
   "1OHMMuHbSFKDolNHXsmgHYlkjSKfAZyyY1P-ddMu_Fz0", "infantMort")
@@ -104,19 +107,46 @@ by_country[["data"]][1]
 ```
 
 
-Now that we have our nested data frame, we're in a good position to fit some models. We will use a model-fitting function which we want to apply it to every data frame. 
+Now that we have our nested data frame, we're in a good position to fit some models. We will use a linear model function which we want to apply it to every data frame. 
 
-```{r}
-build_country_model <- function(x) {
-  lm(formula = lifeExp ~ year, data = x)
-}
+# Introducing `map
+
+The function we are going to introduce next is going to allow us to repeat the same function for different subsets of our data. The same result can be accomplished with writing a loop, but the function we will consider next hides all of the "housekeeping" details (related to iterators and allocation of the output vector) and leaves only essential elements for the user to specify.
+
+```{r, eval=FALSE}
+`map(<DATA>, <FUNCTION>)'
 ```
 
-The data frames are in a list, so we can use `map()` to apply `country_model` to each element. Instead of creating a new object, we're going to create a new variable in the `by_country` data frame. That's a job for `mutate()`.
+What the function requires is the list (or vector) of data and a name of the function you want to apply to each element of your data.
+
+> __NOTE:__  Simplest behaviour can be observed by calling a `map` function on a vector. Vector will be authomatically transformed to list and operation will be performed on each element of this list (i.e. on each element of the original vector). 
+>
+> If you specify the dataframe in place of `<DATA>`, because dataframe is a list of columns, function will be performed on columns.
+>
+> If you want the function to operate in the slices of your dataframe (think of `group by` behavior) you will have to split the dataframe into the list of smaller dataframes, with each element containing only the data related to one slice.
+
+The output of the `map` function is defined by the type of function used. There are special functions for each type of expected output: `map_chr()`, `map_dbl()`, `map_lgl()`, etc. The default function `map()` always outputs a list, so it should have been probably called `map_list()`. For two outputs you have a special version, which expects two data sets as input: `map2()`, etc. 
+
+```{r}
+
+# function sqrt applied to each element of the vector, output expected as a numeric vector
+1:3 %>% map_dbl(sqrt)
+# list of columns in, list of column means out
+gapminder %>% select(year, gdpPercap, lifeExp) %>%
+  map(mean)
+
+# vector in, new variable out
+gapminder %>% 
+  mutate(gdpBillions = map2_dbl(gdpPercap , pop, function(x, y) x*y/10^9))
+  
+```
+
+
+As you have seen above, we can use `map()` to apply a linear model to element of our complex `data` column. We will capute the results in a newly created variable in the `by_country` data frame with `mutate()`.
 
 ```{r}
 by_country <- by_country %>% 
-  mutate(model = purrr::map(data, build_country_model))
+  mutate(model = purrr::map(data, ~lm(formula = lifeExp ~ year, data = .x)))
 by_country
 ```
 
