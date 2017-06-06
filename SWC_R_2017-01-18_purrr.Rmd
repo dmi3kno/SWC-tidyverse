@@ -35,7 +35,7 @@ gapminder_plus <- keys %>% split(.$key)  %>%
   reduce(full_join, by=c("country", "year")) %>% 
   right_join(gapminder, by=c("country", "year"))
 
-summary(gapminder_plus)
+write_csv(gapminder_plus, "data/gapminder_plus.csv")
 ```
 
 ## Whenever you want to iterate, `purrr`!
