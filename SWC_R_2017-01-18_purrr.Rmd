@@ -8,6 +8,33 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+```{r, echo=FALSE, error=FALSE, message=FALSE, warning=FALSE}
+keys <- tribble( ~key, ~var_name,
+  "1oq3r8W7ajenKFgoAYoOf2MXeTWWNPpudR-Fo5m2-o30", "fert",
+  "1OHMMuHbSFKDolNHXsmgHYlkjSKfAZyyY1P-ddMu_Fz0", "infantMort")
+
+library(googlesheets)
+
+importSheet <- function(key, var_name){
+  sheet <- gs_key(key, lookup = FALSE)
+  sheet_df <- gs_read(sheet)
+  names(sheet_df)[1] <- "country"
+  sheet_df_long <- sheet_df %>% 
+    gather(key="year", value="value", -country) %>% 
+    mutate(year=as.numeric(year), value=as.numeric(value))
+  names(sheet_df_long)[3] <- var_name
+  return(sheet_df_long)
+}
+
+gapminder_plus <- keys %>% split(.$key)  %>%  
+  map(~importSheet(.$key, .$var_name)) %>% 
+  reduce(full_join, by=c("country", "year")) %>% 
+  right_join(gapminder, by=c("country", "year"))
+
+summary(gapminder_plus)
+```
+
 ## Whenever you want to iterate, `purrr`!
 
 R is a very compact language, optimized for working with vectors. This may come as a surprise to those who approach R with some knowledge of other programming languages. R is build in such a way that operations on vectors are made easy
@@ -24,152 +51,28 @@ In order to make it happen, someone has written a pretty efficient `for` loop th
 }`
 ```
 
-What if input is more complex than simple single-type, one-dimensional vector, generally speaking, a list. It may be worthwhile to remember what constitures a list and how to extract elements from a list. See [Vectors](http://r4ds.had.co.nz/vectors.html) chapter from "R for Data Science" by Hadley Wickham.
-
-We will import another version of gapminder dataset from Julia's package `vega` and see if we can learn something about manipulating lists and building iterating structures using this dataset. Lets download and import the data and look at the structure
-
-```{r, include = FALSE}
-#install.packages("RJSONIO")
-library(tidyverse)
-url3 <- "https://raw.githubusercontent.com/johnmyleswhite/Vega.jl/master/vega-datasets/gapminder.json"
-download.file(url3, "data/gapminder.json")
-gap_list <- RJSONIO::fromJSON("data/gapminder.json", simplify = F) 
-str(gap_list, max.level = 3, list.len = 3)
-```
-
-So this was a data stored in JavaScript Storage Object (json), which after importing with `RJSONIO::fromJSON()` becomes a list. 
-
-> In this lesson we will first learn how to:
-> 
-> - pick out the data from the list using the `purrr` package.
->
-> - iterate over vectors and lists to perform loop operations
-> 
-> - create and handle nested data frames using list-columns
-
-# Handling lists
-
-The ``purrr` package is the youngest member of `tidyverse` suite of packages. It is meant to be a more efficient implementation of the `apply` family of operations with stricter type-stability and some helpful shortcuts.
-
-The central function of `purrr` package is `map`. It is made for applying a certain function to each element of a list (ref. `lapply()` in base R). Here's a useful template to remember:
-
-```{r, eval=FALSE}
-#FOR  EACH ELEMENT OF .X DO .F
-
-` map(.x, .f, ...) `
-
-# apply .f
-# to every element of .x
-# and return results _like_so
-
-# basic map() usage
-`map_OUT_TYPE(YOUR_LIST, YOUR_FUNCTION)`
-```
-
-There are many flavors of the `map()` function for each output type: `map_chr()`, `map_dbl()`, `map_int()`, etc. The default function `map()` without subscript always returns a list and in this sense equivalent in meaning to `map_list()`. There's a special function `walk()` that returns nothing.
-
-The first attribute of the function is, conveniently, the data. This is needed for the pipe operators to work and, when included in the piped operation, the first element gets omitted.
-
-The second attribute is a function. The simplest type of function is the subsetting, i.e. the famous `[` operator. Lets look around the data and try to extract the country list
+Simplest example of iteration is what we have already discovered in the `dplyr` lesson - using summary functions within `group_by`. The disadvantage of this approach is that you need to specify all of the designed transformations upfront, otherwise richness of data will be gone, once the data is collapsed into the final summary statistics.
 
 ```{r}
-gap_list[1]
-gap_list[[1]]
-gap_list[[1]][1]
+## conventional summary
+gapminder_plus %>% group_by(continent) %>% 
+  summarise(min_lifeExp=min(lifeExp))
 
-#extract country
-map(gap_list, "country") %>% str(list.len = 3)
-gap_list %>% map(~nchar(.x$country)) %>% str(list.len = 3)
-```
-
-We will now look at alternative outputs and alternative ways of specifying a function.
-
-```{r}
-gap_list %>% map_int(~nchar(.x$country)) %>% str()
-gap_list %>% map_lgl(~(.x$life_expect<35)) %>% str()
-gap_list %>% map_dbl(~log(.x$pop)) %>% str()
-```
-
-These functions hold no surprises. They return either vector of size .x or error.
-
-Function was be also specified differently. Here's the case for selection/subsetting.
-
-```{r}
-## SUBSETTING BY NAME
-gap_list %>% map_dbl("cluster") %>% str()
-# equivalent to
-gap_list %>% map_dbl(~.x[["cluster"]]) %>% str()
-
-## SUBSETTING BY POSITION
-gap_list %>% map_dbl(6) %>% str()
-# equivalent to
-gap_list %>% map_dbl(~.x[[6]]) %>% str()
+## two summary functions at the same time
+gapminder_plus %>% group_by(continent) %>% 
+  summarise_each(funs(min, max), lifeExp)
 
 ```
 
-Whenever we want to apply the same function to every element, we can also use some shortcuts
-
-```{r}
-gap_list %>% map_dbl(length) %>% str()
-# equivalent to
-gap_list %>% map_dbl(~length(.x)) %>% str()
-```
-
-`purr` can turn lists into tibbles
-
-```{r}
-gap_tbl <- tibble(
-  year    =  gap_list %>% map_dbl("year"),
-  country =  gap_list %>% map_chr("country"),
-  cluster =  gap_list %>% map_dbl("cluster"),
-  pop     =  gap_list %>% map_dbl("pop"),
-  lifeExp =  gap_list %>% map_dbl("life_expect"),
-  fertility  =  gap_list %>% map_dbl("fertility"))
-gap_tbl
-
-# alternative way
-gap_tbl <- gap_list %>% map_df(`[`)
-gap_tbl
-```
-
-finally, some of the columns of the dataset can be nested. Lets use use `tidyr` to summarize data per cluster.
-
-```{r}
-gap_nested_cluster <- gap_tbl %>% 
-  group_by(cluster, year) %>% 
-  summarise(pop=sum(pop),
-            med_lifeExp=median(life_expect),
-            fertility=mean(fertility),
-            n_countries=n()) %>%
-  group_by(cluster) %>%
-  nest()
-gap_nested_cluster
-gap_nested_cluster$data[1]
-```
-
-The data inside the nested tibble is stipulated per country per year. Let's say we want to aggregate it to the year level.
-
-```{r}
-gap_nested_cluster_all <- gap_nested_cluster %>%
-  mutate(plots = map(data, ~ggplot(.x)+geom_point(mapping=aes(x=year, y=fertility)))
-         ) 
-dir.create(file.path("output"))
-gap_nested_cluster_all %>% select(plots) %>% walk(print)
-walk2(gap_nested_cluster_all$cluster, gap_nested_cluster_all$plots,
-      ~ggsave(paste0("output/cluster_", .x, ".png"),.y))
-
-```
-
-
+How can we delay the "collapsing" of the rich yearly data into the summary statistics without cluttering up the data frame? How can we summarize the data that includes more complex objects than single values (models, graphs, etc)?
 
 # Using `dplyr`, `ggplot2` and `purrr` to explore a data set
 
 It is intruiging to investigate data sets like `gapminder` for patterns. In this case , we're going to focus on just three variables to answer the question "How does life expectancy (`lifeExp`) change over time (`year`) for each country (`country`)?". A good place to start is with a plot:
-
+_
 ```{r}
-gapminder <- readr::read_csv(file = "data/gapminder-FiveYearData.csv")
 
-gapminder %>% 
+gapminder_plus %>% 
   ggplot() + 
   geom_line(mapping = aes(x = year, y = lifeExp, group = country, color = continent))
 ```
@@ -185,7 +88,7 @@ gapminder %>%
     theme(legend.position = "none")
 ```
 
-There seems to be a good handful of countries with a pronounced irregularity. We will now produce a linear model for each country. But instead of repeating an action for each variable, we want to repeat an action for each country, a subset of rows. To do that, we need a new data structure: the nested data frame. To create a nested data frame we start with a grouped data frame, and "nest"" it:
+There seems to be a good handful of countries with a pronounced irregularity. We will now produce a linear model for each country. But instead of repeating an action for each variable, we want to repeat an action for each country, a group of rows. Using "tidyverse" family of packages, it is possible to package the data belonging to each country and place it into a separate column as a "nested" data frame:
 
 ```{r}
 by_country <- gapminder %>% 
@@ -193,6 +96,13 @@ by_country <- gapminder %>%
   nest()
 by_country
 ```
+
+What can we notice from this format. First of all our data frame have shrunk to only 142 obserations - one for each country. The identifiers (country and continent) are still present in the dataset. There's a new data variable - by the type "tibble". it is possible to extract the nested elements of this data structure.
+
+```{r}
+by_country[["data"]][1] 
+```
+
 
 Now that we have our nested data frame, we're in a good position to fit some models. We will use a model-fitting function which we want to apply it to every data frame. 
 
