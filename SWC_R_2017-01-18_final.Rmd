@@ -1,13 +1,16 @@
 ---
 title: "Final Project"
+author: "07 June 2017"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+gapminder_plus <- read_csv("data/gapminder_plus.csv")
 p <- gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
   left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) %>% 
   gather(key=att, value=val, -c(year,country)) %>% 
@@ -26,10 +29,7 @@ ggsave("fig/plot.png", p, width = 10, height = 8)
 ```
 ```
 
-
-## Final project
-
-![finalchart](img/plot.png)
+![finalchart](fig/plot.png)
 First we want to get to that subset of data
 
 ```{r cars}
@@ -61,11 +61,11 @@ Off to ploting
 
 ```{r}
 gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% select(country) %>% 
-  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% select(-c(pop,continent)) %>% 
-  gather(key=att, value=val, -c(year,country)) %>% 
-  ggplot()+
-  geom_line(mapping = aes(x=year, y=val, group=country, color=country))+
-  facet_wrap(~att, scales = "free_y")+
+  left_join(gapminder_plus) %>% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %>% 
+  select(-c(pop,continent)) %>%   gather(key=att, value=val, -c(year,country)) %>% 
+  ggplot() +
+  geom_line(mapping = aes(x=year, y=val, group=country, color=country)) +
+  facet_wrap(~att, scales = "free_y")
 ```
 
 Now we need labels for the highest value observation, which means we need to subset the data, but only in one layer
