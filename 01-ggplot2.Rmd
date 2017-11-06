@@ -1,8 +1,12 @@
 ---
 title: "R for Reproducible Scientific Analysis"
 output:
-  html_document: default
   html_notebook: default
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
 date: "18 January 2017"
 ---
 
@@ -32,7 +36,8 @@ The advantage of `ggplot2` is that it allows R users to create publication quali
 
 ```{r}
 # install.packages("tidyverse")
-library("tidyverse")
+# install.packages("gapminder")
+library(tidyverse)
 ```
 
 If above code produces an error "there is no package called ‘tidyverse’", uncomment (remove #) the line above and run `install.packages()`command before you load the library. You only need to install the package once, but you will have to reload it, using the `library()` command, every time you restart R. 
@@ -40,12 +45,7 @@ If above code produces an error "there is no package called ‘tidyverse’", un
 Today we will be working with the `gapminder` dataset, which is the excerpt from the [GAPMINDER](http://www.gapminder.org/data/) data. First let's load the data. 
 
 ```{r}
-url1 <- "https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder-FiveYearData.csv"
-url2 <- "https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_wide.csv"
-dir.create(file.path("data"))
-download.file(url1, "data/gapminder-FiveYearData.csv")
-download.file(url2, "data/gapminder_wide.csv")
-gapminder <- read_csv("data/gapminder-FiveYearData.csv")
+gapminder <- gapminder::gapminder
 ```
 
 You can have a look at the content of the `gapminder` data frame by simply typing `gapminder` either in the R-chunk or in the console. Data frame is a rectangular collection of data, where variables are organized as columns and observations are listed as rows.
@@ -97,13 +97,32 @@ Generally speaking, the template for vizualizing data in `ggplot2` can be summar
 
 In the remainer of this lesson we will learn how to extend and complete this template using different elements to produce various visualizations. First, we will look closer at the `<MAPPINGS>` component.
 
-> **Challenge 1.**
+## **Challenge 1.** {.tabset .tabset-fade .tabset-pills}
+
+### Assignment
 >
-> - How did Life expectancy change over time? What do you observe? Note that many points are plotted on top of each other. This is called "overplotting". Try different `geom_` function called `geom_jitter`. It will spread the points apart a little bit using random noise.
+> - How did Life expectancy change over time? What do you observe? Note that many points are plotted on top of each other. This is called "overplotting". Try different `geom_` function called `geom_jitter`. It will spread the points apart a little bit using random noise.
 >
 > *Hint: the* `gapminder` *dataset has a column called `year`, which should appear on the x-axis.*
 >
 > - See if you can visualize Life expectancy by continent. Which continent tends to have higher life expectancy (notice the density of the points along the y-axis)? Lowest life expectancy? Which continent has highest spread in life expectancy values? How about lowest spread? 
+
+### Solution
+
+```{r, results="hide"}
+## Part 1
+ggplot(gapminder)+
+  geom_point(mapping = aes(x=year, y=lifeExp))
+# fix overplotting
+ggplot(gapminder)+
+  geom_jitter(mapping = aes(x=year, y=lifeExp))
+
+## Part 2
+ggplot(gapminder)+
+  geom_jitter(mapping = aes(x=continent, y=lifeExp))
+
+```
+
 
 ## Aestetic mappings
 
@@ -116,13 +135,37 @@ ggplot(data = gapminder) +
   geom_jitter(mapping = aes(x = year, y = lifeExp, color=continent))
 ```
 
-> **Challenge 2.**
+## **Challenge 2.** {.tabset .tabset-fade .tabset-pills}
+
+### Assignment
 > 
 > - What will happen if you switch the mappings of `continent` and `year` in the previous example? Is the graph still useful? Why? What if you map `color` aestetic to `country`? What has changed? How is `year` different from `country`? What is the limitation of the `color` aestetic, when used to vizualize different types of data? 
 > 
 > - Can you add a little color to our intial graph of life expectancy by GDP per capita? Color the points by continent. There seem to be some outliers in this graph. Can you now spot which continent to these points belong to? How about using color gradient to illustrate change over time?
 >
 > *Hint: you may want to transform GDP per capita to logarithmic scale before plotting. Just wrap the name of the variable into the* `log()` *function*
+
+### Solution
+
+```{r, results="hide"}
+## Part 1
+ggplot(data = gapminder) + 
+  geom_jitter(mapping = aes(x = continent, y = lifeExp, color=year))
+# Color by country
+ggplot(data = gapminder) + 
+  geom_jitter(mapping = aes(x = continent, y = lifeExp, color=country))  
+
+## Part 2
+ggplot(data = gapminder) + 
+  geom_jitter(mapping = aes(x = gdpPercap, y = lifeExp, color=continent))
+# change over time
+ggplot(data = gapminder) + 
+  geom_jitter(mapping = aes(x = gdpPercap, y = lifeExp, color=year))
+
+```
+
+
+## More aestetics
 
 There are other aestetics that can come handy. One of them is `size`. The idea is that we can vary the size of datapoints to illustrate another continuous variable, such as country population. Lets look at four dimensions at once! 
 
@@ -133,10 +176,21 @@ ggplot(data = gapminder) +
 
 There's one more useful aestetic property of the graph which is good for visualizing low-cardinality categorical variables (categorical variables with small number of unique values), called `shape`. The idea is that you can employ different shapes (other than circles) to plot the data.
 
-> **Challenge 3.**
+## **Challenge 3.** {.tabset .tabset-fade .tabset-pills}
+
+### Assignment
 > 
 > - Blow your mind by visualizing five(!) dimensions in the same graph. Modify the previous example mapping year to color and shape to continent. What can you say about those Asian outliers: are those belonging to small or large countries? Are they from earlier or later time periods? 
 >
+
+### Solution
+
+```{r, results="hide"}
+ggplot(data = gapminder) + 
+  geom_point(mapping = aes(x = log(gdpPercap), y = lifeExp, color=year, shape=continent, size=pop))
+```
+
+## Non-data linked properties
 
 Combining too many aestetics in the same graph can make it quite busy. However, you can always make remove certain aestatic properties and use several graphs to highlight different aspects of data.
 
@@ -149,11 +203,31 @@ ggplot(data = gapminder) +
 
 Once more, observe that the color is now not mapped to any particular variable from the `gapminder` dataset and applies equally to all datapoints, therefore it is ourside the `mapping` argument and is not wrapped into `aes()` function. Note that unmapped colors are supplied as characters (in quotes), size is a number (size of point in mm) and shape is the ordinal index of the shape in R's internal vocabulary (where square is 0, circle is 1, triangle is 2 and small filled circle is 20). Explore different shapes by varying the shape number between 0..25 or refer to `ggplot2` documentation, called [vignettes] (http://docs.ggplot2.org/current/vignettes/ggplot2-specs.html), for details. This document can be also called from within R by calling `vignette("ggplot2-specs")`. 
 
-> **Challenge 5.**
+## **Challenge 4.** {.tabset .tabset-fade .tabset-pills}
+
+### Assignment
 > 
 > - Try mapping `color` aestetic to `continent` and to `year`. What do you notice? What might be the reason for different treatment of these variables by  `ggplot`?
 >
 > - Change the transparency of the datapoints inside and outside the aestetics. What can be the benefit of each one of these methods?
+
+### Solution
+```{r, results="hide"}
+## Part 1
+ggplot(data = gapminder) + 
+  geom_point(mapping = aes(x = gdpPercap, y = lifeExp, color = continent))
+#
+ggplot(data = gapminder) + 
+  geom_point(mapping = aes(x = gdpPercap, y = lifeExp, color = year))
+
+## Part 2
+ggplot(data = gapminder) + 
+  geom_point(mapping = aes(x = gdpPercap, y = lifeExp), alpha=0.1)
+#
+ggplot(data = gapminder) + 
+  geom_point(mapping = aes(x = gdpPercap, y = lifeExp, alpha = year))
+
+```
 
 ## Geometrical objects
 
@@ -205,15 +279,32 @@ ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp, color=co
 
 Notice, that we also used new visual property called `alpha` to increase transparency of the data points and make trend lines stand out. `alpha` property can also be used as a mapping aestetic, i.e. transparency can be made to vary depending on the value of certain variable.
 
+## **Challenge 5.** {.tabset .tabset-fade .tabset-pills}
+
+### Assignment
+> 
+> - Modify the graph above to force R to create single regression line for all data points. Keep the points colored by continent. *Hint: There could be several alternative solutions to this problem*
+>
+
+### Solution
+
 In the graph above, each geom inherited all three mappings: x, y and color. If we want only single linear model to be built, we would need to limit the effect of `color` aestetic to only `geom_point()` function, by moving it from the "parent" function to the layer where we want it to apply. Note, though, that because we want the `color` to be still mapped to the `continent` variable, it needs to be wrapped into `aes()` function and supplied to `mapping` argument.
 
-```{r}
+```{r, results="hide"}
 ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp)) +
   geom_point(mapping=aes(color=continent), alpha=0.5) +
   geom_smooth(method="lm")
+
+# Alternative solution
+ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
+  geom_point(alpha=0.5) +
+  geom_smooth(method="lm", color="black")
+
 ```
 
-As you can observe the x-axis label of our graph says `log(gdpPercap)`, which indicates that we are not really plotting the original data, but rather the output of `log()` function. The same effect (with slightly more aestetically pleasing x-axis label) can be achieved by specifying the x-axis scale transformation as a separate layer.
+## Correcting the scale
+
+As you can observe the x-axis label of our graph says `log(gdpPercap)`, which indicates that we are not really plotting the original data, but rather the output of `log()` function. The same effect (with slightly more aestetically pleasing x-axis label) can be achieved by specifying the x-axis scale transformation as a separate layer. Instead of transforming the values, we will transform the scale of x-axis.
 
 ```{r}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color=continent)) +
@@ -222,14 +313,59 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color=contine
   scale_x_log10()
 ```
 
-> **Challenge 6.**
+Now the x-axis is measured in log10 units and the data, plotted on log10 scale looks more linear. Certain scale and coordinate functions may result in similar visual effects on the chart, but the way they interact with other aestetic elements may be quite different. Check out the online `ggplot2` [documentation](http://docs.ggplot2.org/) for more details and examples of using scale and coordinate transformations.
+
+## **Challenge 6.** {.tabset .tabset-fade .tabset-pills}
+
+### Assignment
 > 
-> - Make a boxplot of life expectancy by year. Hint: You may need to wrap the `year` variable into the `as.character` or `as.factor` function. When was interquartile range of life expectancy the smallest? Make the same plot of `log(gdpPercap)` per year. Compared to 1952, is the world todat more or less diverse in terms of IQR of gdpPercapita?
+> - Make a boxplot of life expectancy by year. Hint: You may need to do something with the `year` variableto force it to be categorical, or follow the advice suggested by `ggplot`. When was interquartile range of life expectancy the smallest? Make the same plot of `gdpPercap` (on a log scale) per year. Compared to 1952, is the world today more or less diverse in terms of IQR of GDP per capita?
 >
 > - Make a histogram of untransformed and transformed `gdpPercap`? What is the shape of the distribution? Why is bin parameter important for interpretation of the histogram? Build a density function. How would you compare density functions of different continents?
 >
-> - Based on graph produced using geom_density2d() function of GDP per capita vs life expectancy, how many clusters of datapoints can you identify? What if you look at it by continent?
+> - Based on graph produced using geom_density2d() function of log GDP per capita vs life expectancy, how many clusters of datapoints can you identify? What if you look at it by continent?
 > 
+
+### Solution
+```{r, results="hide"}
+## Part 1
+# force year to become categorical
+ggplot(gapminder)+
+  geom_boxplot(mapping = aes(y=lifeExp, x=as.character(year))) # simple x=year will not work
+# ggplot suggested solution
+ggplot(gapminder)+
+  geom_boxplot(mapping = aes(y=lifeExp, x=year, group=year))
+# gdpPercap
+ggplot(gapminder)+
+  geom_boxplot(mapping = aes(y=gdpPercap, x=year, group=year))+
+  scale_y_log10()
+
+## Part 2
+ggplot(gapminder)+
+  geom_histogram(mapping = aes(x=gdpPercap)) 
+# on log scale with higher number of bins
+ggplot(gapminder)+
+  geom_histogram(mapping = aes(x=gdpPercap),bins=100) +
+  scale_x_log10()
+# density
+ggplot(gapminder)+
+  geom_density(mapping = aes(x=gdpPercap)) +
+  scale_x_log10()
+# by continent
+ggplot(gapminder)+
+  geom_density(mapping = aes(x=gdpPercap, color=continent)) +
+  scale_x_log10()
+
+## Part 3
+# Density 2d
+ggplot(gapminder)+
+  geom_density2d(mapping = aes(x=gdpPercap, y=lifeExp)) +
+  scale_x_log10()
+# by continent
+ggplot(gapminder)+
+  geom_density2d(mapping = aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  scale_x_log10()
+```
 
 ## Faceting
 
@@ -253,46 +389,29 @@ Reiterating our previously proposed `ggplot2` template and adding what we learne
   <FACET_FUNCTION>`
 ```
 
-> **Challenge 7.**
+## **Challenge 7.** {.tabset .tabset-fade .tabset-pills}
+
+### Assignment
 > 
 > - Try faceting by year, keeping the linear smoother. Is there any change in slope of the linear trend over the years? What if you look at linear models per continent?
-> 
+>
 
+### Solution
 
-## Statistical transformations
-
-How many countries are there in `gapminder` dataset on each continent? It is to common to aswer this sort of question with a bar chart. This dataset contains observations from several years, but since we are no longer interested in showing the dynamics, perhaps it is good idea to take a "snapshot" of the data, by limiting it to observations from one year, say year 2007. In `tidyverse` terminology we will "filter" the data to contain only observations from 2007. We will learn about filtering later in this workshop. The simplest way of achieving it is to wrap the data and the condition we want to apply into the `filter()` function. 
-
-```{r}
-filter(gapminder, year==2007)
+```{r, results="hide"}
+# by year
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_x_log10() + 
+  facet_wrap( ~ year)
+# by continent
+ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  scale_x_log10() + 
+  facet_wrap( ~ continent)
 ```
-
-Now, each country is listed only once and we can answer the intial question: "How many countries are there on each continent"? Note that not every country of the world is included into the `gapminder` dataset (for unabridged version of the data, please, refer to `gapminder_unfiltered` dataset in the same package). 
-
-We will use `geom_bar()` function to build a bar chart. Remember that we are using the filtered version of the data.
-
-```{r}
-ggplot(filter(gapminder, year==2007)) + 
-  geom_bar(mapping = aes(x=continent))
-```
-
-Note the label on y-axis. It seems like R did something behind the scenes and instead of plotting row values it calculated and plotted summary of the data, in this case, count. We've already observed functions that calculated and plotted summaries of the data: boxplots and smoothers. This would be also true for functions producing histograms and other frequency functions.
-
-The algorithm that calculates the data summary behind the scenes is called a `stat`, short of statistical transformation. Each geom function has a default `stat` associated with it. For simplicity default statistical transformations are ommitted from the function call, but they are there and can be overridden when necessary. The same chart as above can be produced by naming the stat explicitly.
-
-```{r}
-ggplot(filter(gapminder, year==2007)) + 
-  geom_bar(mapping = aes(x=continent), stat="count")
-```
-
-In some cases we may not want R to calculate summary statistics for us. In that case we may want the height of the bars to correspond to certain values found in the data. This requires overriding default `stat` and instead using the reserved value, called `identity` (which means "use as is"). Lets show population of each country in Oceania in 2007.
-
-```{r}
-ggplot(filter(gapminder, year==2007 & continent=="Oceania")) + 
-  geom_bar(mapping = aes(x=country, y=pop), stat="identity") 
-```
-
-Stats and geoms are cornerstones of `ggplot2` visualization toolbox. Seek more details in help, or refer to online documentation at http://ggplot2.org/
 
 ## Coordinate systems
 
@@ -305,19 +424,6 @@ ggplot(filter(gapminder, year==2007 & continent=="Asia")) +
 ```
 
 There are many function related to coordinate systems that allow, among other things, plotting in non-cartesian (e.g. polar and mercantor) coordinates and specifying manual limits for coordinate axis. 
-
-## Scales
-
-We have been dealing with non-linear nature of the `gdpPercap` variable by plotting its log, which makes it really difficult to read and interpret the values of GDP per capita for individual countries. Instead of transforming the values, we could transform the scale of x-axis.
-
-```{r}
-ggplot(data = gapminder) + 
-  geom_point(mapping = aes(x = gdpPercap, y = lifeExp, color=continent)) +
-  scale_x_log10() +
-  facet_wrap(~year)
-```
-
-Now the x-axis is measured in log10 units and the data, plotted on log10 scale looks more linear. Certain scale and coordinate functions may result in similar visual effects on the chart, but the way they interact with other aestetic elements may be quite different. Check out the online `ggplot2` [documentation](http://docs.ggplot2.org/) for more details and examples of using scale and coordinate transformations.
 
 ## Labeling the chart
 
@@ -343,6 +449,7 @@ The graph produced in the previous section looks quite good, but it requires a r
 
 ```{r, fig.show = "animate"}
 library(gganimate)
+
 p <- ggplot(data = gapminder) + 
   geom_point(mapping = aes(x = gdpPercap/10^3, y = lifeExp, size=pop/10^6, color=continent, frame=year)) +
   geom_text(mapping = aes(x = 40, y = 30, frame=year), label=as.character(gapminder$year), size = 16, color="grey") +
