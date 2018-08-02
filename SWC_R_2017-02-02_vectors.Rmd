@@ -58,9 +58,9 @@ all.equal(y,z)
 >
 > Remember the operator precedence!
 
-When talking about vectors in R two important concepts need to be mentioned: recycling and coersion.
+When talking about vectors in R two important concepts need to be mentioned: recycling and coercion.
 
-R is built by statisticians for interactive data analysis. It is designed to give the answers quickly and allows the knowledgeable user to "cut corners". R is notoriously loose about many requirements that are strictly monitored in other languages. Recycling and coersion are two fine examplex of this inherent flexibility of R.
+R is built by statisticians for interactive data analysis. It is designed to give the answers quickly and allows the knowledgeable user to "cut corners". R is notoriously loose about many requirements that are strictly monitored in other languages. Recycling and coercion are two fine examples of this inherent flexibility of R.
 
 ### Recycling
 
@@ -80,7 +80,7 @@ x+m
 >
 > How is "recycling" useful? Is it "avoidable"? What do you think happens when a vector get multiplied by a scalar? What is the alternative?
 
-### Coersion
+### Coercion
 
 Concatenation function `c()` is the main function for making vectors. `str()` is a useful function for inspection of objects in R (including vectors). Examples below
 
@@ -99,7 +99,7 @@ mode(x)
 class(x)
 ```
 
-R pick the "lowest common denominator" for reconciling the type conflict among the members of the vector and "demotes" its elements into this type. Coersion into character is ofter the fallback option for R. Logical vectors are easily coercible into 0s and 1s.
+R pick the "lowest common denominator" for reconciling the type conflict among the members of the vector and "demotes" its elements into this type. Coercion into character is often the fallback option for R. Logical vectors are easily coercible into 0s and 1s.
 
 ```{r}
 (x <- 1:5)
@@ -193,8 +193,8 @@ str(gapminder[[2]])
 str(gapminder[2]) # list retained
 str(gapminder[1,])
 all.equal(gapminder[[2]], gapminder$continent)
-gapminder[[4]][12] # life expectancy in Afganistan in 2007
-gapminder[["lifeExp"]][12] # life expectancy in Afganistan in 2007
+gapminder[[4]][12] # life expectancy in Afghanistan in 2007
+gapminder[["lifeExp"]][12] # life expectancy in Afghanistan in 2007
 
 ```
 
@@ -208,7 +208,7 @@ Alternatively, subsetting (indexing) can be done using logical vectors. If you p
 gapminder$lifeExp[12]
 
 # integer subsetting
-gapminder[12, 4] # life expectancy in Afganistan in 2007
+gapminder[12, 4] # life expectancy in Afghanistan in 2007
 
 # logical subsetting
 logical_vector_rows <- gapminder$year==2007 & gapminder$country == "Afghanistan"

@@ -1,5 +1,5 @@
 ---
-title: "R for Reproducable Scientific Analysis"
+title: "R for Reproducible Scientific Analysis"
 subtitle: "Data Manipulation with dplyr"
 author: "15 Feb 2018"
 output:

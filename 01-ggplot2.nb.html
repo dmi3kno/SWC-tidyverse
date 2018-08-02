@@ -236,7 +236,7 @@ library(tidyverse)</code></pre>
 <div id="creating-the-first-plot" class="section level2">
 <h2>Creating the first plot</h2>
 <blockquote>
-<p>Here’s a question that we would like to answer using <code>gapminder</code> data: Do people in rich countries live longer then people in poor countries? The answer may be quite intitive, but we will continue our investigation further: how does the relationship between GDP per capita and Life expectancy look like? Is this relationship linear? Non-linear? Are there exceptions to the general rule (outliers)?</p>
+<p>Here’s a question that we would like to answer using <code>gapminder</code> data: Do people in rich countries live longer then people in poor countries? The answer may be quite intuitive, but we will continue our investigation further: how does the relationship between GDP per capita and Life expectancy look like? Is this relationship linear? Non-linear? Are there exceptions to the general rule (outliers)?</p>
 </blockquote>
 <p>To plot <code>gapminder</code>, run the following code in the R-chunk or in console. The following code will put <code>gdpPercap</code> on the x-axis and <code>lifeExp</code> on the y-axis:</p>
 <!-- rnb-text-end -->
@@ -252,9 +252,9 @@ library(tidyverse)</code></pre>
 <blockquote>
 <p>Does this graph confirm or disprove your initial hypothesis about the relationship between these variables?</p>
 </blockquote>
-<p>Note that in order to create a plot using <code>ggplot2</code> system, you should start your command with <code>ggplot()</code> function. It creates an empty coordinate system and initializes the dataset to be used in the graph (which is supplied as a first argument into the <code>ggplot()</code> function). In order to create graphical representaion of the data, we can add one or more layers to our otherwise empty graph. Functions starting with the prefix <code>geom_</code> create visual representation of data. In this case we added scattered points, using <code>geom_point()</code> function. There are many <code>geoms</code> in <code>ggplot2</code>, some of which we will learn in this lesson.</p>
-<p><code>geom_</code> function create <em>mapping</em> of variables from the earlier defined dataset to certain aestetic elements of the graph, such as axis, shapes or colors. The first argument of any <code>geom_</code> function expects the user to specify these mappings, wrapped in the <code>aes()</code> (short for <em>aestetics</em>) function. In this case, we mapped <code>gdpPercap</code> and <code>lifeExp</code> variables from <code>gapminder</code> dataset to x- and y-axis, respectively (using <code>x</code> and <code>y</code> arguments of <code>aes()</code> function).</p>
-<p>Generally speaking, the template for vizualizing data in <code>ggplot2</code> can be summarized as follows:</p>
+<p>Note that in order to create a plot using <code>ggplot2</code> system, you should start your command with <code>ggplot()</code> function. It creates an empty coordinate system and initializes the dataset to be used in the graph (which is supplied as a first argument into the <code>ggplot()</code> function). In order to create graphical representation of the data, we can add one or more layers to our otherwise empty graph. Functions starting with the prefix <code>geom_</code> create visual representation of data. In this case we added scattered points, using <code>geom_point()</code> function. There are many <code>geoms</code> in <code>ggplot2</code>, some of which we will learn in this lesson.</p>
+<p><code>geom_</code> function create <em>mapping</em> of variables from the earlier defined dataset to certain aesthetic elements of the graph, such as axis, shapes or colors. The first argument of any <code>geom_</code> function expects the user to specify these mappings, wrapped in the <code>aes()</code> (short for <em>aesthetics</em>) function. In this case, we mapped <code>gdpPercap</code> and <code>lifeExp</code> variables from <code>gapminder</code> dataset to x- and y-axis, respectively (using <code>x</code> and <code>y</code> arguments of <code>aes()</code> function).</p>
+<p>Generally speaking, the template for visualizing data in <code>ggplot2</code> can be summarized as follows:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjpbImBnZ3Bsb3QoZGF0YSA9IDxEQVRBPikgKyAiLCIgIDxHRU9NX0ZVTkNUSU9OPihtYXBwaW5nID0gYWVzKDxNQVBQSU5HUz4pKWAiXX0= -->
@@ -287,10 +287,10 @@ library(tidyverse)</code></pre>
 <!-- rnb-text-begin -->
 </div>
 </div>
-<div id="aestetic-mappings" class="section level2">
-<h2>Aestetic mappings</h2>
+<div id="aesthetic-mappings" class="section level2">
+<h2>Aesthetic mappings</h2>
 <p>What if we want to combine graphs from previous two challenges and show the relationship between three variables in the same graph. Turns out, we don’t necessarily need to use third geometrical dimension, we can simply employ color.</p>
-<p>The following graph maps <code>continent</code> variable from <code>gapminder</code> dataset to the <code>color</code> aestetic of the plot. Let’s take a look:</p>
+<p>The following graph maps <code>continent</code> variable from <code>gapminder</code> dataset to the <code>color</code> aesthetic of the plot. Let’s take a look:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIpICsgXG4gIGdlb21faml0dGVyKG1hcHBpbmcgPSBhZXMoeCA9IHllYXIsIHkgPSBsaWZlRXhwLCBjb2xvcj1jb250aW5lbnQpKVxuYGBgIn0= -->
@@ -306,8 +306,8 @@ library(tidyverse)</code></pre>
 <h3>Assignment</h3>
 <blockquote>
 <ul>
-<li><p>What will happen if you switch the mappings of <code>continent</code> and <code>year</code> in the previous example? Is the graph still useful? Why? What if you map <code>color</code> aestetic to <code>country</code>? What has changed? How is <code>year</code> different from <code>country</code>? What is the limitation of the <code>color</code> aestetic, when used to vizualize different types of data?</p></li>
-<li><p>Can you add a little color to our intial graph of life expectancy by GDP per capita? Color the points by continent. There seem to be some outliers in this graph. Can you now spot which continent to these points belong to? How about using color gradient to illustrate change over time?</p></li>
+<li><p>What will happen if you switch the mappings of <code>continent</code> and <code>year</code> in the previous example? Is the graph still useful? Why? What if you map <code>color</code> aesthetic to <code>country</code>? What has changed? How is <code>year</code> different from <code>country</code>? What is the limitation of the <code>color</code> aesthetic, when used to visualize different types of data?</p></li>
+<li><p>Can you add a little color to our initial graph of life expectancy by GDP per capita? Color the points by continent. There seem to be some outliers in this graph. Can you now spot which continent to these points belong to? How about using color gradient to illustrate change over time?</p></li>
 </ul>
 <p><em>Hint: you may want to transform GDP per capita to logarithmic scale before plotting. Just wrap the name of the variable into the</em> <code>log()</code> <em>function</em></p>
 </blockquote>
@@ -320,9 +320,9 @@ library(tidyverse)</code></pre>
 <!-- rnb-text-begin -->
 </div>
 </div>
-<div id="more-aestetics" class="section level2">
-<h2>More aestetics</h2>
-<p>There are other aestetics that can come handy. One of them is <code>size</code>. The idea is that we can vary the size of datapoints to illustrate another continuous variable, such as country population. Lets look at four dimensions at once!</p>
+<div id="more-aesthetics" class="section level2">
+<h2>More aesthetics</h2>
+<p>There are other aesthetics that can come handy. One of them is <code>size</code>. The idea is that we can vary the size of datapoints to illustrate another continuous variable, such as country population. Lets look at four dimensions at once!</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIpICsgXG4gIGdlb21fcG9pbnQobWFwcGluZyA9IGFlcyh4ID0gbG9nKGdkcFBlcmNhcCksIHkgPSBsaWZlRXhwLCBjb2xvcj1jb250aW5lbnQsIHNpemU9cG9wKSlcbmBgYCJ9 -->
@@ -331,7 +331,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>There’s one more useful aestetic property of the graph which is good for visualizing low-cardinality categorical variables (categorical variables with small number of unique values), called <code>shape</code>. The idea is that you can employ different shapes (other than circles) to plot the data.</p>
+<p>There’s one more useful aesthetic property of the graph which is good for visualizing low-cardinality categorical variables (categorical variables with small number of unique values), called <code>shape</code>. The idea is that you can employ different shapes (other than circles) to plot the data.</p>
 </div>
 <div id="challenge-3." class="section level2 tabset tabset-fade tabset-pills">
 <h2><strong>Challenge 3.</strong></h2>
@@ -353,8 +353,8 @@ library(tidyverse)</code></pre>
 </div>
 <div id="non-data-linked-properties" class="section level2">
 <h2>Non-data linked properties</h2>
-<p>Combining too many aestetics in the same graph can make it quite busy. However, you can always make remove certain aestatic properties and use several graphs to highlight different aspects of data.</p>
-<p>Until now, we explored different aestetic properties of a graph mapped to certain variables. What if you want to recolor or use certain shape to plot all datapoints? Well, that means that such color or shape will no longer be <em>mapped</em> to any data, so you need to supply it to <code>geom_</code> function as a separate argument (outside of the <code>mapping</code>). Here’s our intial graph with all colors colored in blue.</p>
+<p>Combining too many aesthetics in the same graph can make it quite busy. However, you can always make remove certain aesthetic properties and use several graphs to highlight different aspects of data.</p>
+<p>Until now, we explored different aesthetic properties of a graph mapped to certain variables. What if you want to recolor or use certain shape to plot all datapoints? Well, that means that such color or shape will no longer be <em>mapped</em> to any data, so you need to supply it to <code>geom_</code> function as a separate argument (outside of the <code>mapping</code>). Here’s our initial graph with all colors colored in blue.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIpICsgXG4gIGdlb21fcG9pbnQobWFwcGluZyA9IGFlcyh4ID0gZ2RwUGVyY2FwLCB5ID0gbGlmZUV4cCksIGFscGhhPTAuMSwgc2l6ZT0yLCBjb2xvcj1cImJsdWVcIilcbmBgYCJ9 -->
@@ -371,8 +371,8 @@ library(tidyverse)</code></pre>
 <h3>Assignment</h3>
 <blockquote>
 <ul>
-<li><p>Try mapping <code>color</code> aestetic to <code>continent</code> and to <code>year</code>. What do you notice? What might be the reason for different treatment of these variables by <code>ggplot</code>?</p></li>
-<li><p>Change the transparency of the datapoints inside and outside the aestetics. What can be the benefit of each one of these methods?</p></li>
+<li><p>Try mapping <code>color</code> aesthetic to <code>continent</code> and to <code>year</code>. What do you notice? What might be the reason for different treatment of these variables by <code>ggplot</code>?</p></li>
+<li><p>Change the transparency of the datapoints inside and outside the aesthetics. What can be the benefit of each one of these methods?</p></li>
 </ul>
 </blockquote>
 </div>
@@ -387,7 +387,7 @@ library(tidyverse)</code></pre>
 <div id="geometrical-objects" class="section level2">
 <h2>Geometrical objects</h2>
 <p>Next, we will consider different options for <GEOM_FUNCTION> component of our template <code>ggplot2</code> graph example. Using different <code>geom_</code> functions user can highlight different aspects of data. For example, we could connect individual datapoints belonging to the same country into a line and illustrate the development of life expectancy over time for each country separately using <code>geom_line()</code> function.</p>
-<p>Some <code>geom_</code> functions allow additional aestetics, such as aestetic <code>group</code> in the <code>geom_line()</code> function. This aestetic may not have any meaning in other geoms, but here it allows us to draw multiple lines, one per country. To keep the lines organized, we will color them by continent.</p>
+<p>Some <code>geom_</code> functions allow additional aesthetics, such as aesthetic <code>group</code> in the <code>geom_line()</code> function. This aesthetic may not have any meaning in other geoms, but here it allows us to draw multiple lines, one per country. To keep the lines organized, we will color them by continent.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIpICsgXG4gIGdlb21fbGluZShtYXBwaW5nID0gYWVzKHggPSB5ZWFyLCB5ID0gbGlmZUV4cCwgZ3JvdXA9Y291bnRyeSwgY29sb3I9Y29udGluZW50KSlcbmBgYCJ9 -->
@@ -396,7 +396,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Note how life expectancy suddently drops for certain countries in for short period of time. We will learn how to zoom in to those tragic periods of history and investigate which countries experienced them later in this workshop.</p>
+<p>Note how life expectancy suddenly drops for certain countries in for short period of time. We will learn how to zoom in to those tragic periods of history and investigate which countries experienced them later in this workshop.</p>
 <p>Another useful geom function is <code>geom_boxplot()</code>. It adds a layer with the “box and whiskers” plot illustrating the distribution of values within categories. The following chart breaks down life expectancy by continent, where the box represents first and third quartile (the 25th and 75th percentiles), the middle bar signifies the median value and the whiskers extent to cover 95% confidence interval. Outliers (outside of the 95% confidence interval range) are shown separately.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -406,7 +406,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Layers can be added on top of each other. In the following graph we will place the boxplots over jittered points to see the distribution of outliers more clearly. We can map two aestetic properties to the same variable. Here we will also use different color for each continent.</p>
+<p>Layers can be added on top of each other. In the following graph we will place the boxplots over jittered points to see the distribution of outliers more clearly. We can map two aesthetic properties to the same variable. Here we will also use different color for each continent.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIpICsgXG4gIGdlb21faml0dGVyKG1hcHBpbmcgPSBhZXMoeCA9IGNvbnRpbmVudCwgeSA9IGxpZmVFeHAsIGNvbG9yPWNvbnRpbmVudCkpICtcbiAgZ2VvbV9ib3hwbG90KG1hcHBpbmcgPSBhZXMoeCA9IGNvbnRpbmVudCwgeSA9IGxpZmVFeHAsIGNvbG9yPWNvbnRpbmVudCkpXG5cbmBgYCJ9 -->
@@ -417,7 +417,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Now, this was slighly inefficient due to duplication of code - we had to specify the same mappings for two layers. To avoid it, you can move common arguments of <code>geom_</code> functions to the main <code>ggplot()</code> function. In this case every layer will “inherit” the same arguments, specified in the “parent” function.</p>
+<p>Now, this was slightly inefficient due to duplication of code - we had to specify the same mappings for two layers. To avoid it, you can move common arguments of <code>geom_</code> functions to the main <code>ggplot()</code> function. In this case every layer will “inherit” the same arguments, specified in the “parent” function.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIsIG1hcHBpbmcgPSBhZXMoeCA9IGNvbnRpbmVudCwgeSA9IGxpZmVFeHAsIGNvbG9yPWNvbnRpbmVudCkpICsgXG4gIGdlb21faml0dGVyKCkgK1xuICBnZW9tX2JveHBsb3QoKVxuXG5gYGAifQ== -->
@@ -429,7 +429,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>You can still add layer-specific mappings or other arguments by specifying them within individual geoms. We would recommend building each layer separately and then moving common arguments up to the “parent” function.</p>
-<p>We can use linear models to highlight differences in dependency between GDP per capita and life expectency by continent. Notice that we added a separate argument to the <code>geom_smooth()</code> function to specify the type of model we want <code>ggplot2</code> to built using the data (linear model). The <code>geom_smooth()</code> function has also helpfully provided confidence intervals, indicating “goodness of fit” for each model (shaded gray area). For more information on statistical models, please refer to help (by typing <code>?geom_smooth</code>)</p>
+<p>We can use linear models to highlight differences in dependency between GDP per capita and life expectancy by continent. Notice that we added a separate argument to the <code>geom_smooth()</code> function to specify the type of model we want <code>ggplot2</code> to built using the data (linear model). The <code>geom_smooth()</code> function has also helpfully provided confidence intervals, indicating “goodness of fit” for each model (shaded gray area). For more information on statistical models, please refer to help (by typing <code>?geom_smooth</code>)</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIsIG1hcHBpbmcgPSBhZXMoeCA9IGxvZyhnZHBQZXJjYXApLCB5ID0gbGlmZUV4cCwgY29sb3I9Y29udGluZW50KSkgK1xuICBnZW9tX3BvaW50KGFscGhhPTAuNSkgK1xuICBnZW9tX3Ntb290aChtZXRob2Q9XCJsbVwiKVxuYGBgIn0= -->
@@ -439,7 +439,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Notice, that we also used new visual property called <code>alpha</code> to increase transparency of the data points and make trend lines stand out. <code>alpha</code> property can also be used as a mapping aestetic, i.e. transparency can be made to vary depending on the value of certain variable.</p>
+<p>Notice, that we also used new visual property called <code>alpha</code> to increase transparency of the data points and make trend lines stand out. <code>alpha</code> property can also be used as a mapping aesthetic, i.e. transparency can be made to vary depending on the value of certain variable.</p>
 </div>
 <div id="challenge-5." class="section level2 tabset tabset-fade tabset-pills">
 <h2><strong>Challenge 5.</strong></h2>
@@ -453,7 +453,7 @@ library(tidyverse)</code></pre>
 </div>
 <div id="solution-4" class="section level3">
 <h3>Solution</h3>
-<p>In the graph above, each geom inherited all three mappings: x, y and color. If we want only single linear model to be built, we would need to limit the effect of <code>color</code> aestetic to only <code>geom_point()</code> function, by moving it from the “parent” function to the layer where we want it to apply. Note, though, that because we want the <code>color</code> to be still mapped to the <code>continent</code> variable, it needs to be wrapped into <code>aes()</code> function and supplied to <code>mapping</code> argument.</p>
+<p>In the graph above, each geom inherited all three mappings: x, y and color. If we want only single linear model to be built, we would need to limit the effect of <code>color</code> aesthetic to only <code>geom_point()</code> function, by moving it from the “parent” function to the layer where we want it to apply. Note, though, that because we want the <code>color</code> to be still mapped to the <code>continent</code> variable, it needs to be wrapped into <code>aes()</code> function and supplied to <code>mapping</code> argument.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-chunk-end -->
@@ -462,7 +462,7 @@ library(tidyverse)</code></pre>
 </div>
 <div id="correcting-the-scale" class="section level2">
 <h2>Correcting the scale</h2>
-<p>As you can observe the x-axis label of our graph says <code>log(gdpPercap)</code>, which indicates that we are not really plotting the original data, but rather the output of <code>log()</code> function. The same effect (with slightly more aestetically pleasing x-axis label) can be achieved by specifying the x-axis scale transformation as a separate layer. Instead of transforming the values, we will transform the scale of x-axis.</p>
+<p>As you can observe the x-axis label of our graph says <code>log(gdpPercap)</code>, which indicates that we are not really plotting the original data, but rather the output of <code>log()</code> function. The same effect (with slightly more aesthetically pleasing x-axis label) can be achieved by specifying the x-axis scale transformation as a separate layer. Instead of transforming the values, we will transform the scale of x-axis.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIsIG1hcHBpbmcgPSBhZXMoeCA9IGdkcFBlcmNhcCwgeSA9IGxpZmVFeHAsIGNvbG9yPWNvbnRpbmVudCkpICtcbiAgZ2VvbV9wb2ludCgpICtcbiAgZ2VvbV9zbW9vdGgoKSArXG4gIHNjYWxlX3hfbG9nMTAoKVxuYGBgIn0= -->
@@ -473,7 +473,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Now the x-axis is measured in log10 units and the data, plotted on log10 scale looks more linear. Certain scale and coordinate functions may result in similar visual effects on the chart, but the way they interact with other aestetic elements may be quite different. Check out the online <code>ggplot2</code> <a href="http://docs.ggplot2.org/">documentation</a> for more details and examples of using scale and coordinate transformations.</p>
+<p>Now the x-axis is measured in log10 units and the data, plotted on log10 scale looks more linear. Certain scale and coordinate functions may result in similar visual effects on the chart, but the way they interact with other aesthetic elements may be quite different. Check out the online <code>ggplot2</code> <a href="http://docs.ggplot2.org/">documentation</a> for more details and examples of using scale and coordinate transformations.</p>
 </div>
 <div id="challenge-6." class="section level2 tabset tabset-fade tabset-pills">
 <h2><strong>Challenge 6.</strong></h2>
@@ -481,7 +481,7 @@ library(tidyverse)</code></pre>
 <h3>Assignment</h3>
 <blockquote>
 <ul>
-<li><p>Make a boxplot of life expectancy by year. Hint: You may need to do something with the <code>year</code> variableto force it to be categorical, or follow the advice suggested by <code>ggplot</code>. When was interquartile range of life expectancy the smallest? Make the same plot of <code>gdpPercap</code> (on a log scale) per year. Compared to 1952, is the world today more or less diverse in terms of IQR of GDP per capita?</p></li>
+<li><p>Make a boxplot of life expectancy by year. Hint: You may need to do something with the <code>year</code> variable to force it to be categorical, or follow the advice suggested by <code>ggplot</code>. When was interquartile range of life expectancy the smallest? Make the same plot of <code>gdpPercap</code> (on a log scale) per year. Compared to 1952, is the world today more or less diverse in terms of IQR of GDP per capita?</p></li>
 <li><p>Make a histogram of untransformed and transformed <code>gdpPercap</code>? What is the shape of the distribution? Why is bin parameter important for interpretation of the histogram? Build a density function. How would you compare density functions of different continents?</p></li>
 <li><p>Based on graph produced using geom_density2d() function of log GDP per capita vs life expectancy, how many clusters of datapoints can you identify? What if you look at it by continent?</p></li>
 </ul>
@@ -497,7 +497,7 @@ library(tidyverse)</code></pre>
 </div>
 <div id="faceting" class="section level2">
 <h2>Faceting</h2>
-<p>Multi-layered graphs employing several aestetics can look crowded. In order to avoid it, one can split the data into different graphs using panels of similar graphs. In <code>ggplot2</code> this method is called “faceting”. Lets facet the graph above by continent and show the datapoints and the trend for each continent in a separate chart.</p>
+<p>Multi-layered graphs employing several aesthetics can look crowded. In order to avoid it, one can split the data into different graphs using panels of similar graphs. In <code>ggplot2</code> this method is called “faceting”. Lets facet the graph above by continent and show the datapoints and the trend for each continent in a separate chart.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBnYXBtaW5kZXIsIG1hcHBpbmcgPSBhZXMoeCA9IGdkcFBlcmNhcCwgeSA9IGxpZmVFeHApKSArXG4gIGdlb21fcG9pbnQoKSArXG4gIGdlb21fc21vb3RoKCkgK1xuICBzY2FsZV94X2xvZzEwKCkgKyBcbiAgZmFjZXRfd3JhcCggfiBjb250aW5lbnQpXG5gYGAifQ== -->
@@ -541,7 +541,7 @@ library(tidyverse)</code></pre>
 </div>
 <div id="coordinate-systems" class="section level2">
 <h2>Coordinate systems</h2>
-<p>There are only two countries from <code>Oceania</code> included in the dataset. Imagine that bars would be too narrow and labels would be unreadable. One way of dealing with it is flipping the coordiante system, i.e. plotting the same data as horizontal bars. Let’s try to show population of every Asian country in 2007.</p>
+<p>There are only two countries from <code>Oceania</code> included in the dataset. Imagine that bars would be too narrow and labels would be unreadable. One way of dealing with it is flipping the coordinate system, i.e. plotting the same data as horizontal bars. Let’s try to show population of every Asian country in 2007.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGZpbHRlcihnYXBtaW5kZXIsIHllYXI9PTIwMDcgJiBjb250aW5lbnQ9PVwiQXNpYVwiKSkgKyBcbiAgZ2VvbV9iYXIobWFwcGluZyA9IGFlcyh4PWNvdW50cnksIHk9cG9wKSwgc3RhdD1cImlkZW50aXR5XCIpICtcbiAgY29vcmRfZmxpcCgpXG5gYGAifQ== -->
@@ -551,7 +551,7 @@ library(tidyverse)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>There are many function related to coordinate systems that allow, among other things, plotting in non-cartesian (e.g. polar and mercantor) coordinates and specifying manual limits for coordinate axis.</p>
+<p>There are many function related to coordinate systems that allow, among other things, plotting in non-cartesian (e.g. polar and Mercator) coordinates and specifying manual limits for coordinate axis.</p>
 </div>
 <div id="labeling-the-chart" class="section level2">
 <h2>Labeling the chart</h2>
@@ -626,7 +626,7 @@ gganimate(p)
 </ul>
 <p><em>Hint: You may want to experiment with <code>geom_text()</code> to get the country labels to show on the chart</em></p>
 <ul>
-<li>Use several graphs and necessary filters to narrow down your search to those few outliers with extraordinaly low life expectancy. What are those countries and in which years? What might be the reason?</li>
+<li>Use several graphs and necessary filters to narrow down your search to those few outliers with extraordinarily low life expectancy. What are those countries and in which years? What might be the reason?</li>
 </ul>
 </blockquote>
 <!-- rnb-text-end -->

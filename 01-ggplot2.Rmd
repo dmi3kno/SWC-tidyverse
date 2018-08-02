@@ -24,7 +24,7 @@ date: "18 January 2017"
 
 Plotting the data is one of the best ways to quickly explore it and generate hypotheses about various relationships between variables.
 
-There are several plotting systems in R, but today we will focus on `ggplot2` which implements **grammar of graphics** - a coherent system for describing components that consititute visual representation of data. For more information regarding principles and thinking behind `ggplot2` graphic system, please refer to [Layered grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.pdf) by Hadley Wickham (@hadleywickham). 
+There are several plotting systems in R, but today we will focus on `ggplot2` which implements **grammar of graphics** - a coherent system for describing components that constitute visual representation of data. For more information regarding principles and thinking behind `ggplot2` graphic system, please refer to [Layered grammar of graphics](http://vita.had.co.nz/papers/layered-grammar.pdf) by Hadley Wickham (@hadleywickham). 
 
 The advantage of `ggplot2` is that it allows R users to create publication quality graphics with just a few lines of code. `ggplot2` has a large user base and is constantly developed and extended by the community.
 
@@ -68,7 +68,7 @@ More information about the package and the data is available in help. Just type 
 
 ## Creating the first plot
 
-> Here's a question that we would like to answer using `gapminder` data: Do people in rich countries live longer then people in poor countries? The answer may be quite intitive, but we will continue our investigation further: how does the relationship between GDP per capita and Life expectancy look like? Is this relationship linear? Non-linear? Are there exceptions to the general rule (outliers)?
+> Here's a question that we would like to answer using `gapminder` data: Do people in rich countries live longer then people in poor countries? The answer may be quite intuitive, but we will continue our investigation further: how does the relationship between GDP per capita and Life expectancy look like? Is this relationship linear? Non-linear? Are there exceptions to the general rule (outliers)?
 
 To plot `gapminder`, run the following code in the R-chunk or in console. The following code will put `gdpPercap` on the x-axis and `lifeExp` on the y-axis:
 
@@ -83,11 +83,11 @@ The plot shows positive non-linear relationship between GDP per capita and Life 
 
 > Does this graph confirm or disprove your initial hypothesis about the relationship between these variables?
 
-Note that in order to create a plot using `ggplot2` system, you should start your command with `ggplot()` function. It creates an empty coordinate system and initializes the dataset to be used in the graph (which is supplied as a first argument into the `ggplot()` function). In order to create graphical representaion of the data, we can add one or more layers to our otherwise empty graph. Functions starting with the prefix `geom_` create visual representation of data. In this case we added scattered points, using `geom_point()` function. There are many `geoms` in `ggplot2`, some of which we will learn in this lesson.
+Note that in order to create a plot using `ggplot2` system, you should start your command with `ggplot()` function. It creates an empty coordinate system and initializes the dataset to be used in the graph (which is supplied as a first argument into the `ggplot()` function). In order to create graphical representation of the data, we can add one or more layers to our otherwise empty graph. Functions starting with the prefix `geom_` create a visual representation of data. In this case we added scattered points, using `geom_point()` function. There are many `geoms` in `ggplot2`, some of which we will learn in this lesson.
 
-`geom_` function create *mapping* of variables from the earlier defined dataset to certain aestetic elements of the graph, such as axis, shapes or colors. The first argument of any `geom_` function expects the user to specify these mappings, wrapped in the `aes()` (short for *aestetics*) function. In this case, we mapped `gdpPercap` and `lifeExp` variables from `gapminder` dataset to x- and y-axis, respectively (using `x` and `y` arguments of `aes()` function). 
+`geom_` function create *mapping* of variables from the earlier defined dataset to certain aesthetic elements of the graph, such as axis, shapes or colors. The first argument of any `geom_` function expects the user to specify these mappings, wrapped in the `aes()` (short for *aesthetics*) function. In this case, we mapped `gdpPercap` and `lifeExp` variables from `gapminder` dataset to x- and y-axis, respectively (using `x` and `y` arguments of `aes()` function). 
 
-Generally speaking, the template for vizualizing data in `ggplot2` can be summarized as follows:
+Generally speaking, the template for visualizing data in `ggplot2` can be summarized as follows:
 
 
 ```{r, eval=FALSE}
@@ -124,11 +124,11 @@ ggplot(gapminder)+
 ```
 
 
-## Aestetic mappings
+## Aesthetic mappings
 
 What if we want to combine graphs from previous two challenges and show the relationship between three variables in the same graph. Turns out, we don't necessarily need to use third geometrical dimension, we can simply employ color.
 
-The following graph maps `continent` variable from `gapminder` dataset to the `color` aestetic of the plot. Let's take a look:
+The following graph maps `continent` variable from `gapminder` dataset to the `color` aesthetic of the plot. Let's take a look:
 
 ```{r}
 ggplot(data = gapminder) + 
@@ -139,9 +139,9 @@ ggplot(data = gapminder) +
 
 ### Assignment
 > 
-> - What will happen if you switch the mappings of `continent` and `year` in the previous example? Is the graph still useful? Why? What if you map `color` aestetic to `country`? What has changed? How is `year` different from `country`? What is the limitation of the `color` aestetic, when used to vizualize different types of data? 
+> - What will happen if you switch the mappings of `continent` and `year` in the previous example? Is the graph still useful? Why? What if you map `color` aesthetic to `country`? What has changed? How is `year` different from `country`? What is the limitation of the `color` aesthetic, when used to visualize different types of data? 
 > 
-> - Can you add a little color to our intial graph of life expectancy by GDP per capita? Color the points by continent. There seem to be some outliers in this graph. Can you now spot which continent to these points belong to? How about using color gradient to illustrate change over time?
+> - Can you add a little color to our initial graph of life expectancy by GDP per capita? Color the points by continent. There seem to be some outliers in this graph. Can you now spot which continent to these points belong to? How about using color gradient to illustrate change over time?
 >
 > *Hint: you may want to transform GDP per capita to logarithmic scale before plotting. Just wrap the name of the variable into the* `log()` *function*
 
@@ -165,16 +165,16 @@ ggplot(data = gapminder) +
 ```
 
 
-## More aestetics
+## More aesthetics
 
-There are other aestetics that can come handy. One of them is `size`. The idea is that we can vary the size of datapoints to illustrate another continuous variable, such as country population. Lets look at four dimensions at once! 
+There are other aesthetics that can come handy. One of them is `size`. The idea is that we can vary the size of datapoints to illustrate another continuous variable, such as country population. Lets look at four dimensions at once! 
 
 ```{r}
 ggplot(data = gapminder) + 
   geom_point(mapping = aes(x = log(gdpPercap), y = lifeExp, color=continent, size=pop))
 ```
 
-There's one more useful aestetic property of the graph which is good for visualizing low-cardinality categorical variables (categorical variables with small number of unique values), called `shape`. The idea is that you can employ different shapes (other than circles) to plot the data.
+There's one more useful aesthetic property of the graph which is good for visualizing low-cardinality categorical variables (categorical variables with small number of unique values), called `shape`. The idea is that you can employ different shapes (other than circles) to plot the data.
 
 ## **Challenge 3.** {.tabset .tabset-fade .tabset-pills}
 
@@ -192,9 +192,9 @@ ggplot(data = gapminder) +
 
 ## Non-data linked properties
 
-Combining too many aestetics in the same graph can make it quite busy. However, you can always make remove certain aestatic properties and use several graphs to highlight different aspects of data.
+Combining too many aesthetics in the same graph can make it quite busy. However, you can always make remove certain aesthetic properties and use several graphs to highlight different aspects of data.
 
-Until now, we explored different aestetic properties of a graph mapped to certain variables. What if you want to recolor or use certain shape to plot all datapoints? Well, that means that such color or shape will no longer be *mapped* to any data, so you need to supply it to `geom_` function as a separate argument (outside of the `mapping`). Here's our intial graph with all colors colored in blue.
+Until now, we explored different aesthetic properties of a graph mapped to certain variables. What if you want to recolor or use certain shape to plot all datapoints? Well, that means that such color or shape will no longer be *mapped* to any data, so you need to supply it to `geom_` function as a separate argument (outside of the `mapping`). Here's our initial graph with all colors colored in blue.
 
 ```{r}
 ggplot(data = gapminder) + 
@@ -207,9 +207,9 @@ Once more, observe that the color is now not mapped to any particular variable f
 
 ### Assignment
 > 
-> - Try mapping `color` aestetic to `continent` and to `year`. What do you notice? What might be the reason for different treatment of these variables by  `ggplot`?
+> - Try mapping `color` aesthetic to `continent` and to `year`. What do you notice? What might be the reason for different treatment of these variables by  `ggplot`?
 >
-> - Change the transparency of the datapoints inside and outside the aestetics. What can be the benefit of each one of these methods?
+> - Change the transparency of the datapoints inside and outside the aesthetics. What can be the benefit of each one of these methods?
 
 ### Solution
 ```{r, results="hide"}
@@ -233,14 +233,14 @@ ggplot(data = gapminder) +
 
 Next, we will consider different options for <GEOM_FUNCTION> component of our template `ggplot2` graph example. Using different `geom_` functions user can highlight different aspects of data. For example, we could connect individual datapoints belonging to the same country into a line and illustrate the development of life expectancy over time for each country separately using `geom_line()` function. 
 
-Some `geom_` functions allow additional aestetics, such as aestetic `group` in the `geom_line()` function. This aestetic may not have any meaning in other geoms, but here it allows us to draw multiple lines, one per country. To keep the lines organized, we will color them by continent. 
+Some `geom_` functions allow additional aesthetics, such as aesthetic `group` in the `geom_line()` function. This aesthetic may not have any meaning in other geoms, but here it allows us to draw multiple lines, one per country. To keep the lines organized, we will color them by continent. 
 
 ```{r}
 ggplot(data = gapminder) + 
   geom_line(mapping = aes(x = year, y = lifeExp, group=country, color=continent))
 ```
 
-Note how life expectancy suddently drops for certain countries in for short period of time. We will learn how to zoom in to those tragic periods of history and investigate which countries experienced them later in this workshop.
+Note how life expectancy suddenly drops for certain countries in for short period of time. We will learn how to zoom in to those tragic periods of history and investigate which countries experienced them later in this workshop.
 
 Another useful geom function is `geom_boxplot()`. It adds a layer with the "box and whiskers" plot illustrating the distribution of values within categories. The following chart breaks down life expectancy by continent, where the box represents first and third quartile (the 25th and 75th percentiles), the middle bar signifies the median value and the whiskers extent to cover 95% confidence interval. Outliers (outside of the 95% confidence interval range) are shown separately.
 
@@ -249,7 +249,7 @@ ggplot(data = gapminder) +
   geom_boxplot(mapping = aes(x = continent, y = lifeExp))
 ```
 
-Layers can be added on top of each other. In the following graph we will place the boxplots over jittered points to see the distribution of outliers more clearly. We can map two aestetic properties to the same variable. Here we will also use different color for each continent.
+Layers can be added on top of each other. In the following graph we will place the boxplots over jittered points to see the distribution of outliers more clearly. We can map two aesthetic properties to the same variable. Here we will also use different color for each continent.
 
 ```{r}
 ggplot(data = gapminder) + 
@@ -258,7 +258,7 @@ ggplot(data = gapminder) +
 
 ```
 
-Now, this was slighly inefficient due to duplication of code - we had to specify the same mappings for two layers. To avoid it, you can move common arguments of `geom_` functions to the main `ggplot()` function. In this case every layer will "inherit" the same arguments, specified in the "parent" function.
+Now, this was slightly inefficient due to duplication of code - we had to specify the same mappings for two layers. To avoid it, you can move common arguments of `geom_` functions to the main `ggplot()` function. In this case every layer will "inherit" the same arguments, specified in the "parent" function.
 
 ```{r}
 ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, color=continent)) + 
@@ -269,7 +269,7 @@ ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, color=contine
 
 You can still add layer-specific mappings or other arguments by specifying them within individual geoms. We would recommend building each layer separately and then moving common arguments up to the "parent" function.
 
-We can use linear models to highlight differences in dependency between GDP per capita and life expectency by continent. Notice that we added a separate argument to the `geom_smooth()` function to specify the type of model we want `ggplot2` to built using the data (linear model). The `geom_smooth()` function has also helpfully provided confidence intervals, indicating "goodness of fit" for each model (shaded gray area). For more information on statistical models, please refer to help (by typing `?geom_smooth`)
+We can use linear models to highlight differences in dependency between GDP per capita and life expectancy by continent. Notice that we added a separate argument to the `geom_smooth()` function to specify the type of model we want `ggplot2` to built using the data (linear model). The `geom_smooth()` function has also helpfully provided confidence intervals, indicating "goodness of fit" for each model (shaded gray area). For more information on statistical models, please refer to help (by typing `?geom_smooth`)
 
 ```{r}
 ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp, color=continent)) +
@@ -277,7 +277,7 @@ ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp, color=co
   geom_smooth(method="lm")
 ```
 
-Notice, that we also used new visual property called `alpha` to increase transparency of the data points and make trend lines stand out. `alpha` property can also be used as a mapping aestetic, i.e. transparency can be made to vary depending on the value of certain variable.
+Notice, that we also used new visual property called `alpha` to increase transparency of the data points and make trend lines stand out. `alpha` property can also be used as a mapping aesthetic, i.e. transparency can be made to vary depending on the value of certain variable.
 
 ## **Challenge 5.** {.tabset .tabset-fade .tabset-pills}
 
@@ -288,7 +288,7 @@ Notice, that we also used new visual property called `alpha` to increase transpa
 
 ### Solution
 
-In the graph above, each geom inherited all three mappings: x, y and color. If we want only single linear model to be built, we would need to limit the effect of `color` aestetic to only `geom_point()` function, by moving it from the "parent" function to the layer where we want it to apply. Note, though, that because we want the `color` to be still mapped to the `continent` variable, it needs to be wrapped into `aes()` function and supplied to `mapping` argument.
+In the graph above, each geom inherited all three mappings: x, y and color. If we want only single linear model to be built, we would need to limit the effect of `color` aesthetic to only `geom_point()` function, by moving it from the "parent" function to the layer where we want it to apply. Note, though, that because we want the `color` to be still mapped to the `continent` variable, it needs to be wrapped into `aes()` function and supplied to `mapping` argument.
 
 ```{r, results="hide"}
 ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp)) +
@@ -304,7 +304,7 @@ ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp, color=co
 
 ## Correcting the scale
 
-As you can observe the x-axis label of our graph says `log(gdpPercap)`, which indicates that we are not really plotting the original data, but rather the output of `log()` function. The same effect (with slightly more aestetically pleasing x-axis label) can be achieved by specifying the x-axis scale transformation as a separate layer. Instead of transforming the values, we will transform the scale of x-axis.
+As you can observe the x-axis label of our graph says `log(gdpPercap)`, which indicates that we are not really plotting the original data, but rather the output of `log()` function. The same effect (with slightly more aesthetically pleasing x-axis label) can be achieved by specifying the x-axis scale transformation as a separate layer. Instead of transforming the values, we will transform the scale of x-axis.
 
 ```{r}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color=continent)) +
@@ -313,13 +313,13 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp, color=contine
   scale_x_log10()
 ```
 
-Now the x-axis is measured in log10 units and the data, plotted on log10 scale looks more linear. Certain scale and coordinate functions may result in similar visual effects on the chart, but the way they interact with other aestetic elements may be quite different. Check out the online `ggplot2` [documentation](http://docs.ggplot2.org/) for more details and examples of using scale and coordinate transformations.
+Now the x-axis is measured in log10 units and the data, plotted on log10 scale looks more linear. Certain scale and coordinate functions may result in similar visual effects on the chart, but the way they interact with other aesthetic elements may be quite different. Check out the online `ggplot2` [documentation](http://docs.ggplot2.org/) for more details and examples of using scale and coordinate transformations.
 
 ## **Challenge 6.** {.tabset .tabset-fade .tabset-pills}
 
 ### Assignment
 > 
-> - Make a boxplot of life expectancy by year. Hint: You may need to do something with the `year` variableto force it to be categorical, or follow the advice suggested by `ggplot`. When was interquartile range of life expectancy the smallest? Make the same plot of `gdpPercap` (on a log scale) per year. Compared to 1952, is the world today more or less diverse in terms of IQR of GDP per capita?
+> - Make a boxplot of life expectancy by year. Hint: You may need to do something with the `year` variable to force it to be categorical, or follow the advice suggested by `ggplot`. When was interquartile range of life expectancy the smallest? Make the same plot of `gdpPercap` (on a log scale) per year. Compared to 1952, is the world today more or less diverse in terms of IQR of GDP per capita?
 >
 > - Make a histogram of untransformed and transformed `gdpPercap`? What is the shape of the distribution? Why is bin parameter important for interpretation of the histogram? Build a density function. How would you compare density functions of different continents?
 >
@@ -369,7 +369,7 @@ ggplot(gapminder)+
 
 ## Faceting
 
-Multi-layered graphs employing several aestetics can look crowded. In order to avoid it, one can split the data into different graphs using panels of similar graphs. In `ggplot2` this method is called "faceting". Lets facet the graph above by continent and show the datapoints and the trend for each continent in a separate chart.
+Multi-layered graphs employing several aesthetics can look crowded. In order to avoid it, one can split the data into different graphs using panels of similar graphs. In `ggplot2` this method is called "faceting". Lets facet the graph above by continent and show the datapoints and the trend for each continent in a separate chart.
 
 ```{r}
 ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
@@ -415,7 +415,7 @@ ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
 
 ## Coordinate systems
 
-There are only two countries from `Oceania` included in the dataset. Imagine that bars would be too narrow and labels would be unreadable. One way of dealing with it is flipping the coordiante system, i.e. plotting the same data as horizontal bars. Let's try to show population of every Asian country in 2007.
+There are only two countries from `Oceania` included in the dataset. Imagine that bars would be too narrow and labels would be unreadable. One way of dealing with it is flipping the coordinate system, i.e. plotting the same data as horizontal bars. Let's try to show population of every Asian country in 2007.
 
 ```{r}
 ggplot(filter(gapminder, year==2007 & continent=="Asia")) + 
@@ -423,7 +423,7 @@ ggplot(filter(gapminder, year==2007 & continent=="Asia")) +
   coord_flip()
 ```
 
-There are many function related to coordinate systems that allow, among other things, plotting in non-cartesian (e.g. polar and mercantor) coordinates and specifying manual limits for coordinate axis. 
+There are many function related to coordinate systems that allow, among other things, plotting in non-cartesian (e.g. polar and Mercator) coordinates and specifying manual limits for coordinate axis. 
 
 ## Labeling the chart
 
@@ -492,4 +492,4 @@ When you save the notebook, an HTML file containing the code and output will be 
 > 
 > *Hint: You may want to experiment with `geom_text()` to get the country labels to show on the chart*
 >
-> - Use several graphs and necessary filters to narrow down your search to those few outliers with extraordinaly low life expectancy. What are those countries and in which years? What might be the reason?
+> - Use several graphs and necessary filters to narrow down your search to those few outliers with extraordinarily low life expectancy. What are those countries and in which years? What might be the reason?

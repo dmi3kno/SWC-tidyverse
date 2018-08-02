@@ -1,5 +1,5 @@
 ---
-title: "R for Reproducable Scientific Analysis"
+title: "R for Reproducible Scientific Analysis"
 subtitle: "Arranging Data with tidyr"
 author: "15 Feb 2018"
 output:
@@ -61,7 +61,7 @@ Until now, we’ve been using the nicely formatted original gapminder dataset, b
 
 We will now download to additional files from the [gapminder](https://www.gapminder.org) website. Go to "Data" and search for "Children per woman (total fertility)". Download the Excel file ("indicator undata total_fertility.xlsx") into a new sub-folder called "Data_raw".
 
-To read in the new Excel file and take a look at its structure, we need to load a additional packge. `readxl` is part of the `tidyverse` package collection, but needs to be called independently.
+To read in the new Excel file and take a look at its structure, we need to load a additional package. `readxl` is part of the `tidyverse` package collection, but needs to be called independently.
 
 ```{r}
 library("readxl")
@@ -95,7 +95,7 @@ fert %>%
 
 ## <span style="color:red">Challenge 2</span>
 
-What was the average infant mortality in Norway during this millenium? **Hint**: Download the Excel file for "Infant mortality (rate per 1,000 births)" from the [gapminder](https://www.gapminder.org) website.
+What was the average infant mortality in Norway during this millennium? **Hint**: Download the Excel file for "Infant mortality (rate per 1,000 births)" from the [gapminder](https://www.gapminder.org) website.
 
 ```{r, warning = FALSE}
 raw_infantMort <- read_excel(path = "../Data/indicator gapminder infant_mortality.xlsx", sheet = "Data")
