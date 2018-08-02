@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, include = FALSE}
 library("tidyverse")
-gapminder <- read_csv(file = "../Data/gapminder-FiveYearData.csv")
+gapminder <- read_csv(file = "data/gapminder-FiveYearData.csv")
 ```
 
 # Dataframe Manipulation with `dplyr`
