@@ -1,5 +1,5 @@
 ---
-title: "R for Reproducable Scientific Analysis"
+title: "R for Reproducible Scientific Analysis"
 author: "18 January 2017"
 output: html_document
 ---
@@ -71,7 +71,7 @@ How can we delay the "collapsing" of the rich yearly data into the summary stati
 
 # Using `dplyr`, `ggplot2` and `purrr` to explore a data set
 
-It is intruiging to investigate data sets like `gapminder` for patterns. In this case , we're going to focus on just three variables to answer the question "How does life expectancy (`lifeExp`) change over time (`year`) for each country (`country`)?". A good place to start is with a plot:
+It is intriguing to investigate data sets like `gapminder` for patterns. In this case , we're going to focus on just three variables to answer the question "How does life expectancy (`lifeExp`) change over time (`year`) for each country (`country`)?". A good place to start is with a plot:
 _
 ```{r}
 
@@ -100,7 +100,7 @@ by_country <- gapminder %>%
 by_country
 ```
 
-What can we notice from this format. First of all our data frame have shrunk to only 142 obserations - one for each country. The identifiers (country and continent) are still present in the dataset. There's a new data variable - by the type "tibble". it is possible to extract the nested elements of this data structure.
+What can we notice from this format. First of all our data frame have shrunk to only 142 observations - one for each country. The identifiers (country and continent) are still present in the dataset. There's a new data variable - by the type "tibble". it is possible to extract the nested elements of this data structure.
 
 ```{r}
 by_country[["data"]][1] 
@@ -109,7 +109,7 @@ by_country[["data"]][1]
 
 Now that we have our nested data frame, we're in a good position to fit some models. We will use a linear model function which we want to apply it to every data frame. 
 
-# Introducing `map
+# Introducing `map`
 
 The function we are going to introduce next is going to allow us to repeat the same function for different subsets of our data. The same result can be accomplished with writing a loop, but the function we will consider next hides all of the "housekeeping" details (related to iterators and allocation of the output vector) and leaves only essential elements for the user to specify.
 
@@ -119,9 +119,9 @@ The function we are going to introduce next is going to allow us to repeat the s
 
 What the function requires is the list (or vector) of data and a name of the function you want to apply to each element of your data.
 
-> __NOTE:__  Simplest behaviour can be observed by calling a `map` function on a vector. Vector will be authomatically transformed to list and operation will be performed on each element of this list (i.e. on each element of the original vector). 
+> __NOTE:__  Simplest behaviour can be observed by calling a `map` function on a vector. Vector will be automatically transformed to a list and operation will be performed on each element of this list (i.e. on each element of the original vector). 
 >
-> If you specify the dataframe in place of `<DATA>`, because dataframe is a list of columns, function will be performed on columns.
+> If you specify the dataframe in place of `<DATA>`, because dataframe is a list of columns, the function will be performed on columns.
 >
 > If you want the function to operate in the slices of your dataframe (think of `group by` behavior) you will have to split the dataframe into the list of smaller dataframes, with each element containing only the data related to one slice.
 
@@ -142,7 +142,7 @@ gapminder %>%
 ```
 
 
-As you have seen above, we can use `map()` to apply a linear model to element of our complex `data` column. We will capute the results in a newly created variable in the `by_country` data frame with `mutate()`.
+As you have seen above, we can use `map()` to apply a linear model to element of our complex `data` column. We will compute the results in a newly created variable in the `by_country` data frame with `mutate()`.
 
 ```{r}
 by_country <- by_country %>% 

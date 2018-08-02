@@ -188,7 +188,7 @@ $(document).ready(function () {
 ##  9 Congo, Dem. Rep.  1992 infantMort 117.7
 ## 10 Congo, Dem. Rep.  1997 infantMort 112.5
 ## # ... with 422 more rows</code></pre>
-<p>Off to ploting</p>
+<p>Off to plotting</p>
 <pre class="r"><code>gapminder_plus %&gt;% filter(continent==&quot;Africa&quot;, year==2007, infantMort/1000*pop/10^6&gt;2) %&gt;% select(country) %&gt;% 
   left_join(gapminder_plus) %&gt;% mutate(pop_mln=pop/10^6, gdp_mln=gdpPercap*pop/10^6) %&gt;% 
   select(-c(pop,continent)) %&gt;%   gather(key=att, value=val, -c(year,country)) %&gt;% 
