@@ -457,7 +457,7 @@ The graph produced in the previous section looks quite good, but it requires a r
 # devtools::install_github("thomasp85/gganimate")
 library(gganimate)
 
-ggplot(data = gapminder) + 
+p <- ggplot(data = gapminder) + 
   geom_point(mapping = aes(x = gdpPercap/10^3, y = lifeExp, size=pop/10^6, color=continent)) +
   geom_text(mapping = aes(x = 40, y = 30), label=as.character(gapminder$year), size = 16, color="grey") +
   scale_x_log10() +
@@ -471,6 +471,8 @@ ggplot(data = gapminder) +
   theme_bw() +
   # here comes a gganimate function
   transition_time(year)
+
+animate(p)
 
 ```
 
