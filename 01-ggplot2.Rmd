@@ -1,13 +1,15 @@
 ---
 title: "R for Reproducible Scientific Analysis"
 output:
-  html_notebook: default
   html_document:
     toc: true
     toc_float:
       collapsed: false
       smooth_scroll: false
+  html_notebook: default
 date: "18 January 2017"
+editor_options: 
+  chunk_output_type: inline
 ---
 
 # Creating Publication-Quality Graphics
@@ -85,7 +87,7 @@ The plot shows positive non-linear relationship between GDP per capita and Life 
 
 Note that in order to create a plot using `ggplot2` system, you should start your command with `ggplot()` function. It creates an empty coordinate system and initializes the dataset to be used in the graph (which is supplied as a first argument into the `ggplot()` function). In order to create graphical representation of the data, we can add one or more layers to our otherwise empty graph. Functions starting with the prefix `geom_` create a visual representation of data. In this case we added scattered points, using `geom_point()` function. There are many `geoms` in `ggplot2`, some of which we will learn in this lesson.
 
-`geom_` function create *mapping* of variables from the earlier defined dataset to certain aesthetic elements of the graph, such as axis, shapes or colors. The first argument of any `geom_` function expects the user to specify these mappings, wrapped in the `aes()` (short for *aesthetics*) function. In this case, we mapped `gdpPercap` and `lifeExp` variables from `gapminder` dataset to x- and y-axis, respectively (using `x` and `y` arguments of `aes()` function). 
+`geom_` function create *mapping* of variables from the earlier defined dataset to certain aesthetic elements of the graph, such as axis, shapes or colors. The first argument of any `geom_` function expects the user to specify these mappings, wrapped in the `aes()` (short for *aesthetics*) function. In this case, we mapped `gdpPercap` and `lifeExp` variables from `gapminder` dataset to x and y-axis, respectively (using `x` and `y` arguments of `aes()` function). 
 
 Generally speaking, the template for visualizing data in `ggplot2` can be summarized as follows:
 
@@ -101,7 +103,7 @@ In the remainer of this lesson we will learn how to extend and complete this tem
 
 ### Assignment
 >
-> - How did Life expectancy change over time? What do you observe? Note that many points are plotted on top of each other. This is called "overplotting". Try different `geom_` function called `geom_jitter`. It will spread the points apart a little bit using random noise.
+> - How did Life expectancy change over time? What do you observe? Note that many points are plotted on top of each other. This is called "overplotting". Try a different `geom_` function called `geom_jitter`. It will spread the points apart a little bit using random noise.
 >
 > *Hint: the* `gapminder` *dataset has a column called `year`, which should appear on the x-axis.*
 >
@@ -113,6 +115,7 @@ In the remainer of this lesson we will learn how to extend and complete this tem
 ## Part 1
 ggplot(gapminder)+
   geom_point(mapping = aes(x=year, y=lifeExp))
+
 # fix overplotting
 ggplot(gapminder)+
   geom_jitter(mapping = aes(x=year, y=lifeExp))
@@ -126,7 +129,7 @@ ggplot(gapminder)+
 
 ## Aesthetic mappings
 
-What if we want to combine graphs from previous two challenges and show the relationship between three variables in the same graph. Turns out, we don't necessarily need to use third geometrical dimension, we can simply employ color.
+What if we want to combine graphs from the previous two challenges and show the relationship between three variables in the same graph? Turns out, we don't necessarily need to use third geometrical dimension, we can simply employ color.
 
 The following graph maps `continent` variable from `gapminder` dataset to the `color` aesthetic of the plot. Let's take a look:
 
@@ -151,13 +154,16 @@ ggplot(data = gapminder) +
 ## Part 1
 ggplot(data = gapminder) + 
   geom_jitter(mapping = aes(x = continent, y = lifeExp, color=year))
+
 # Color by country
 ggplot(data = gapminder) + 
   geom_jitter(mapping = aes(x = continent, y = lifeExp, color=country))  
 
+
 ## Part 2
 ggplot(data = gapminder) + 
   geom_jitter(mapping = aes(x = gdpPercap, y = lifeExp, color=continent))
+
 # change over time
 ggplot(data = gapminder) + 
   geom_jitter(mapping = aes(x = gdpPercap, y = lifeExp, color=year))
@@ -447,12 +453,13 @@ ggplot(data = gapminder) +
 
 The graph produced in the previous section looks quite good, but it requires a reader to follow the time aspect of the data by tracing the changes across panels. This may be better illustrated by "animating" the time dimension of the data and playing the twelve charts in front of user one after another.
 
-```{r, fig.show = "animate"}
+```{r, fig.show = "animate", ffmpeg.format = 'gif'}
+# devtools::install_github("thomasp85/gganimate")
 library(gganimate)
 
 p <- ggplot(data = gapminder) + 
-  geom_point(mapping = aes(x = gdpPercap/10^3, y = lifeExp, size=pop/10^6, color=continent, frame=year)) +
-  geom_text(mapping = aes(x = 40, y = 30, frame=year), label=as.character(gapminder$year), size = 16, color="grey") +
+  geom_point(mapping = aes(x = gdpPercap/10^3, y = lifeExp, size=pop/10^6, color=continent)) +
+  geom_text(mapping = aes(x = 40, y = 30), label=as.character(gapminder$year), size = 16, color="grey") +
   scale_x_log10() +
   labs(title="Life Expectancy vs GDP per capita over time",
        subtitle="In the past 50 years, life expectancy has improved in most countries of the world",
@@ -461,12 +468,13 @@ p <- ggplot(data = gapminder) +
        y="Life expectancy, years",
        color="Continent",
        size="Population, mln") +
-  theme_bw()
+  theme_bw() +
+  # here comes a gganimate function
+  transition_time(year)
 
-gganimate(p)
+animate(p)
 
 ```
-
 
 ## Wrap-up
 
@@ -493,3 +501,34 @@ When you save the notebook, an HTML file containing the code and output will be 
 > *Hint: You may want to experiment with `geom_text()` to get the country labels to show on the chart*
 >
 > - Use several graphs and necessary filters to narrow down your search to those few outliers with extraordinarily low life expectancy. What are those countries and in which years? What might be the reason?
+
+
+## Plotting maps
+When you are working on data from different countries, it might also be an idea to actually use maps to convey your data in a familiar way. `ggplot2` has a new geom called `geom_sf` what will help you plot maps and use aethetics in the same way as in other `geoms`.
+
+We have downloaded world data file from [thematicmappin.org](http://thematicmapping.org/downloads/world_borders.php), called a `shapefile` and will use this to create maps. Inthis case, we use the entire folder that was downloaded as a source, and a package in `R` called `sf` know how to read this as a map coordinate system.
+
+
+```{r}
+# install.packages("rnaturalearth")
+# world <- rnaturalearth::ne_countries(returnclass = "sf") # may be easier to explain
+# ggplot() +
+#      geom_sf(data =  world) +
+#      theme_bw()
+
+world_map <- sf::st_read("data/TM_WORLD_BORDERS-0.3/", quiet = TRUE)
+ggplot(world_map) +
+  geom_sf(aes(fill = AREA))
+
+```
+
+We can merge this data with out own, by ensuring the map data has a _common variables_ as our statistics data file from gapminder. In this case, our world map has a column called `NAME` that corresponds with a column in the gapminder data called `country`, so we just create a duplicate column in world_map called country, and merge the two data sets together. We can then plot different aesthetics on the map, based on the data from gampinder.
+
+```{r}
+world_map$country = world_map$NAME
+gapminder_map = left_join(gapminder, world_map)
+
+ggplot(gapminder_map) +
+  geom_sf(aes(fill = lifeExp))
+
+```
