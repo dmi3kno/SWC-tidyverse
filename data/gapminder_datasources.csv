@@ -1,0 +1,520 @@
+indicatorName,category,subcategory,dataprovider,dataprovider_link,key
+Children per woman (total fertility),,,Various sources,http://www.gapminder.org/data/documentation/gd008/,phAwcNAVuyj0TAlJeCEzcGQ
+CO2 emissions (tonnes per person),,,CDIAC (Carbon Dioxide Information Analysis Center),http://cdiac.ornl.gov/trends/emis/meth_reg.html,phAwcNAVuyj1gkNuUEXOGag
+"Income per person (GDP/capita, PPP$ inflation-adjusted)",,,Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj1jiMAkmq1iMg&gid=1,phAwcNAVuyj1jiMAkmq1iMg
+"Child mortality (0-5 year-olds dying per 1,000 born)",,,Various sources,http://spreadsheets.google.com/pub?key=0ArfEDsV3bBwCcGhBd2NOQVZ1eWowNVpSNjl1c3lRSWc&gid=1,0ArfEDsV3bBwCcGhBd2NOQVZ1eWowNVpSNjl1c3lRSWc
+Life expectancy (years),,,Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2tPLxKvvnNPA&gid=1,phAwcNAVuyj2tPLxKvvnNPA
+Aid given (2007 US$),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tFOn62dEO9QCyIKK6kgSYRQ
+Aid given per person (2007 US$),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tGTst0WEm8V8zI9LOYvGmTg
+Aid given (% of GNI),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tQR7RhlZdPjBkVCDPPF4zUg
+Water and sanitation aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tXn3DSfvsYujaBP9bvH6acg
+Economical infrastructure aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tMxqFNS7BC5QyLrhBO8DXqQ
+Production sector aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tMjW0fdVf9VJaxVk_VFSUhg
+Multisector cross-cutting aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tBJ1rYQ-nA6fqI6_Gn3mBNg
+Education aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tQQaILpdu-vGtSkJLr2VQCw
+Health aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tRybjVoG5Ah9yhKcEx16u5Q
+Population policies aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tjFf_YqwB6tgSG9L0r0Ywdg
+Government and society aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,t3IAEOsfHK-z6rvGLCDR74g
+Other social services aid given (% of aid),Economy,Aid given,OECD QWIDS,http://www.oecd.org/dac/stats/qwids,tqjUijP4mi_dHKkCZjOn0oA
+"Aid received, total (US$, inflation-adjusted)",Economy,Aid received,World Bank,http://data.worldbank.org/indicator/DT.ODA.ODAT.KD,0AkBd6lyS3EmpdHVuNVpKdnNCa08yV3NOd0Zsal9JaWc
+Aid received per person (current US$),Economy,Aid received,World Bank,http://data.worldbank.org/indicator/DT.ODA.ODAT.PC.ZS,t9GL1nIZdtxszJbjKErN2Hg
+Aid received (% of GNI),Economy,Aid received,World Bank,http://data.worldbank.org/indicator/DT.ODA.ODAT.GI.ZS,tzK6dx2JltRfVXFI1ADh84w
+Dollar billionaires per million people,Economy,Poverty & inequality,Forbes,http://www.forbes.com/lists/2007/10/07billionaires_The-Worlds-Billionaires_CountryOfCitizen.html,tAQpQeQkuyA1-ZovdDJ7JAw
+Average age of dollar billionaires (years),Economy,Poverty & inequality,Forbes,http://www.forbes.com/lists/2007/10/07billionaires_The-Worlds-Billionaires_CountryOfCitizen.html,t_KhYe1qTGh4c90N61AUDSg
+Total number of dollar billionaires,Economy,Poverty & inequality,Forbes,http://www.forbes.com/lists/2007/10/07billionaires_The-Worlds-Billionaires_CountryOfCitizen.html,tNWhbu-1UIPPxtmRHtnINOQ
+Debt to foreigners by public & private (% of GNI),Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/DT.DOD.DECT.GN.ZS,0AkBd6lyS3EmpdDlSTTVWUkU3Z254aEhERmVuQWZaeWc
+Total reserves (% of debt to foreigners),Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/FI.RES.TOTL.DT.ZS,0AkBd6lyS3EmpdC1iMVRuVUFUd08tVDM0ZDF0cnFtekE
+"Total GDP (US$, inflation-adjusted)",Economy,Incomes & growth,World Bank,http://data.worldbank.org/indicator/NY.GDP.MKTP.KD,pyj6tScZqmEfI4sLVvEQtHw
+"GDP/capita (US$, inflation-adjusted)",Economy,Incomes & growth,World Bank,http://data.worldbank.org/indicator/NY.GDP.PCAP.KD,0AkBd6lyS3EmpdHo5S0J6ekhVOF9QaVhod05QSGV4T3c
+"GDP/employee (US$, inflation-adjusted)",Economy,Incomes & growth,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rcTO3doih5lvJCjgLSvlajA
+"GDP/working hour (US$, inflation-adjusted)",Economy,Incomes & growth,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,r6kTHMinnVedj8gPsUtfZ0g
+GDP/capita growth over next 10 years,Economy,Incomes & growth,Various sources,http://spreadsheets.google.com/pub?key=tvllZwGIbhwxLD7EXFhPeXQ&gid=1,tvllZwGIbhwxLD7EXFhPeXQ
+GDP/capita growth (% per year),Economy,Incomes & growth,World Bank,http://data.worldbank.org/indicator/NY.GDP.PCAP.KD.ZG,0AkBd6lyS3EmpdEdDWHhBcFpjMUo4MGE2X2Q4WXFQRGc
+"Total GNI (PPP, current international $)",Economy,Incomes & growth,World Bank ,http://data.worldbank.org/indicator/NY.GNP.MKTP.PP.CD/countries,0ArfEDsV3bBwCdFl6cDkxcmZxM0pVNXBUYjE1ZmNqVUE
+GNI/capita (constant 2000 US$),Economy,Incomes & growth,World Bank ,http://data.worldbank.org/indicator/NY.GNP.PCAP.KD,0ArfEDsV3bBwCdFdqZ0NOdjluMmoyUTBTWTRjWWQzQVE
+"GNI/capita (Atlas method, current US$)",Economy,Incomes & growth,World Bank ,http://data.worldbank.org/indicator/NY.GNP.PCAP.CD/countries,0ArfEDsV3bBwCdFVrVDZQUnRwZ2lqT2lPMXcySXZwRmc
+"GNI/per capita (PPP, current international $)",Economy,Incomes & growth,World Bank ,http://data.worldbank.org/indicator/NY.GNP.PCAP.PP.CD/countries,0ArfEDsV3bBwCdGhJcHAwanc2aFdZeXl1WTVZQnJjb1E
+Inequality index (Gini),Economy,Poverty & inequality,The World Bank,http://data.worldbank.org/indicator/SI.POV.GINI,pyj6tScZqmEcjeKHnZq6RIg
+Income share of richest 10%,Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,tmKvydPl_roGIQBrMYA6C4g
+Income share of richest 20%,Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,tLnCxItXzRSu9gH-5PyEFDw
+Income share of 2nd richest 20%,Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,twSOUYrIFh2W2snDUt7VaQg
+Income share of middle 20%,Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,t_-14NtXH6xZX48xHG75z5w
+Income share of 2nd poorest 20%,Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,tXRyZGCfHsWMmr53VFxrqTw
+Income share of poorest 20%,Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,pyj6tScZqmEdIyrBS31XAaw
+Income share of poorest 10%,Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,trzLWJQU4SZMDpeVg3XnL5A
+Inflation (annual %),Economy,Economic situation,World Bank,http://data.worldbank.org/indicator/NY.GDP.DEFL.KD.ZG,0AkBd6lyS3EmpdGJoOUJXalk3STFYUG85MkxlbnQxMmc
+Central bank discount rate (annual %),Economy,Economic situation,UN Statistics Division,http://data.un.org,pyj6tScZqmEejn8qHNmm4LQ
+Investments (% of GDP),Economy,Economic situation,World Bank,http://data.worldbank.org/indicator/NE.GDI.TOTL.ZS,0AkBd6lyS3EmpdG9sVVF6dHpGdnhQU3BkMlAtNHFwVkE
+Tax revenue (% of GDP),Economy,Economic situation,World Bank,http://data.worldbank.org/indicator/GC.TAX.TOTL.GD.ZS,0AkBd6lyS3EmpdFgzT1ZJWW4tdDB4Q2NETTVoTG1ZYlE
+"Foreign direct investment, net inflows (% of GDP)",Economy,Economic situation,World Bank,http://data.worldbank.org/indicator/BX.KLT.DINV.WD.GD.ZS,0AkBd6lyS3EmpdE03VFhRMnBpMGZhQ19Vbk9pMGU5VUE
+"Foreign direct investment, net outflows (% of GDP)",Economy,Economic situation,Not Found.,Not Found.,0AkBd6lyS3EmpdHQtSzBhVXA2WTNrVDFleUZvZ0doTUE
+Patent applications (total),Economy,Economic situation,UN Statistics Division,http://data.un.org,pyj6tScZqmEd5FA9xlfO9eA
+Patents granted (total),Economy,Economic situation,UN Statistics Division,http://data.un.org,pyj6tScZqmEdMioz5VJKXHw
+Patents in force (total),Economy,Economic situation,UN Statistics Division,http://data.un.org,pyj6tScZqmEe371ZVZl73eA
+Poverty (% people below $2 a day),Economy,Poverty & inequality,The World Bank,http://data.worldbank.org/indicator/SI.POV.2DAY,tBrbR3BlR_12WlTIlSTpu6g
+Rural poverty (% rural people below national rural poverty line),Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,trbzCrl1eb6QJG5D8j1-qQw
+Urban poverty (% urban people below national urban poverty line),Economy,Poverty & inequality,The World Bank,http://go.worldbank.org/B53SONGPA0,tublssyj-uqIY25OoRupbCw
+Extreme poverty (% people below $1.25 a day),Economy,Poverty & inequality,The World Bank,http://data.worldbank.org/indicator/SI.POV.DDAY,t1YAVXUoD3iJKy2mSq2Padw
+Agriculture (% of GDP),Economy,Sectors,World Bank,http://data.worldbank.org/indicator/NV.AGR.TOTL.ZS,0AkBd6lyS3EmpdFhPbDdCTTYxM1dGc21UdE9sSkp1WEE
+Industry (% of GDP),Economy,Sectors,World Bank,http://data.worldbank.org/indicator/NV.IND.TOTL.ZS,0AkBd6lyS3EmpdHA2UEFOYTlUTWtzV29xbHFuMU00SFE
+Services (% of GDP),Economy,Sectors,World Bank,http://data.worldbank.org/indicator/NV.SRV.TETC.ZS,0AkBd6lyS3EmpdHk4eXd4RG5Rb1gtUTB0cUJ3M21qdGc
+Exports (% of GDP),Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/NE.EXP.GNFS.ZS,0AkBd6lyS3EmpdHZSTVMxaVdxQlFLR3NMbnBEWnVuTXc
+Imports (% of GDP),Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/NE.IMP.GNFS.ZS,0AkBd6lyS3EmpdEhLMVdnUjZ0d05WWkhjT0FjSDIwQmc
+"Arms exports (US$, inflation-adjusted)",Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/MS.MIL.XPRT.KD,0AkBd6lyS3EmpdGpkU3BSVmw5UXhTMWd6UFc1eXI3Rnc
+"Arms imports (US$, inflation adjusted)",Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/MS.MIL.MPRT.KD,0AkBd6lyS3EmpdEljeENrOXlFXzR3Rm8xT0drTV9YclE
+"Total GDP (PPP$, inflation-adjusted)",Economy,Incomes & growth,Various sources,https://spreadsheets.google.com/a/gapminder.org/pub?key=0Asm_G8nr4TCSdDh2NWQtVDJhYlVsTElFRjJIYkNlSnc&gid=1,0Asm_G8nr4TCSdDh2NWQtVDJhYlVsTElFRjJIYkNlSnc
+High-technology exports (% of manufactured exports),Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/TX.VAL.TECH.MF.ZS,0AkBd6lyS3EmpdEZkTFJZR2RNMVFuRmUzbktyTkoxREE
+Merchandise trade (% of GDP),Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/TG.VAL.TOTL.GD.ZS,0AkBd6lyS3EmpdDJFSzRHa3g1Q29BOWlla0tTOEFyVGc
+"Trade balance (US$, not inflation-adjusted)",Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/NE.RSB.GNFS.CD,0AkBd6lyS3EmpdEF6VzlKTzNCNjRnT0ZzMDg5a1d1Z3c
+Trade balance (% of GDP),Economy,Debt & trade,World Bank,http://data.worldbank.org/indicator/NE.RSB.GNFS.ZS,0AkBd6lyS3EmpdFpGU185SkpmZ2V4ajNPZHFaaEwtU1E
+Hourly compensation (US$),Economy,Economic situation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rEF20Sw6Sy7tn4DKsKSDDMQ
+Working hours per week,Economy,Economic situation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rdCufG2vozTpKw7TBGbyoWw
+Market value of listed companies (% of GDP),Economy,Economic situation,World Bank,http://data.worldbank.org/indicator/CM.MKT.LCAP.GD.ZS,pyj6tScZqmEfMkeuokDLVIQ
+Military expenditure (% of GDP),Society,War & peace,World Bank,http://data.worldbank.org/indicator/MS.MIL.XPND.GD.ZS,0AkBd6lyS3EmpdDNPQjFBT2s5Zko3U2V0NFQzS3owRnc
+Math achievement - 4th grade,Education,Achievement,TIMSS modified,http://timss.bc.edu/TIMSS2007/index.html,phAwcNAVuyj3Iw3kqbjJTZQ
+Math achievement - 8th grade,Education,Achievement,TIMSS modified,http://timss.bc.edu/TIMSS2007/index.html,phAwcNAVuyj3fwfA8XA25Eg
+Ratio of girls to boys in primary and secondary education (%),Education,Gender equality,World Bank,http://data.worldbank.org/indicator/SE.ENR.PRSC.FM.ZS,pyj6tScZqmEcWM3hb0x-BZA
+Ratio of young literate females to males (% ages 15-24),Education,Gender equality,World Bank,http://data.worldbank.org/indicator/SE.ADT.1524.LT.FM.ZS,0AkBd6lyS3EmpdE8xR0dUWDI4ME02SjQ5bi1NYnFHN0E
+"Literacy rate, adult female (% of females ages 15 and above)",Education,Literacy,UNESCO Institute for Statistics,http://stats.uis.unesco.org/unesco/TableViewer/document.aspx?ReportId=136&IF_Language=eng&BR_Topic=0,pyj6tScZqmEc96gAEE60-Zg
+"Literacy rate, adult male (% of males ages 15 and above)",Education,Literacy,UNESCO Institute for Statistics,http://stats.uis.unesco.org/unesco/TableViewer/document.aspx?ReportId=136&IF_Language=eng&BR_Topic=0,pyj6tScZqmEd4fn4YYOvuOg
+"Literacy rate, adult total (% of people ages 15 and above)",Education,Literacy,UNESCO Institute for Statistics,http://stats.uis.unesco.org/unesco/TableViewer/tableView.aspx?ReportId=210,pyj6tScZqmEdrsBnj2ROXAg
+"Literacy rate, youth female (% of females ages 15-24)",Education,Literacy,UNESCO Institute for Statistics,http://stats.uis.unesco.org/unesco/TableViewer/document.aspx?ReportId=136&IF_Language=eng&BR_Topic=0,pyj6tScZqmEf96wv_abR0OA
+"Literacy rate, youth male (% of males ages 15-24)",Education,Literacy,UNESCO Institute for Statistics,http://stats.uis.unesco.org/unesco/TableViewer/document.aspx?ReportId=136&IF_Language=eng&BR_Topic=0,pyj6tScZqmEe7OxrqKcSWfw
+"Literacy rate, youth total (% of people ages 15-24)",Education,Literacy,UNESCO Institute for Statistics,http://stats.uis.unesco.org/unesco/TableViewer/document.aspx?ReportId=136&IF_Language=eng&BR_Topic=0,pyj6tScZqmEepmgV0TLjBag
+"Children out of school, primary",Education,School enrolment,World Bank,http://data.worldbank.org/indicator/SE.PRM.UNER,0AkBd6lyS3EmpdGVSdkZnZWhfMDYybzd6U2p3NkxsZ3c
+"Children out of school, primary, female",Education,School enrolment,World Bank,http://data.worldbank.org/indicator/SE.PRM.UNER.FE,0AkBd6lyS3EmpdFNPaEhiUDJ0QWZYOEwwQlBSTmtza1E
+"Children out of school, primary, male",Education,School enrolment,World Bank,http://data.worldbank.org/indicator/SE.PRM.UNER.MA,0AkBd6lyS3EmpdFd5cnQzNU5IYm1vTWtrTWRIX3UxbHc
+"Primary completion rate, total (% of relevant age group)",Education,School enrolment,World Bank,http://data.worldbank.org/indicator/SE.PRM.CMPT.ZS,0AkBd6lyS3EmpdEhTN2hlZ05ZczVwZDdVZlF5cUxJb2c
+Primary school completion (% of boys),Education,School enrolment,World Bank,http://data.worldbank.org/indicator/SE.PRM.CMPT.MA.ZS,0AkBd6lyS3EmpdGhCWnZrTGMwaTl5ek9QS0szMTIwcEE
+Primary school completion (% of girls),Education,School enrolment,World Bank,http://data.worldbank.org/indicator/SE.PRM.CMPT.FE.ZS,0AkBd6lyS3EmpdFVxSEVZVWE1b0l6NWo5NzNTZ2IzWVE
+"Expenditure per student, primary (% of GDP per person)",Education,Schooling cost,World Bank,http://data.worldbank.org/indicator/SE.XPD.PRIM.PC.ZS,0AkBd6lyS3EmpdFJTUEVleTM0cE5jTnlTMk41ajBGclE
+"Expenditure per student, secondary (% of GDP per person)",Education,Schooling cost,World Bank,http://data.worldbank.org/indicator/SE.XPD.SECO.PC.ZS,0AkBd6lyS3EmpdDBuUVIzbWwtaU5helpJVG5BMmxyX1E
+"Expenditure per student, tertiary (% of GDP per person)",Education,Schooling cost,World Bank,http://data.worldbank.org/indicator/SE.XPD.TERT.PC.ZS,0AkBd6lyS3EmpdDJxdlN6cEtYMjMxdC1XdGdKOXR2bkE
+Mean years in school (women 25 years and older),Education,Mean years in school,IHME,http://www.healthmetricsandevaluation.org/resources/datasets/2010/education_attainment/education_attainment.html,0ArfEDsV3bBwCdHFEVVhHZElzb0VRWE9pc3JmZHg2dWc
+Mean years in school (men 25 years and older),Education,Mean years in school,IHME,http://www.healthmetricsandevaluation.org/resources/datasets/2010/education_attainment/education_attainment.html,0ArfEDsV3bBwCdC03X1ZWNGJHR3FBb0Q3VjJIdV9OSmc
+Mean years in school (women 25 to 34 years),Education,Mean years in school,IHME,Increased educational attainment and its impact on child mortality: a systematic analysis in 175 countries from 1970 to 2009.,0ArfEDsV3bBwCdC1MYzAtY2xPQ2xOR1lMeGhYSWlpR0E
+Mean years in school (men 25 to 34 years),Education,Mean years in school,IHME,http://www.healthmetricsandevaluation.org/resources/datasets/2010/education_attainment/education_attainment.html,0ArfEDsV3bBwCdHlYZHNWN1YtWVNudU9UbWJOd19nUVE
+Mean years in school (women of reproductive age 15 to 44),Education,Mean years in school,IHME,http://www.healthmetricsandevaluation.org/resources/datasets/2010/education_attainment/education_attainment.html,0ArfEDsV3bBwCdEttYjNNUTlkUTdrMUQ0c3BTR0dINlE
+"Mean years in school (women % men, 25 to 34 years)",Education,Mean years in school,IHME,http://www.healthmetricsandevaluation.org/resources/datasets/2010/education_attainment/education_attainment.html,0ArfEDsV3bBwCdG5JUDZjTHR5SzZFZjBqa2JYYUxBclE
+"Energy use, total",Energy,Total,World Bank,http://data.worldbank.org/indicator/EG.USE.COMM.KT.OE,0AkBd6lyS3EmpdHd2Nld0NEVFOGRiSTc0V3ZoekNuS1E
+"Energy use, per person",Energy,Total,World Bank,http://data.worldbank.org/indicator/EG.USE.PCAP.KG.OE,0AkBd6lyS3EmpdHRmYjJWLVF0SjlQY1N5Vm9yU0xxaGc
+"Energy production, total",Energy,Total,World Bank,http://data.worldbank.org/indicator/EG.EGY.PROD.KT.OE,0AkBd6lyS3EmpdFNZMXZwcjNPY2c3MWwxbWIwVFgyd0E
+"Energy production, per person",Energy,Total,Based on WDI data,http://data.worldbank.org/indicator/EG.EGY.PROD.KT.OE,0AkBd6lyS3EmpdHJ6UTV4MkEyN0NYdnJJOG1oYUxmTWc
+Pump price for gasoline (US$ per liter),Energy,,World Development Indicators,http://go.worldbank.org/U0FSM7AQ40,pyj6tScZqmEdz8B4njtoHPA
+"Coal consumption, total",Energy,Coal,BP,http://www.bp.com/extendedsectiongenericarticle.do?categoryId=9041233&contentId=7075263,0Auk0ddvGIrGqcHlqNnRTY1pxbUVjMVRtTWlGZG1PVmc
+"Coal consumption, per person",Energy,Coal,BP,http://www.bp.com/statisticalreview,0Auk0ddvGIrGqcHlqNnRTY1pxbUVka1hObHlPbTlmUUE
+"Electricity use, per person",Energy,Electricity,BP,http://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC/countries,tiVeyAJd7iRWorOwl_ARWEQ
+"Electricity use, total",Energy,Electricity,World Bank,http://data.worldbank.org/indicator/EG.USE.ELEC.KH.PC/countries,tEu78F4acf0u6MRyhg5-9qQ
+"Residential electricity use, per person",Energy,Electricity,IEA (International Energy Agency),http://www.worldenergyoutlook.org/,t7SFNscT9Ex0s9i3av7PxRQ
+"Residential electricity use, total",Energy,Electricity,IEA (International Energy Agency),http://www.worldenergyoutlook.org/,teUZEfKw52HewO3D0YrQ5HA
+"Electricity generation, total",Energy,Electricity,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEehRG-9mMHYdg
+"Electricity generation, per person",Energy,Electricity,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEeMtYNdMyLKOw
+"Hydroelectric electricity production, total",Energy,Hydro,World Bank,http://data.worldbank.org/indicator/EG.ELC.HYRO.KH,t1MShlv870O6LmFNEHazdEg
+"Hydroelectric electricity production, per person",Energy,Hydro,World Bank,http://data.worldbank.org/indicator/EG.ELC.HYRO.KH,tSjVrGemv30eCh3jPZkXYCQ
+"Nuclear electricity production, total",Energy,Nuclear,World Bank,http://data.worldbank.org/indicator/EG.ELC.NUCL.KH,trRb8ZIaBOD4KzikShshZ2g
+"Nuclear electricity production, per person",Energy,Nuclear,Not Found.,Not Found.,t28UhT9IaWINamciSiJIS7w
+"Natural gas production, total",Energy,Natural gas,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEfv2K6dZmskWg
+"Natural gas production, per person",Energy,Natural gas,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEf0IBo_AGrgKA
+"Natural gas proven reserves, per person",Energy,Natural gas,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEfZd6DbNF1MKA
+"Natural gas proved reserves, total",Energy,Natural gas,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEc5qiv87tr3NA
+"Oil production, per person",Energy,Oil,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEeUgUuvuJTONQ
+"Oil production, total",Energy,Oil,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEdNIa3ckVXaCQ
+"Oil proven reserves, per person",Energy,Oil,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEfrI4YlDJDUag
+"Oil proved reserves, total",Energy,Oil,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEfJfS1WYrLeBA
+"Oil consumption, total",Energy,Oil,BP,http://www.bp.com/statisticalreview,pyj6tScZqmEcm0fIa0IVtKw
+"Oil consumption, per person",Energy,Oil,BP,http://www.bp.com/statisticalreview,0ArfEDsV3bBwCdERNZmlfUGM5YVE3bmEwODdlRDFqSkE
+Drought - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rvRwTPi0n_94EScVA3YjLeg
+Earthquake - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rvbbs7uxQc7swJ4RR2BcQfA
+Epidemic - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rvtZF_JC0OI27tL66o6hiMQ
+Extreme temperature - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,r4WUTsck3NfccM6UsKlGF7g
+Flood - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rtESPUlrTyLEoHpURqE8RAg
+Storm - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,r0JePjBgBQqtuh5wh1Wz9CA
+Tsunami - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rdBew79hTeXcIXhB1VCTPfg
+Plane crash - deaths annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rSv5aMDwESiKg-yA__-tRFg
+Drought - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rAYA0bjnfYwzXnir0cigijQ
+Earthquake - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rG_BjsDwyS2n7DANNH3i5vQ
+Epidemic - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,r6H8dfVPu2CJ2nzI8X0jurw
+Extreme temperature - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,ryPd-H6Kn3wcHC50zyImqUg
+Flood - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rsCDusOObseaoBUdarzw7Kw
+Storm - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rAxnmm4ZL2HrYjIqJX0Ch-w
+Tsunami - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rskN46tpbe6Iy3K_ULk1_cQ
+Plane crash - affected annual number,Environment,Disasters,EM-DAT: The OFDA/CRED International Disaster Database,http://www.emdat.be/database,rhbS3kWOfMzvY4ofUFoeFJg
+CO2 intensity of economic output (kg CO2 per 2005 PPP $ of GDP),Environment,Emissions,World Bank,http://data.worldbank.org/indicator/EN.ATM.CO2E.PP.GD.KD,0AkBd6lyS3EmpdEVUcEJVRzlFWWRRcjhveGlrQzdwdUE
+Cumulative CO2 emissions (tonnes),Environment,Emissions,CDIAC (Carbon Dioxide Information Analysis Center),http://cdiac.ornl.gov/ftp/ndp030/CSV-FILES/,pyj6tScZqmEed4UamoiNCFA
+Sulfur emissions per person (kg),Environment,Emissions,Stern modified,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0uBndTxZAXNQ&gid=1,phAwcNAVuyj0uBndTxZAXNQ
+Yearly CO2 emissions (1000 tonnes),Environment,Emissions,CDIAC (Carbon Dioxide Information Analysis Center),http://cdiac.ornl.gov/trends/emis/meth_reg.html,phAwcNAVuyj1NHPC9MyZ9SQ
+Total sulfur emission (kilotonnes),Environment,Emissions,Stern modified,http://spreadsheets.google.com/pub?key=t9SYWh7siLJDzyZYN1R4HfQ&gid=1,t9SYWh7siLJDzyZYN1R4HfQ
+"Forest land, total area (ha)",Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWeB1N1HlpFQVQ
+Primary forest area (ha),Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWeECA6Gf__BNQ
+Planted forest area (ha),Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWc4aJd9fV8zZg
+Wood removal (cubic meters),Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWe8O-N9RgxzDw
+Forest coverage (%),Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWfRGgfhjf8FBQ
+Biomass stock in forest (tons),Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWcsSl830EklJA
+Privately owned forest land (%),Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWdFemmS_iN5fw
+Privately owned other wooded land (%),Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWdtCylhQOQiXw
+"Forest products removal, total ($)",Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWf66stZ2oNUAA
+"Forest products removal, per ha ($)",Environment,Forestry,FAO - Food and Agriculture Organization,http://www.fao.org/forestry/sofo/en/,pp59adS3CHWd9CVdfFx1dEw
+Agricultural land (% of land area),Environment,Geography,World Bank,http://data.worldbank.org/indicator/AG.LND.AGRI.ZS,0AkBd6lyS3EmpdEF3alRGS0JQZVgwSW1FWUxUQmZoWXc
+Forest area (sq. km),Environment,Geography,World Bank,http://data.worldbank.org/indicator/AG.LND.FRST.K2,0AkBd6lyS3EmpdFRuaV91Mm9JeUhwR1hHRXJhV3ZBQkE
+Surface area (sq. km),Environment,Geography,World Bank,http://data.worldbank.org/indicator/AG.SRF.TOTL.K2,0AkBd6lyS3EmpdFFWcWdEM0RXT1lRZ0wwRVNsakZCaWc
+Renewable water (cu meters per person),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,rPN9VekxwpUzwowMaxg9Ybw
+Internal renewable water (cu meters per person),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,riLRFECHMsTq7OTa2KYZCWA
+Water withdrawal (cu meters per person),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,rezAT4nYhKc2Loe6CxWSPWw
+Municipal water withdrawal (cu meters per person),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,ruUmTRBZ5xYjpOAhOT9VQbw
+Agricultural water withdrawal (% of total),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,rab3jHe_JZrU1pqlX0xnQEw
+Industrial water withdrawal (% of total),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,rGKP-BBylLOM11iGahW1lxA
+Municipal water withdrawal (% of total),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,r58mA3XNUvBov6M_1T_FiUg
+Desalinated water produced (billion cu meters),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,rt3BaikcRwJBNC0CvQsjDCA
+Total water withdrawal (billion cu meters),Environment,Water,FAO aquastat database,http://www.fao.org/nr/water/aquastat/data/query/index.html,rIG3ZWxv381t2bIL2BNaIVw
+"Infant mortality (rate per 1,000 births)",Health,,Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0NpF2PTov2Cw&gid=1,phAwcNAVuyj0NpF2PTov2Cw
+Underweight children,Health,,World Bank,http://data.worldbank.org,0ArfEDsV3bBwCdDdTQUtvNEJhb0RjRjU0WUtET1R0Vnc
+"All causes deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tbpc_fYEqPzaE7pDWBG84Rw
+"Birth asphyxia deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,t_0WcTuc94YT9cJVvy1tmUg
+"Congenital deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tneegXfZGHA0-nLG25ypnyg
+"Diarrhoeal deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tX7NQAP_5H4TOS1OEnxdxYw
+"Pneumonia deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tOXHWd6PcUGK3Dg-k2N8Clw
+"Prematurity deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tVMPnbOfGdvTRrtbuIbRw5w
+"Sepsis deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tGVRSoAJtdwQ30CqCSexKJA
+"Tetanus deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,t1E7e32tlIxtJU9UhnR9nJg
+"Other deaths in newborn (per 1,000 births)",Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tiYIen5OQP0fKiQbg6g8VyA
+All causes deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tBVcAKWEbc2s687q6D9yuYg
+Birth asphyxia deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,twrll6eL8GeIU4P71aTakmg
+Congenital deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tUvFsKz2lGL-GtPmw47VLdg
+Diarrhoeal deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tKZcnGP_XImMXRZ4tZqtjMg
+Pneumonia deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tjvbVGhVx7YCk1uguLrkaag
+Prematurity deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tVyFL3CyRTuGEnRQErDeSLQ
+Sepsis deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tRA1VmW2ZQ7sCsoD7AHIilg
+Tetanus deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tB6Gkh4rLC9yB2TXfHSApIA
+Other deaths in newborn (total deaths),Health,Causes of newborn deaths,Lancet,http://www.lancet.org,tyPO4OLCIZtK5zcdkafcHMA
+"All causes deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,t9FP3_OPrE2ug_I_iNsbePg
+"Diarrhoeal deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tADSStUzP0ADEPYqsIfVHMQ
+"HIV deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,t4C4M_ynK9Ho8tGRj6a5U5w
+"Injury deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tfOi0Ji7pJDJbxJVqwJXj9g
+"Malaria deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tunqKEwokfnJMDA1g7W8KwA
+"Measles deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tfyKUbGu10P_WOgHSOHhCJg
+"Meningitis deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tZhYsw0sliDInwowT0iWTLQ
+"NCD deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tqAEpy6pMtN7ULlF6uIzEog
+"Pertussis deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,t4RbfeK6Dtt2srxw4REoXxQ
+"Pneumonia deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tCe8N5KXAYCJteQokAqVM_A
+"Other infections deaths in children 1-59 months (per 1,000 births)",Health,Causes of child deaths,Lancet,http://www.lancet.org,tVAqgYwCDZfcq9jSCI87SAw
+All causes deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,taYeez4Mkk8OvdH-q4QAxxQ
+Diarrhoeal deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tDzIq4iIDwNtYthN_QYZwZg
+HIV deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tQe6yinBBauXLvBFroZEL3Q
+Injury deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tnRIpcH0InZUFz7f2ziXKog
+Malaria deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,t1Vf-4rkGlG20pYzuGib3hw
+Measles deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tYZAce4wGXEp5Jve3AI7yWQ
+Meningitis deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tX-vHLzEZ7mqfk1vf6SbUXA
+NCD deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tfmFGk3PIvTgimegQiHOtSQ
+Pertussis deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tdOlzqGxVdDnnCpfWyyGX1A
+Pneumonia deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tcYkTk6KMHsrXzcM9WyUxbw
+Other infections deaths in children 1-59 months (total deaths),Health,Causes of child deaths,Lancet,http://www.lancet.org,tiehFos6jB-lekEAH028deA
+"Breast cancer, new cases per 100,000 women",Health,"Cancer, female",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0Zbn8wVYsEHQ&gid=1,phAwcNAVuyj0Zbn8wVYsEHQ
+"Cervical cancer, new cases per 100,000 women",Health,"Cancer, female",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj3XpKHFksEPcA&gid=1,phAwcNAVuyj3XpKHFksEPcA
+"Colon&Rectum cancer, new cases per 100,000 women",Health,"Cancer, female",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2P7lqZXLeZAw&gid=1,phAwcNAVuyj2P7lqZXLeZAw
+"Liver cancer, new cases per 100,000 women",Health,"Cancer, female",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2xhaKENmyRKw&gid=1,phAwcNAVuyj2xhaKENmyRKw
+"Lung cancer, new cases per 100,000 women",Health,"Cancer, female",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0UaQ2DNjK9Lg&gid=1,phAwcNAVuyj0UaQ2DNjK9Lg
+"Stomach cancer, new cases per 100,000 women",Health,"Cancer, female",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0je8zzeM4WXQ&gid=1,phAwcNAVuyj0je8zzeM4WXQ
+"Breast cancer, number of new female cases",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2fGuJ1VdTpOw
+"Cervical cancer, number of new female cases",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj0g-SgNTI23GQ
+"Colon&Rectum cancer, number of new female cases",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2L5YHqVxRTLA
+"Liver cancer, number of new female cases",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj1_IYQtrqQCKQ
+"Lung cancer, number of new female cases",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2oQAW8_53cVQ
+"Stomach cancer, number of new female cases",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj1aXfw3aV83TA
+"Breast cancer, deaths per 100,000 women",Health,"Cancer, female",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj3wJUwXXDdiGg&gid=1,phAwcNAVuyj3wJUwXXDdiGg
+"Cervical cancer, deaths per 100,000 women",Health,"Cancer, female",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0jPl21g3mqfQ&gid=1,phAwcNAVuyj0jPl21g3mqfQ
+"Colon&Rectum cancer, deaths per 100,000 women",Health,"Cancer, female",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj3bdzmKAvdUSw&gid=1,phAwcNAVuyj3bdzmKAvdUSw
+"Liver cancer, deaths per 100,000 women",Health,"Cancer, female",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2ItBsVpK9VBA&gid=1,phAwcNAVuyj2ItBsVpK9VBA
+"Lung cancer, deaths per 100,000 women",Health,"Cancer, female",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2hZorcv6aVLA&gid=1,phAwcNAVuyj2hZorcv6aVLA
+"Stomach cancer, deaths per 100,000 women",Health,"Cancer, female",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0RpUEQPgGcZQ&gid=1,phAwcNAVuyj0RpUEQPgGcZQ
+"Breast cancer, number of female deaths",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj07QB-Apx8RfQ
+"Cervical cancer, number of female deaths",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2KBU_veE9AQg
+"Colon&Rectum cancer, number of female deaths",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj0ndPkFlozzXQ
+"Liver cancer, number of female deaths",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2LwNOwMSnJQA
+"Lung cancer, number of female deaths",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj0RMyUI1QFfaA
+"Stomach cancer, number of female deaths",Health,"Cancer, female",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj1o1rJNFHpQZw
+"Colon&Rectum cancer, new cases per 100,000 men",Health,"Cancer, male",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2UBFFaFy3Ebg&gid=1,phAwcNAVuyj2UBFFaFy3Ebg
+"Liver cancer, new cases per 100,000 men",Health,"Cancer, male",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj1u0KpZbsopCA&gid=1,phAwcNAVuyj1u0KpZbsopCA
+"Lung cancer, new cases per 100,000 men",Health,"Cancer, male",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj1kCRbsnNcTVg&gid=1,phAwcNAVuyj1kCRbsnNcTVg
+"Prostate cancer, new cases per 100,000 men",Health,"Cancer, male",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj3qX39HWaQjEg&gid=1,phAwcNAVuyj3qX39HWaQjEg
+"Stomach cancer, new cases per 100,000 men",Health,"Cancer, male",Based on IARC data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj1XKvT6zwrMPw&gid=1,phAwcNAVuyj1XKvT6zwrMPw
+"Colon&Rectum cancer, number of new male cases",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj3nBOvEwrkMTA
+"Liver cancer, number of new male cases",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2LIYJXVW9EVw
+"Lung cancer, number of new male cases",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj0sd0z2MGpeeA
+"Prostate cancer, number of new male cases",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2vXUZJKI0XHA
+"Stomach cancer, number of new male cases",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj3XF3cD2lbecA
+"Colon&Rectum cancer, deaths per 100,000 men",Health,"Cancer, male",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0VhkB8-rRHQg&gid=1,phAwcNAVuyj0VhkB8-rRHQg
+"Liver cancer, deaths per 100,000 men",Health,"Cancer, male",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj3rojF8TmZtOw&gid=1,phAwcNAVuyj3rojF8TmZtOw
+"Lung cancer, deaths per 100,000 men",Health,"Cancer, male",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2_ibAjsuNgYA&gid=1,phAwcNAVuyj2_ibAjsuNgYA
+"Prostate cancer, deaths per 100,000 men",Health,"Cancer, male",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2S9phBhTP3dw&gid=1,phAwcNAVuyj2S9phBhTP3dw
+"Stomach cancer, deaths per 100,000 men",Health,"Cancer, male",Based on IARC and WHO data,http://spreadsheets.google.com/pub?key=phAwcNAVuyj3ky4_oAkatBw&gid=1,phAwcNAVuyj3ky4_oAkatBw
+"Colon&Rectum cancer, number of male deaths",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj0-sqkfnD4rGA
+"Liver cancer, number of male deaths",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj1RD88c3w1vNg
+"Lung cancer, number of male deaths",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2Az43qu-dQJQ
+"Prostate cancer, number of male deaths",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj1ImYURLRHPRA
+"Stomach cancer, number of male deaths",Health,"Cancer, male",IARC,http://www-dep.iarc.fr/,phAwcNAVuyj2NmCvOcsjpag
+Total health spending (% of GDP),Health,Health Economics, Global Health Expenditure Database modified,http://apps.who.int/nha/database/DataExplorer.aspx?ws=0&d=1,phAwcNAVuyj3XYThRy0yJMA
+Government share of total health spending (%),Health,Health Economics,WHO Global Health Expenditure Database,http://apps.who.int/nha/database/PreDataExplorer.aspx?d=1,pyj6tScZqmEcJI3KBJnrlDQ
+Private share of total health spending (%),Health,Health Economics,WHO Global Health Expenditure Database,http://apps.who.int/nha/database/PreDataExplorer.aspx?d=1,pyj6tScZqmEcXBFxQw8cFaw
+Out-of-pocket share of total health spending (%),Health,Health Economics,Global Health Expenditure Database,http://apps.who.int/nha/database/DataExplorer.aspx?ws=0&d=1,tXf6_OUYVmyEMZo0g4DQw6w
+Government health spending of total gov. spending (%),Health,Health Economics,WHO Global Health Expenditure Database,http://apps.who.int/nha/database/PreDataExplorer.aspx?d=1,pyj6tScZqmEd7K-YgYOkGFQ
+Total health spending per person (international $),Health,Health Economics,WHO Global Health Expenditure Database,http://apps.who.int/nha/database/DataExplorer.aspx?ws=0&d=1,tR3MM-UTZ0B44BKxxWeAZaQ
+Government health spending per person (international $),Health,Health Economics,WHO Global Health Expenditure Database,http://apps.who.int/nha/database/PreDataExplorer.aspx?d=1,tZ3uHUdw0H__Siyj78GXsGg
+Total health spending per person (US$),Health,Health Economics,WHO Global Health Expenditure Database,http://apps.who.int/nha/database/PreDataExplorer.aspx?d=1,pyj6tScZqmEeL79qOoKtofQ
+Government health spending per person (US$),Health,Health Economics,WHO Global Health Expenditure Database,http://apps.who.int/nha/database/PreDataExplorer.aspx?d=1,tBwBBkViOJoycBhLnWHqwSQ
+"Medical Doctors (per 1,000 people)",Health,Health Economics,World development indicators modified,http://data.worldbank.org/indicator/SH.MED.PHYS.ZS,phAwcNAVuyj2yo1IzJQmbZg
+"People living with HIV (number, all ages)",Health,HIV,Based on UNAIDS,http://www.gapminder.org/gapminder-world/documentation/gd006,pyj6tScZqmEe1GaiYJX2qGA
+"Adults with HIV (%, age 15-49)",Health,HIV,Based on UNAIDS,http://www.gapminder.org/gapminder-world/documentation/gd006,pyj6tScZqmEfbZyl0qjbiRQ
+"Newly HIV infected (number, all ages)",Health,HIV,UNAIDS,http://www.aidsinfoonline.org,0ArfEDsV3bBwCdFk2WGhwakxTQkt4NUtTdFJDSlFHQ3c
+"Newly HIV infected (%, age 15-49)",Health,HIV,UNAIDS,http://www.aidsinfoonline.org,0ArfEDsV3bBwCdDREUkRSRDJtQmFNTE1TYmRYX1pFNEE
+"Annual HIV deaths (number, all ages)",Health,HIV,UNAIDS,http://www.aidsinfoonline.org,0ArfEDsV3bBwCdHZJdFBhYVlvck43d1R6ZFYzUWpiLWc
+ART coverage % (CD4 < 350),Health,HIV,UNAIDS,http://www.aidsinfoonline.org,0ArfEDsV3bBwCdHMzRDA5Z1RjWkJIWkNfdWNBVFR6b1E
+"Malaria cases per 100,000 - reported",Health,Malaria,World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,pp59adS3CHWcGnFB9pe14OA
+"Malaria deaths per 100,000 - reported",Health,Malaria,World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,pp59adS3CHWfGZUVJ2L-dCw
+Malaria number of cases - reported,Health,Malaria,World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,pp59adS3CHWczfPHQMiqxCg
+Malaria number of deaths - reported,Health,Malaria,World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,pp59adS3CHWfZGL9qouvTbQ
+Births attended by skilled health staff (% of total),Health,Maternal health,World Bank,http://data.worldbank.org/indicator/SH.STA.BRTC.ZS,0AkBd6lyS3EmpdF9OQ2dSSG5nNFhpS3RnRVZHUzZMb3c
+Contraceptive use (% of women ages 15-49),Health,Maternal health,World Bank,http://data.worldbank.org/indicator/SP.DYN.CONU.ZS,0AkBd6lyS3EmpdFp2OENYMUVKWnY1dkJLRXAtYnI3UVE
+"Maternal mortality ratio (per 100,000 live births)",Health,Maternal health,Various sources,http://www.gapminder.org/data/documentation/gd010/,pyj6tScZqmEcVezxiMlWaRw
+"Maternal deaths, total number",Health,Maternal health,various sources,http://www.gapminder.org/data/documentation/gd010/,tOJs331rbt36sNBXE8g5AUg
+"Maternal deaths, lifetime risk (per 1,000)",Health,Maternal health,Unicef (Childinfo),http://www.childinfo.org/maternal_mortality_countrydata.php,t2ha4jg1M70Le8CH3wHcPIQ
+"Stillbirths (per 1,000 births)",Health,Maternal health,Stanton etal with additions,http://spreadsheets.google.com/pub?key=0ArfEDsV3bBwCdGdKSHBERVk0UzdoeEpwRUxHSnVlV0E&gid=1,tgJHpDEY4S7hxJpELGJueWA
+"Suicide (per 100,000 people)",Health,Mental health,WHO modified,http://spreadsheets.google.com/pub?key=troMumuI0Y6Phpwnj6qXa_A&gid=1,troMumuI0Y6Phpwnj6qXa_A
+"Malnutrition, weight for age (% of children under 5)",Health,Nutrition,World Bank,http://data.worldbank.org/indicator/SH.STA.MALN.ZS,0AkBd6lyS3EmpdGhpWDY5QVlOdUxpVGhaMVlUOE9iX0E
+Sugar per person (g per day),Health,Nutrition,FAO modified,http://faostat.fao.org/site/609/DesktopDefault.aspx?PageID=609#cible,phAwcNAVuyj2sdmdhX9zuKg
+Food supply (kilocalories / person & day),Health,Nutrition,FAO modified,http://spreadsheets.google.com/pub?key=0ArfEDsV3bBwCdGlYVVpXX20tbU13STZyVG0yNkRrZnc&gid=1,0ArfEDsV3bBwCdGlYVVpXX20tbU13STZyVG0yNkRrZnc
+Alcohol consumption per adult 15+ (litres),Health,Risk factors,WHO with additions,www.who.int,0AgogXXPMARyldGJqTDRfNHBWODJMRWlZaVhNclhNZXc
+Smoking adults (% of population over age 15),Health,Risk factors,Based on WHOSIS data 2005,http://apps.who.int/whosis/data/Search.jsp?countries=[Location].Members,tRccVp7QMaCXMv19CcxERaA
+Smoking women (% of women over age 15) ,Health,Risk factors,Based on WHOSIS data 2005,http://apps.who.int/whosis/data/Search.jsp?countries=[Location].Members,thortPEzDn2xc_5bU255mPA
+Smoking men (% of men over age 15) ,Health,Risk factors,Based on WHOSIS data 2005,http://apps.who.int/whosis/data/Search.jsp?countries=[Location].Members,t60tpjxpWq3Bm-nBOvSm3og
+"Body Mass Index (BMI), men, Kg/m2",Health,Risk factors,MRC-HPA Centre for Environment and Health,http://www.imperial.ac.uk/medicine/globalmetabolics/,0ArfEDsV3bBwCdF9saE1pWUNYVkVsNU1FdW1Yem81Nmc
+"Body Mass Index (BMI), women, Kg/m2",Health,Risk factors,MRC-HPA Centre for Environment and Health,http://www.imperial.ac.uk/medicine/globalmetabolics/,0ArfEDsV3bBwCdGt0elo2dzJMVVQ3WmFGSmdhc09LRlE
+"Blood pressure (SBP), men, mmHg",Health,Risk factors,MRC-HPA Centre for Environment and Health,http://www.imperial.ac.uk/medicine/globalmetabolics/,0ArfEDsV3bBwCdHNwRm9DN1FnT3hXWWZVSncxMkZyS2c
+"Blood pressure (SBP), women, mmHg",Health,Risk factors,MRC-HPA Centre for Environment and Health,http://www.imperial.ac.uk/medicine/globalmetabolics/,0ArfEDsV3bBwCdHBzUVVSMDlTX1ZCUnNJQ3ZFdkFXVFE
+"Cholesterol (fat) in blood, men, mmol/L",Health,Risk factors,MRC-HPA Centre for Environment and Health,http://www.imperial.ac.uk/medicine/globalmetabolics/,0ArfEDsV3bBwCdDU5SnRoQ0xlZWhwRUZ6RFNQV042enc
+"Cholesterol (fat) in blood, women, mmol/L",Health,Risk factors,MRC-HPA Centre for Environment and Health,http://www.imperial.ac.uk/medicine/globalmetabolics/,0ArfEDsV3bBwCdGJHcHZkSUdBcU56aS1OT3lLeU4tRHc
+"Infectious TB, new cases per 100,000 - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rVyfxaPK4dJ9B6ZdgG34F-g
+"Infectious TB, new cases per 100,000 - reported",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,r0pD5wznwEUJ0ipdxAWQjiA
+"Infectious TB, number of new cases - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rOPfJcbTTIyS-vxDWbkfNLA
+"Infectious TB, number of new cases - reported",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rcbx0R-TXbkqRCyvKzn08fg
+"Infectious TB, detection rate (%)",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rDb6EYc4YUTBRfXlBvjHYlg
+"Infectious TB, detection rate (%) - DOTS only",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rjGHot8B6YSt3kPYEG8nANA
+"Infectious TB, treatment (DOTS) completed (%)",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rewICFMTvBuer8UoJIK0yUg
+TB programme (DOTS) population coverage (%),Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rKfjGaPxqirPDe8gnTVKuIw
+"All forms of TB, new cases per 100,000 - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rMsQHawTObBb6_U2ESjKXYw
+"All forms of TB, existing cases per 100,000 - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rZNoyaocUmUGuFyRgjJUpig
+"All forms of TB, deaths per 100,000 - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rWM9yEzjpGJvcJlUAIm35tA
+"All forms of TB, new cases per 100,000 - reported",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rYICvtvVz28fVyQuG_ote2w
+"All forms of TB, number of new cases - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rhZayTbvH3ZLlSN64OuRYFg
+"All forms of TB, number of existing cases - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rOCGMcGcrZs-dfeTEC792ZQ
+"All forms of TB, number of deaths - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rrQ_y5fqQPlznp5mJGXWr-A
+"All forms of TB, number of new cases - reported",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,r5UikGjnZlemlelKY0NX9Pg
+"All forms of TB, detection rate (%) ",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,ru195-zJ0rsx5axPIvm_bRA
+"All forms of TB, detection rate (%) - DOTS only",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rutVwqgB14uRV_f2dRbqhUA
+"TB with HIV+, new cases per 100,000 - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rRCxDI3hB9E9zvc8qSe11qg
+"TB with HIV+, existing cases per 100,000 - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rQV47xgPGa3qOPHoLiVon-w
+"TB with HIV+, deaths per 100,000 - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rUBCConMMLm9CxPXUGm325A
+"TB with HIV+, number of new cases - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rERPF4iYruK0DhAw_0tb5nA
+"TB with HIV+, number of existing cases - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,reiGJwoabnMOrPeFima_9ng
+"TB with HIV+, number of deaths - estimated",Health,TB (tuberculosis),World Health Organization,http://www.who.int/globalatlas/dataQuery/default.asp,rFAkC0Ae7oXxrVqosJ4NWUA
+Bad teeth per child (12 yr),Health,Teeth,WHO modified,http://www.whocollab.od.mah.se/countriesalphab.html,phAwcNAVuyj3Os9LVO_pRDA
+DTP3 immunized (% of one-year-olds),Health,Vaccine,UNICEF Childinfo,http://www.childinfo.org/immunization.html,txVTyScWObTBNuMmkNtLh1w
+HepB3 immunized (% of one-year-olds),Health,Vaccine,UNICEF Childinfo,http://www.childinfo.org/immunization.html,t7pU8fR9_ZzRFIMF3FX47YQ
+Hib3 immunized (% of one-year-olds),Health,Vaccine,UNICEF Childinfo,http://www.childinfo.org/immunization.html,thClNiXoQqfJDzTv0SYIHZg
+MCV immunized (% of one-year-olds),Health,Vaccine,UNICEF Childinfo,http://www.childinfo.org/immunization.html,pyj6tScZqmEenS18Yjl_SOQ
+PAB immunized (% of newborns),Health,Vaccine,UNICEF Childinfo,http://www.childinfo.org/immunization.html,tnvxVX8aOAl0dwDNujbELPQ
+Broadband subscribers (total),Infrastructure,Communication,World Bank,http://data.worldbank.org/indicator/IT.NET.BBND,0AkBd6lyS3EmpdEpMTHBoMmNzcDVCNVRHWE5zSVJVRHc
+Broadband subscribers (per 100 people),Infrastructure,Communication,World Bank,http://data.worldbank.org/indicator/IT.NET.BBND.P2,0AkBd6lyS3EmpdHdmMGVNNnV1SHBONDRTdTJzTVBKQXc
+Cell phones (total),Infrastructure,Communication,World Bank,http://data.worldbank.org/indicator/IT.CEL.SETS,0AkBd6lyS3EmpdEhWLWtqNzljbWg4ZXV6M09JQXNGaUE
+Cell phones (per 100 people),Infrastructure,Communication,World Bank,http://data.worldbank.org/indicator/IT.CEL.SETS.P2,0AkBd6lyS3EmpdG1MSjEyS0h2QjRQZ3FXRVR2dVQyeFE
+Fixed line and mobile phone subscribers (per 100 people),Infrastructure,Communication,World Development Indicators,http://go.worldbank.org/U0FSM7AQ40,pyj6tScZqmEcfLoOcU6GAfg
+Internet users (total),Infrastructure,Communication,World Bank,http://data.worldbank.org/indicator/IT.NET.USER,0AkBd6lyS3EmpdC1PcWJUZldDelFyQXdaOEtDUG9HSUE
+Internet users (per 100 people),Infrastructure,Communication,World Bank,http://data.worldbank.org/indicator/IT.NET.USER.P2,0AkBd6lyS3EmpdGwzSGV5OE9FOGhURlhTdEQtMW1TNkE
+Personal computers (total),Infrastructure,Communication,UN data,"http://data.un.org/Data.aspx?q=personal+computer&d=MDG&f=seriesRowID:606&c=2,3,4&s=countryEnglishName:asc,year:desc&v=1",pyj6tScZqmEfUXdC83YSzfw
+Personal computers (per 100 people),Infrastructure,Communication,UN data,"http://data.un.org/Data.aspx?q=personal+computer&d=MDG&f=seriesRowID:607&c=2,3,4&s=countryEnglishName:asc,year:desc&v=1",pyj6tScZqmEdFW4nUY4gQdA
+"Improved sanitation, overall access (%)",Infrastructure,Sanitation,World Bank,http://data.worldbank.org/indicator/SH.STA.ACSN,0ArfEDsV3bBwCdE4tekJPYkR4WmJqYTRPWjc3OTl4WUE
+"Improved sanitation, urban access (%)",Infrastructure,Sanitation,World Bank,http://data.worldbank.org/indicator/SH.STA.ACSN.UR,pyj6tScZqmEfLbPu48DrKfQ
+"Improved sanitation, rural access (%)",Infrastructure,Sanitation,World Bank,http://data.worldbank.org/indicator/SH.STA.ACSN.RU,0ArfEDsV3bBwCdFNPMTE3d3FHTHdYaGFMXzJyNDBGd3c
+"Roads, paved (% of total roads)",Infrastructure,Traffic,World Bank,http://data.worldbank.org/indicator/IS.ROD.PAVE.ZS,0AkBd6lyS3EmpdDBKd2V5VmxkYlJuUHAtOURzUkZzNEE
+"Improved water source, overall access (%)",Infrastructure,Water,MDG indicators,http://mdgs.un.org/unsd/mdg/Data.aspx,pyj6tScZqmEd98lRwrU3gIg
+"Improved water source, urban access (%)",Infrastructure,Water,MDG indicators,http://mdgs.un.org/unsd/mdg/Data.aspx,0ArfEDsV3bBwCdDlJNzNjcVc5Sm9memNuVHRzY1FsOXc
+"Improved water source, rural access (%)",Infrastructure,Water,MDG indicators,http://mdgs.un.org/unsd/mdg/Data.aspx,0ArfEDsV3bBwCdFhhVzhXUEh0U0hlQ3M3TTZIQTFySUE
+"Population aged 0-4 years, both sexes (%)",Population,Both sexes by age (%),UN Population Division,http://esa.un.org/unpp/,rsOONWhmGBtzb4j__0MJv7Q
+"Population aged 5-9 years, both sexes (%)",Population,Both sexes by age (%),UN Population Division,http://esa.un.org/unpp/,rC5UskPU6PRVlmN7eXoridw
+"Population aged 10-14 years, both sexes (%)",Population,Both sexes by age (%),UN Population Division,http://esa.un.org/unpp/,rmViJSkPd4xZneV2Q6gzFwQ
+"Population aged 15-19 years, both sexes (%)",Population,Both sexes by age (%),UN Population Division,http://esa.un.org/unpp/,r4VUu4a4AaWqXXoAsFz-z-Q
+"Population aged 20-39 years, both sexes (%)",Population,Both sexes by age (%),UN Population Division,http://esa.un.org/unpp/,rTU20DXn0Bi7bTwW5T6J3gg
+"Population aged 40-59 years, both sexes (%)",Population,Both sexes by age (%),UN Population Division,http://esa.un.org/unpp/,rLwpdKbW2OykBbvVxhYKrhA
+"Population aged 60+ years, both sexes (%)",Population,Both sexes by age (%),UN Population Division,http://esa.un.org/unpp/,rH6TEe8f_WNq_8x9pWZ3W0A
+Population aged 0-4 years (total number),Population,Both sexes by age (total),UN Population Division,http://esa.un.org/unpp/,rovrK0Uj9JPN95P9adob0tw
+Population aged 5-9 years (total number),Population,Both sexes by age (total),UN Population Division,http://esa.un.org/unpp/,r83X3yfjC6ENYWoo41yDehg
+Population aged 10-14 years (total number),Population,Both sexes by age (total),UN Population Division,http://esa.un.org/unpp/,r9ztOSMb5WNHUBLwlgJqPSw
+Population aged 15-19 years (total number),Population,Both sexes by age (total),UN Population Division,http://esa.un.org/unpp/,rFmJvuotJYE30q4nWEvpGJA
+Population aged 20-39 years (total number),Population,Both sexes by age (total),UN Population Division,http://esa.un.org/unpp/,rHrin819tHgZudARnpsN0Mg
+Population aged 40-59 years (total number),Population,Both sexes by age (total),UN Population Division,http://esa.un.org/unpp/,ri9SXMNc7TpebHucmAYepGQ
+Population aged 60+ years (total number),Population,Both sexes by age (total),UN Population Division,http://esa.un.org/unpp/,rVD6A2uAmeIE0BQNW1KSg3A
+"Population aged 0-4 years, female (%)",Population,Female by age (%),UN Population Division,http://esa.un.org/unpp/,roLpNPQkooNCFzpTWXQ48Dw
+"Population aged 5-9 years, female (%)",Population,Female by age (%),UN Population Division,http://esa.un.org/unpp/,re3efChATTYAT5bRqoaChXA
+"Population aged 10-14 years, female (%)",Population,Female by age (%),UN Population Division,http://esa.un.org/unpp/,rJwVmwTFzheqVUzYWwSqXlA
+"Population aged 15-19 years, female (%)",Population,Female by age (%),UN Population Division,http://esa.un.org/unpp/,rYEHWlJHaLjHtcsSpRRJeig
+"Population aged 20-39 years, female (%)",Population,Female by age (%),UN Population Division,http://esa.un.org/unpp/,rWpQHQIQdntj6BEK8OIuWYw
+"Population aged 40-59 years, female (%)",Population,Female by age (%),UN Population Division,http://esa.un.org/unpp/,rElErbmOnSM6om03a1uinKQ
+"Population aged 60+ years, female (%)",Population,Female by age (%),UN Population Division,http://esa.un.org/unpp/,rjhBvpeRgCxBq0EnQVN6b0w
+"Population aged 0-4 years, male (%)",Population,Male by age (%),UN Population Division,http://esa.un.org/unpp/,rIpDsoI9lVTCh_PRqm66Tcw
+"Population aged 5-9 years, male (%)",Population,Male by age (%),UN Population Division,http://esa.un.org/unpp/,rgyZrNmSfXcPJQxJK7IxnEw
+"Population aged 10-14 years, male (%)",Population,Male by age (%),UN Population Division,http://esa.un.org/unpp/,rmQZ_H88rIhF3315QBZpcIQ
+"Population aged 15-19 years, male (%)",Population,Male by age (%),UN Population Division,http://esa.un.org/unpp/,rYfw4UJZSizLRtgDs73d5jA
+"Population aged 20-39 years, male (%)",Population,Male by age (%),UN Population Division,http://esa.un.org/unpp/,rab1GmqpzJkWd4MF0hieVgA
+"Population aged 40-59 years, male (%)",Population,Male by age (%),UN Population Division,http://esa.un.org/unpp/,rcQkob1yAm-to1scz51flgw
+"Population aged 60+ years, male (%)",Population,Male by age (%),UN Population Division,http://esa.un.org/unpp/,rSkhGgUVN74knEhSAhBSSKA
+Population growth (annual %),Population,Population growth,World Bank,http://data.worldbank.org/indicator/SP.POP.GROW,0AkBd6lyS3EmpdFY5Z0QzTzRRbzJ1VXdqdGVyNE0tcFE
+"Crude birth rate (births per 1,000 population)",Population,Population growth,UN Population Division,http://esa.un.org/peps/index.htm,tUSeGJOQhafugwUvHvY-wLA
+"Crude death rate (deaths per 1,000 population)",Population,Population growth,UN Population Division,http://esa.un.org/peps/index.htm,tHyj-2jRvK3CCNJOc5Vm-HQ
+"Teen fertility rate (births per 1,000 women ages 15-19)",Population,Population growth,Various sources,http://spreadsheets.google.com/pub?key=0Auk0ddvGIrGqcHlqNnRTY1pxbUVkSXBoWVVIeGNkTGc&gid=1,pyj6tScZqmEdIphYUHxcdLg
+"New births (total number, estimated)",Population,Population growth,Based on UN Population Division,Not Found.,0ArfEDsV3bBwCdERQeFplM2VWczVrMTFfMXVrQkJpVXc
+Sex ratio (all age groups),Population,Sex ratio,UN Population Division,http://esa.un.org/peps/index.htm,tAQ31_cAELrHqNc2qa13uHw
+Sex ratio (0-14 years),Population,Sex ratio,UN Population Division,http://esa.un.org/peps/index.htm,tfWSVJPJHn3u7e_7MUaCbnw
+Sex ratio (15-24 years),Population,Sex ratio,UN Population Division,http://esa.un.org/peps/index.htm,ta-Da73B_Z7lKOZo8o-Ykvw
+Sex ratio (15-49 years),Population,Sex ratio,UN Population Division,http://esa.un.org/peps/index.htm,tF_P_4G0g5bR3lYmQT9Tv4w
+Sex ratio (above 50 years),Population,Sex ratio,UN Population Division,http://esa.un.org/peps/index.htm,tQP1KnoWcjjtz3wmq0bnGNA
+Population in urban agglomerations > 1 million (% of total population),Population,Urbanization,World Bank,http://data.worldbank.org/indicator/EN.URB.MCTY.TL.ZS,pyj6tScZqmEdwXv1tqzV4Xg
+Urban population,Population,Urbanization,World Bank,http://data.worldbank.org/indicator/SP.URB.TOTL,pyj6tScZqmEfH89V6UQhpZA
+Urban population (% of total),Population,Urbanization,World Bank,http://data.worldbank.org/indicator/SP.URB.TOTL.IN.ZS,phAwcNAVuyj0-LE4StzCsEw
+Urban population growth (annual %),Population,Urbanization,World Bank,http://data.worldbank.org/indicator/SP.URB.GROW,pyj6tScZqmEcRJEN8MyV3PQ
+Children and elderly (per 100 adults),Population,,UN data,"http://data.un.org/Data.aspx?q=Total+dependency+ratio+(per+cent)&d=PopDiv&f=variableID:42&c=2,4,6,7&s=_crEngNameOrderBy:asc,_timeEngNameOrderBy:desc,_varEngNameOrderBy:asc&v=1",phAwcNAVuyj2biT80zgTsYQ
+Median age (years),Population,,UN Population Division,http://esa.un.org/peps/index.htm,tH113JLeGr5DhWgtqN2FxWg
+Population density (per square km),Population,,UN Population Division,http://esa.un.org/unpd/wpp/Excel-Data/population.htm,tVY51lNaCL9m9xPqf29oFAA
+"Population, total",Population,,Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0XOoBL_n5tAQ&gid=1,phAwcNAVuyj0XOoBL_n5tAQ
+Age at 1st marriage (women),Population,,Various sources,http://spreadsheets.google.com/pub?key=t4eF8H_jq_xyKCUHAX6VT1g&gid=1,t4eF8H_jq_xyKCUHAX6VT1g
+"Murder (per 100,000 people)",Society,,Various sources,http://spreadsheets.google.com/pub?key=tZgPgT_sx3VdAuyDxEzenYA&gid=1,tZgPgT_sx3VdAuyDxEzenYA
+Corruption Perception Index (CPI),Society,,Transparency International,http://www.transparency.org/policy_research/surveys_indices/cpi/2009/cpi_2009_table,tKOphM3UPRd94T6C6pmsuXw
+Democracy score (use as color),Society,,Polity IV project,https://spreadsheets0.google.com/pub?hl=en&hl=en&key=0ArfEDsV3bBwCdGQ2YlhDSWVIdXdpMmhLY2ZZRHdNNnc&output=html&gid=1,0ArfEDsV3bBwCdGQ2YlhDSWVIdXdpMmhLY2ZZRHdNNnc
+HDI (Human Development Index),Society,,UNDP,http://hdrstats.undp.org/en/indicators/103106.html,tyadrylIpQ1K_iHP407374Q
+Agriculture workers (% of labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rzFD5mOuB5mR7-vLoP04LAQ
+Industry workers (% of labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rqcJTExcUqNdolB-7flqebQ
+Service workers (% of labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,r4orIwujZpT-z3Exd_9ARpQ
+Female agriculture workers (% of female labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rraOr_PTB0jcQ60TagEH_WQ
+Female industry workers (% of female labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rA5BvUGX_Es43DaKb3FidUg
+Female service workers (% of female labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,r1B3mjfpBItUmvrhqaRgTWQ
+Male agriculture workers (% of male labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rtt_ihBgyYafmDJpThQecoA
+Male industry workers (% of male labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rmLnlLnnm2kjBbNsBZYxqow
+Male service workers (% of male labour force),Work,Employment by sector,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,ravxsZdBslM5zF5HwDsX30g
+Family workers (% of labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rW7k_DdDKlGgJhzYRuNvguw
+Salaried workers (% of labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rcO6CXqmEjV-wS-29qejCpw
+Self-employed (% of labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rSrvaPPzWvOyTMb9_dfJDtQ
+Female family workers (% of female labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rjFKVVoWIVbTgdtJK2xOZqQ
+Female salaried workers (% of female labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rhuyv42EAyApMwy4tDYm3XQ
+Female self-employed (% of female labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rIe2Y4f4Ehde4I4BGPN2VBg
+Male family workers (% of male labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rJMlhr2YOvL2EE5NhpbfYAg
+Male salaried workers (% of male labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,riwXFQrsUhb96BT2yFC9rFw
+Male self-employed (% of male labour force),Work,Employment by status,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,raAOA9AFRPzq5ilAm5Qa65Q
+Aged 15-24 employment rate (%),Work,Employment rate,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rfHz_nx27dDQo4dUoIeVT3A
+Aged 15+ employment rate (%),Work,Employment rate,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rV0ksExNqh6V_h40f0_nFjg
+Females aged 15-24 employment rate (%),Work,Employment rate,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rRS0FbArN8jYsY25X-ZiU9A
+Females aged 15+ employment rate (%),Work,Employment rate,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rOXvRa2ZC2oXqBn7gz62IMg
+Males aged 15-24 employment rate (%),Work,Employment rate,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rCyfwvThkbHVlNVw48vHybg
+Males aged 15+ employment rate (%),Work,Employment rate,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rTRt7Z5m9i9D9-vvipvdx2w
+Aged 15-64 labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rx1TECfEnGlnomonxCCO-Aw
+Aged 25-54 labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rTrB-PY0sfM_gdAQ20XovfA
+Aged 15+ labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,ryyQX_1TXlohXWOSUswhIKg
+Aged 65+ labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,r1hlZB_n1rpXTij11Kw7lTQ
+Females aged 15-64 labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rLRScmH2JZmjxsCGW2LB1cA
+Females aged 25-54 labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rgdYcit5cC0wxcLAQf9kJ_Q
+Females aged 15+ labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rZyHDNFsPBn7cqZCIzDQtIg
+Females aged 65+ labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rEZ0xOSmU7UuX7iOyL0Xp3g
+Males aged 15-64 labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rB4P-M5oVWuv9CyQ5s1mvOA
+Males aged 25-54 labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rj102tw9R1O_d56Uw_eqBzg
+Males aged 15+ labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rImcpLhokI0fXWNA-2nSWFw
+Males aged 65+ labour force participation rate (%),Work,Labour force participation,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,r_hbrX2qsjHphzAAlwsxhRA
+Aged 15-24 unemployment rate (%),Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rb0oP4d1BREXa8xMIUf4NZg
+Aged 25-54 unemployment rate (%),Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rEMA-cbNPaOtpDyxTcwugnw
+Aged 15+ unemployment rate (%),Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rlD36wGmkwFt3ED558waCTQ
+Aged 55+ unemployment rate (%),Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rNn0y3e0bCpaqTM_8BVZBdg
+Long term unemployment rate (%),Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rCRqVXC95LeKm_EvLrFNXKw
+"Females aged 15-24, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rMf--YMvuEKf2LVppT63Xvw
+"Females aged 25-54, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,r9StWVETzyX9Lv-r4-2sh6w
+"Females aged 15+, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rcHjAQAzF2e1yR1R-hywCEw
+"Females aged 55+, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rz8kJ7CIyckuQAWgHUHe4sA
+Female long term unemployment rate (%),Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rT5EpK40a19zVodp1HV1xGw
+"Males aged 15-24, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rGS7_GpdXrYyjhKkAFcLHGA
+"Males aged 25-54, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rjkDFSPV2pw9Pbnz2kpiqPQ
+"Males aged 15+, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,r5_68IYi0bC1bRjGMFYFk8g
+"Males aged 55+, unemployment rate (%)",Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rSMPg9BmVRsqE8_k1ARUudA
+Male long term unemployment rate (%),Work,Unemployment,International Labour Organization,http://www.ilo.org/public/english/employment/strat/kilm/download.htm,rezDaYxOOBEFgR4TiPN9qtw
+"Under-five mortality from CME (per 1,000 born)",For advanced users,Alternative child mortality data,CME (Child Mortality Estimates Info),http://www.childmortality.org/,p8SIY47PNEw6pJRPAS1tXPQ
+"Under-five mortality from IHME (per 1,000 born)",For advanced users,Alternative child mortality data,Institute for Health Metrics and Evaluation,http://www.healthmetricsandevaluation.org,p8SIY47PNEw4TgTkrmIVIXA
+Old version of Income per person (version 3),For advanced users,Alternative GDP data,Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0npaJxInyYDg&gid=1,phAwcNAVuyj0npaJxInyYDg
+Old version of Income per person (version 8),For advanced users,Alternative GDP data,Various sources,http://spreadsheets.google.com/pub?key=0ArfEDsV3bBwCdE5xWmcyYVZJQzJvOFpZUklqX3lkSkE&gid=1,0ArfEDsV3bBwCdE5xWmcyYVZJQzJvOFpZUklqX3lkSkE
+"Alternative GDP/capita (PPP$, inflation-adjusted) from PWT",For advanced users,Alternative GDP data,PWT 6.2,http://pwt.econ.upenn.edu/php_site/pwt62/pwt62_form.php,tSUr_yZVbM6a3AGJEq_Z2Pw
+Subsistence incomes per person,For advanced users,Alternative GDP data,Various sources,http://spreadsheets.google.com/pub?key=0ArfEDsV3bBwCdGlGLVd4OGVfcVdScVBSS0JLVHpiMlE&gid=1,0ArfEDsV3bBwCdGlGLVd4OGVfcVdScVBSS0JLVHpiMlE
+Alternative poverty (% below nationally defined poverty line),For advanced users,Alternative poverty measures,The World Bank,http://go.worldbank.org/B53SONGPA0,pyj6tScZqmEd1R9UmohEIaA
+Data quality - Income per person,For advanced users,Data quality (use as color),Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj0atjJIuxy-KQ&gid=1,phAwcNAVuyj0atjJIuxy-KQ
+Data quality - Life expectancy,For advanced users,Data quality (use as color),Various sources,http://spreadsheets.google.com/pub?key=p8SIY47PNEw6vGCNzlYJ5eA&gid=1,p8SIY47PNEw6vGCNzlYJ5eA
+Data quality - Population,For advanced users,Data quality (use as color),Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj1ONZlWMf9KQA&gid=1,phAwcNAVuyj1ONZlWMf9KQA
+"Estimate or projection of under-five mortality rate, from IHME",For advanced users,Data quality (use as color),Institute for Health Metrics and Evaluation,http://www.healthmetricsandevaluation.org,p8SIY47PNEw4vx1GOsJM7bA
+Data quality - Children per woman,For advanced users,Data quality (use as color),Various sources,http://spreadsheets.google.com/pub?key=thlR4hyNMEnaVyV_uxRzjfQ&gid=1,thlR4hyNMEnaVyV_uxRzjfQ
+Data method - Maternal mortality,For advanced users,Data quality (use as color),Hill et al,http://spreadsheets.google.com/pub?key=thDxsgSWvLGW4M1qUBby7OQ&gid=1,thDxsgSWvLGW4M1qUBby7OQ
+Economic growth over the past 10 years,For advanced users,Economic growth,Various sources,http://spreadsheets.google.com/pub?key=tkdAnkbHJxPAlRX6P1mAh8w&gid=1,tkdAnkbHJxPAlRX6P1mAh8w
+How far to the north,For advanced users,Geography and infrastructure,Various sources,http://spreadsheets.google.com/pub?key=rAIffGKCmiCdzTl1C0AR2nw&gid=1,rAIffGKCmiCdzTl1C0AR2nw
+"Income per person, with projections",For advanced users,Projections,Various sources,http://spreadsheets.google.com/pub?key=rX3Jfop_ebuY-chuMpCgmRg&gid=1,rX3Jfop_ebuY-chuMpCgmRg
+"Life expectancy at birth, with projections",For advanced users,Projections,Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2tPLxKvvnNPA&gid=1,tiAiXcrneZrUnnJ9dBU-PAw
+"Children per woman (total fertility), with projections",For advanced users,Projections,various sources,http://www.gapminder.org/downloads/documentation/gd008,tGdhNYGTGtunwzkKJ9aRhsA
+"Total population, with projections",For advanced users,Projections,Various sources,https://spreadsheets.google.com/a/gapminder.org/spreadsheet/pub?key=0AkBd6lyS3EmpdEwwakx4RkJGOVRiWElOXzM5YjFxY1E&gid=1,tL0jLxFBF9TbXIN_39b1qcQ
+"Female population, with projections",For advanced users,Projections,UN Population Division,http://esa.un.org/peps/index.htm,t6nZVbvqsF-BbyheqUxerZQ
+"Male population, with projections",For advanced users,Projections,UN Population Division,http://esa.un.org/peps/index.htm,tZMsbTkrY0k4OkkkXEfp6pA
+"Population growth (annual %), with projections",For advanced users,Projections,UN Population Division,http://esa.un.org/peps/index.htm,rZrHzR__kZfmw6L_xUx7cwg
+Year categorization 1820-2010,For advanced users,Years (use as color),Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2t4ep52YXjSg&gid=1,phAwcNAVuyj2t4ep52YXjSg
+Year categorization 1950-,For advanced users,Years (use as color),Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj02SA7cGjnRbA&gid=1,phAwcNAVuyj02SA7cGjnRbA
+"Traffic deaths (per 100,000 people)",Infrastructure,Traffic,WHO modified,http://spreadsheets.google.com/pub?key=tK87SOy-oZlfW99UDD7L3hw&gid=1,tK87SOy-oZlfW99UDD7L3hw
+"Burns deaths (per 100,000 people)",Health,Injuries and accidents,WHO,www.who.int,0AgogXXPMARyldGloTm9wekpDcUdMUjhlYWFKaHdnVWc
+"Drownings (per 100,000 people)",Health,Injuries and accidents,WHO,www.who.int,0AgogXXPMARyldF9ZRnhuWWljUXJHRDRpb0cyaHNLSUE
+"Falls, deaths (per 100,000 people)",Health,Injuries and accidents,WHO,www.who.int,0AgogXXPMARyldEJZajRXMWZPTE9nUXFBNUdPcG5yT2c
+"Poisonings, deaths (per 100,000 people)",Health,Injuries and accidents,WHO,www.who.int,0AgogXXPMARyldGhVLXVsSTB0aDY2eXdLaEt1T0psdXc
+"Cars, trucks & buses per 1,000 persons",Infrastructure,Traffic,World Bank,http://data.worldbank.org/indicator/IS.VEH.NVEH.P3,tu0H0unnUriNvMXwH_qOqzw
+"Traffic deaths women (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO modified,http://www.who.int/violence_injury_prevention/en/,t4pYrpNzP-JeR7zSjOyDofQ
+"Traffic deaths men (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO modified,http://www.who.int/violence_injury_prevention/en/,tUaaG6Pu9zT_BVIsLvGLQdA
+"Suicide women (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO modified,http://www.who.int/violence_injury_prevention/en/,tUD6kmYmB_Bp85SRdEn1Krg
+"Suicide men (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO modified,http://www.who.int/violence_injury_prevention/en/,tB8ge4cxd8TL7yIV4ALm5NA
+"Murdered women (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO modified,http://www.who.int/violence_injury_prevention/en/,tyeSLo9Zpmw_e05IR3EoReg
+"Murdered men (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO modified,http://www.who.int/violence_injury_prevention/en/,tHgVOu-6TYQ6Kig0Ur3Y-kw
+"Car deaths (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",XXX???,www.who.int,tLf-4GD5z0QxqsDoUz4vOlg
+"Motorcycle deaths (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",GIMD/WHO,www.who.int,t7-m0musxnWbugcQ9ECH4KA
+"Murdered children 0-14 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldC1rcTI5OU50Mnc1djdkNXpnWUFrZmc
+"Murdered 15-29 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldDFGSGhtOWt0cS1JbEIzS29EZzlQRXc
+"Murdered 30-44, (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldG51d0o2T0JQWXFTMUlydWFsSTZMeFE
+"Murdered 45-59 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldElCSWl6TkpaZ1JpcXVxa2tmUGhxbFE
+"Murdered 60+ (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldGF1WHhpZFVQTWswclJHdjE3MkZ4c3c
+"Suicide age 0-14 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldGhJdkhTSHNEYTFKQjRrMlBwZXk1TkE
+"Suicide age 15-29 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldHNWNkNVR2Zwalc2U04zTjE5MDZlUkE
+"Suicide age 30-44 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldG9MeHpzRkNHQmZ4MmtxSnd2Y0o2UFE
+"Suicide age 45-59 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldGh2OWd2eVJiUnhScW9tOEtNTFkyQUE
+"Suicide age 60+ (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldEVRNFBZS2wzRmtZOWZEZDVZVG05dHc
+"Traffic mortality children 0-14 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldHB2MkhmVDcyMG1Oa3Y5eEhRQ0VlUWc
+"Traffic mortality 15-29 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldEVPSG5qYzBfS0llQ1RnTl9wWXZodkE
+"Traffic mortality 30-44 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldGRqbENsQm5VMWFLdnRXV0w1S0tVSEE
+"Traffic mortality 45-59 (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldFJrcW9wdlJITlBDYU9IbnRKdVllVGc
+"Traffic mortality 60+ (per 100,000 people)",For advanced users,"Injury deaths by gender, age, road user",WHO,www.who.int,0AgogXXPMARyldEw5RXhuckZuU1V2aVAzNDFZaDUxa2c
+IFPRI Underweight children,For advanced users,,World Bank,http://data.worldbank.org,0ArfEDsV3bBwCdHFkZlc5WkhVQmVmeU0tR0RsSUdTU0E
+Maternal mortality ratio WHO,For advanced users,Alternative health data,WHO,http://apps.who.int/gho/data/node.main.214?lang=en,0ArfEDsV3bBwCdE5UaXVKa2hWbUFzcUJJbVdHOE1VcFE
+Battle deaths (per 100 000),Society,War & peace,WHO,http://spreadsheets.google.com/pub?key=0AgogXXPMARyldElMWEl4RFVTemlMbzJqRU50ZDJ3SHc&gid=1,0AgogXXPMARyldElMWEl4RFVTemlMbzJqRU50ZDJ3SHc
+"Armed forces personnel, total",Society,War & peace,WDI,http://spreadsheets.google.com/pub?key=0Asm_G8nr4TCSdG1nNjk5RzItcUp6N2dSdHUwOENXa0E&gid=1,0Asm_G8nr4TCSdG1nNjk5RzItcUp6N2dSdHUwOENXa0E
+Armed forces personnel (% of labor force),Society,War & peace,WDI,http://spreadsheets.google.com/pub?key=0Asm_G8nr4TCSdFFoVWRjcUdKZDFydGdGNXkzS2ZRbHc&gid=1,0Asm_G8nr4TCSdFFoVWRjcUdKZDFydGdGNXkzS2ZRbHc
+Murder (total deaths),Society,,WHO Global Burden of Disease,http://www.who.int/healthinfo/global_burden_disease/2004_report_update/en/index.html,tIgjxaAg3M6kuHRcQTjEgsQ
+Suicide (total deaths),Health,Mental health,WHO Global Burden of Disease,http://www.who.int/healthinfo/global_burden_disease/2004_report_update/en/index.html,tOS388dWYzO1_FANUaiwKuA
+Traffic (total deaths),Infrastructure,Traffic,WHO with additions,http://spreadsheets.google.com/pub?key=0AgogXXPMARyldFc5dDFmOUVRcHZTNFUwNGtXbmstb2c&gid=1,tW9t1f9EQpvS4U04kWnk-og
+Debt servicing costs (% of exports and net income from abroad),For advanced users,Advanced debt & trade,World Bank,http://data.worldbank.org/indicator/DT.TDS.DECT.EX.ZS,pyj6tScZqmEd-30XcArAJHA
+"External debt, total (US$, not inflation-adjusted)",For advanced users,Advanced debt & trade,World Bank,http://data.worldbank.org/indicator/DT.DOD.DECT.CD,pyj6tScZqmEdQY2PxSsxxJQ
+Present value of debt (% of GNI),For advanced users,Advanced debt & trade,World Bank,http://data.worldbank.org/indicator/DT.DOD.PVLX.GN.ZS,pyj6tScZqmEeUceHo3wTOaQ
+"Exports unit value (index, 2000=100)",For advanced users,Advanced debt & trade,World Bank,http://data.worldbank.org/indicator/TX.VAL.MRCH.XD.WD,pyj6tScZqmEddLKU1fnfSSA
+"Imports unit value (index, 2000=100)",For advanced users,Advanced debt & trade,World Bank,http://data.worldbank.org/indicator/TM.VAL.MRCH.XD.WD,pyj6tScZqmEcL6zpB3Sj1Wg
+Net barter terms of trade (2000 = 100),For advanced users,Advanced debt & trade,World Bank,http://data.worldbank.org/indicator/TT.PRI.MRCH.XD.WD,pyj6tScZqmEe5SueBIj6eSw
+Dead kids per woman,For advanced users,families,Gapminder,https://docs.google.com/a/gapminder.org/spreadsheet/pub?key=0ArtujvvFrPjVdDRQTUhzNmVySlp6djRtLWh4eS1sNHc&gid=1,0ArtujvvFrPjVdDRQTUhzNmVySlp6djRtLWh4eS1sNHc
+Surviving kids per woman,For advanced users,families,Gapminder,https://spreadsheets.google.com/a/gapminder.org/spreadsheet/pub?key=0ArtujvvFrPjVdGdFWmhqOEVXcUZha1hJWXAtWHlDSFE&gid=1,0ArtujvvFrPjVdGdFWmhqOEVXcUZha1hJWXAtWHlDSFE
+Extreme poverty (% people below $1.25 a day) version 20120905,For advanced users,Alternative poverty measures,The World Bank,http://go.worldbank.org/B53SONGPA0,0ArfEDsV3bBwCdDhjcXdjbURLMFFVcVFPYThhYmtvZXc
+"Alternative GDP per capita PPP, WB",For advanced users,Alternative GDP data,Word Bank,http://data.worldbank.org/indicator/NY.GDP.PCAP.PP.KD,0ArtujvvFrPjVdERlTHZFQ2ZaUkpySHpQMF82UmdlcUE
+"Alternative GDP per capita PPP, PWT 7.1",For advanced users,Alternative GDP data,PWT 7.1,http://pwt.econ.upenn.edu/php_site/pwt71/pwt71_form.php,0ArtujvvFrPjVdEhhbV90QlJ3RFM0TW83dHd6RXBiX3c
+Number of child deaths,Health,,Various sources,http://spreadsheets.google.com/pub?key=0ArfEDsV3bBwCcGhBd2NOQVZ1eWowNVpSNjl1c3lRSWc&gid=1,0ArfEDsV3bBwCdGhSY2trbEVpYnNsMENqendaVm5ucnc
+Energy supply per person TOE,For advanced users,Alternative energy,Based on IEA,http://data.iea.org/IEASTORE/DEFAULT.ASP,0ArfEDsV3bBwCdFFjMFlMeS02N1NGNjJabl8wamVtdHc
+Energy from solid biofuels (%),For advanced users,Alternative energy,Based on IEA data,http://data.iea.org/IEASTORE/DEFAULT.ASP,0ArfEDsV3bBwCdFdaNHA3R1BzcG9GSlkwMXdnMHpScVE
+Residential energy use (%),For advanced users,Alternative energy,Not Found.,Not Found.,0ArfEDsV3bBwCdEV1RkJqTEItQnJYVXJlZzVuc3Y3Mmcnn
+"Life expectancy at birth, temporary update",For advanced users,Alternative demography indicators,Various sources,http://spreadsheets.google.com/pub?key=phAwcNAVuyj2tPLxKvvnNPA&gid=1,0ArfEDsV3bBwCdG9jSHA0WklHU0dqUnBCVUpVOXFzQUE
+"Children per woman, temporary update",For advanced users,Alternative demography indicators,Various sources,http://www.gapminder.org/data/documentation/gd008/,0ArfEDsV3bBwCdFJCTm43NGc0SzdYeHBpZWZGb1V0ckE
