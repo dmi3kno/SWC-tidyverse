@@ -42,7 +42,7 @@ labs(title="Key parameters for selected African countries",
 
 ## Preparing the data
 
-First of all, lets look at the chart and assess what data we might need to plot it. The chart says dataset includes selected (few) African countries with at least 2 mln baby deaths in 2007. Let's see if we can indentify those cases
+First of all, lets look at the chart and assess what data we might need to plot it. The chart says dataset includes selected (few) African countries with at least 2 mln baby deaths in 2007. Let's see if we can identify those cases
 
 > Remember that our dataset contains `infantMort` and `pop`. Infant mortality is denominated in deaths per 1000 population. Scientific notation of `2e6` is the same as `2*10^6` or 2 mln.
 
@@ -82,9 +82,9 @@ gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/1
   facet_wrap(~att)
 ```
 
-Ok this is messy, but kind of getting us closer to where we want to be. Note that we are plotting different variables on the same plot, so it is very difficult to find a common scale that would fit every variable. Investigate parameters inside the function `facet_wrap` how to add own scale to each facet.
+OK, this is messy, but kind of getting us closer to where we want to be. Note that we are plotting different variables on the same plot, so it is very difficult to find a common scale that would fit every variable. Investigate parameters inside the function `facet_wrap` how to add own scale to each facet.
 
-Note that `pop_mln` and `gdp_bln` are two new variables. Also `continent` and `pop` are missing. Lets mutate our data to accomodate those:
+Note that `pop_mln` and `gdp_bln` are two new variables. Also `continent` and `pop` are missing. Lets mutate our data to accommodate those:
 
 ```{r}
 gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/10^6>2) %>% 
@@ -132,7 +132,7 @@ gapminder_plus %>% filter(continent=="Africa", year==2007, infantMort/1000*pop/1
 
 ```
 
-Now, we would like one of the layers (`geom_text`) to use this small dataset of only 6 records, while the rest of the layers should use the complete dataset. Turns out you can accomodate it by specifying own `data` parameter in a layer and utilizing a `dplyr` dot placeholder as a starting point for refining the dataset for the purpose of one layer.
+Now, we would like one of the layers (`geom_text`) to use this small dataset of only 6 records, while the rest of the layers should use the complete dataset. Turns out you can accommodate it by specifying own `data` parameter in a layer and utilizing a `dplyr` dot placeholder as a starting point for refining the dataset for the purpose of one layer.
 
 Here's how you would do it
 

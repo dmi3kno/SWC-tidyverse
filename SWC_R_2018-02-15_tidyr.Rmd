@@ -1,0 +1,214 @@
+---
+title: "R for Reproducible Scientific Analysis"
+subtitle: "Arranging Data with tidyr"
+author: "15 Feb 2018"
+output:
+  html_document: default
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include = FALSE}
+library("tidyverse")
+gapminder <- read_csv(file = "../Data/gapminder-FiveYearData.csv")
+```
+
+# Dataframe manipulation with `tidyr`
+
+Researchers often want to manipulate their data from the 'wide' to the 'long' format, or *vice versa*. The 'long' format is where:
+
+* each column is a variable
+* each row is an observation
+
+In the 'long' format, you usually have one column for the observed variable and the other columns are ID variables.
+
+For the 'wide' format each row is often a site/subject/patient and you have multiple observation variables containing the same type of data. These can be either repeated observations over time, or observation of multiple variables (or a mix of both). You may find data input may be simpler or some other applications may prefer the 'wide' format. However, many of `R`'s functions have been designed assuming you have 'long' format data. This tutorial will help you efficiently transform your data regardless of original format.
+
+## <span style="color:red">Show Figure 1</span>
+
+These data formats mainly affect readability. For humans, the wide format is often more intuitive since we can often see more of the data on the screen due to it's shape. However, the long format is more machine readable and is closer to the formatting of databases. The ID variables in our dataframes are similar to the fields in a database and observed variables are like the database values.
+
+# Key Points
+
+* Use the `tidyr` package to change the layout of dataframes.
+* Use `gather()` to go from wide to long format.
+* Use `join()` to include new data in an already existing data set.
+* Use `write_csv` to safe data tidied up during the session.
+
+# Getting started
+
+First, lets look at the structure of our original `gapminder` dataframe:
+
+```{r}
+gapminder
+```
+
+## <span style="color:red">Challenge 1</span>
+
+Is `gapminder` a purely long, purely wide, or some intermediate format?
+
+The original `gapminder` data frame is in an intermediate format. It is not purely long since it had multiple observation variables (`pop`, `lifeExp`, `gdpPercap`).
+
+Sometimes, as with the `gapminder` dataset, we have multiple types of observed data. It is somewhere in between the purely 'long' and 'wide' data formats. We have 3 "ID variables" (`continent`, `country`, `year`) and 3 "Observation variables" (`pop`, `lifeExp`, `gdpPercap`). I usually prefer my data in this intermediate format in most cases despite not having ALL observations in 1 column given that all 3 observation variables have different units. There are few operations that would need us to stretch out this dataframe any longer (*i.e.* 4 ID variables and 1 Observation variable).
+
+While using many of the functions in R, which are often vector based, you usually do not want to do mathematical operations on values with different units. For example, using the purely long format, a single mean for all of the values of population, life expectancy, and GDP would not be meaningful since it would return the mean of values with 3 incompatible units. The solution is that we first manipulate the data either by grouping (see the lesson on dplyr), or we change the structure of the dataframe. **Note**: Some plotting functions in R actually work better in the wide format data.
+
+# Reading in a "wild" data set with `readxl`
+
+Until now, we’ve been using the nicely formatted original gapminder dataset, but 'real' data (*i.e.* our own research data) will never be so well organized. 
+
+We will now download to additional files from the [gapminder](https://www.gapminder.org) website. Go to "Data" and search for "Children per woman (total fertility)". Download the Excel file ("indicator undata total_fertility.xlsx") into a new sub-folder called "Data_raw".
+
+To read in the new Excel file and take a look at its structure, we need to load a additional package. `readxl` is part of the `tidyverse` package collection, but needs to be called independently.
+
+```{r}
+library("readxl")
+raw_fert <- read_excel(path = "../Data/indicator undata total_fertility.xlsx", sheet = "Data")
+raw_fert
+```
+
+## <span style="color:red">Show Figure 1</span>
+
+# From wide to long format with `gather()`
+
+The first step towards getting our nice intermediate data format is to first convert from the wide to the long format. The `tidyr` function `gather()` will 'gather' your observation variables into a single variable.
+
+```{r}
+fert <- raw_fert %>% 
+  rename(country = `Total fertility rate`) %>% 
+  gather(key = year, value = fert, -country) %>% 
+  mutate(year = as.integer(year))
+fert
+```
+
+We can use this data directly and visualize it!
+
+```{r}
+fert %>%
+  filter(country == "Norway") %>% 
+  ggplot() +
+  geom_line(mapping = aes(x = year, y = fert))
+```
+
+
+## <span style="color:red">Challenge 2</span>
+
+What was the average infant mortality in Norway during this millennium? **Hint**: Download the Excel file for "Infant mortality (rate per 1,000 births)" from the [gapminder](https://www.gapminder.org) website.
+
+```{r, warning = FALSE}
+raw_infantMort <- read_excel(path = "../Data/indicator gapminder infant_mortality.xlsx", sheet = "Data")
+
+infantMort <- raw_infantMort %>% 
+  rename(country = `Infant mortality rate`) %>% 
+  gather(key = year, value = infantMort, -country) %>% 
+  mutate(year = as.integer(year)) %>% 
+  mutate(infantMort = as.numeric(infantMort))
+
+infantMort %>% 
+  filter(country == "Norway") %>% 
+  filter(year >= 2000) %>% 
+  summarize(mean_infantMort = mean(infantMort))
+```
+
+# Using `join()` to add new information to existing data sets
+
+In a situation like this, we would ideally incorporate our newly harvested data into the existing ``gapminder data set. `dplyr` offers a powerful functional family called `join()`, which helps in merging two data sets on conditional parameters. The functionality of the different `join()` functions is best explained by trying them out:
+
+```{r}
+gapminder
+
+gapminder %>% 
+  inner_join(fert, by = c("year", "country"))
+
+gapminder %>% 
+  left_join(fert, by = c("year", "country"))
+
+gapminder %>% 
+  right_join(fert, by = c("year", "country"))
+
+gapminder %>% 
+  full_join(fert, by = c("year", "country"))
+
+gapminder_plus <- gapminder %>% 
+  left_join(fert, by = c("year", "country"))
+
+```
+
+We want to stick as close to the original `gapminder` data set as possible, so `left_join()` is the option of choice
+
+```{r}
+gapminder_plus <- gapminder %>% 
+  left_join(fert, by = c("year", "country"))
+gapminder_plus
+```
+
+At this point it is advisable to check for "holes" in the data, i.e., missing values. This can have implications for later treatment of the data.
+
+```{r}
+gapminder_plus %>% 
+  is.na() %>% 
+  colSums()
+```
+
+There are 72 instances were fertility data is missing. This could be due to a real lack of data, but also because of slight differences in country names (e.g., "USA" instead of "United States of America"). We will not explore this further, but keep in mind that your data set now contains missing values!
+
+## <span style="color:red">Challenge 3</span>
+
+What are the average fertility and average infant mortality of the `gapminder` continents?
+
+```{r}
+gapminder_plus <- gapminder %>% 
+  left_join(fert, by = c("year", "country")) %>% 
+  left_join(infantMort, by = c("year", "country"))
+
+colSums(is.na(gapminder_plus))
+
+gapminder_plus_summary <- gapminder_plus %>%
+  group_by(continent) %>% 
+  summarize(mean_fert = mean(fert),
+            mean_infantMort = mean(infantMort)) 
+gapminder_plus_summary
+
+gapminder_plus_summary <- gapminder_plus %>%
+  group_by(continent) %>% 
+  summarize(mean_fert = mean(fert, na.rm = TRUE),
+            mean_infantMort = mean(infantMort, na.rm = TRUE)) 
+gapminder_plus_summary
+```
+
+## Visualizing 
+
+For the final act, we will use the existing `gapminder` data, include information on fertility and child mortality, and visualize them on a map.
+
+```{r}
+gapminder_plus_summary <- gapminder_plus %>%
+  group_by(country, continent) %>% 
+  summarize(mean_fert = mean(fert, na.rm = TRUE),
+            mean_infantMort = mean(infantMort, na.rm = TRUE)) 
+
+map_data("world") %>% 
+  rename(country = region) %>% 
+  left_join(gapminder_plus_summary, by = "country") %>% 
+  ggplot() +
+  geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = mean_fert)) +
+  scale_fill_gradient(low = "blue", high = "red") +
+  coord_equal()
+```
+
+# Safe the new `gapminder_plus`
+
+As we will need it later today, please safe a copy of the new `gapminder_plus`:
+
+```{r}
+write_csv(gapminder_plus, path = "../Data/gapminder_plus.csv")
+
+```
+
+# Key Points
+
+* Use the `tidyr` package to change the layout of dataframes.
+* Use `gather()` to go from wide to long format.
+* Use `join()` to include new data in an already existing data set.
+* Use `write_csv` to safe data tidied up during the session.
