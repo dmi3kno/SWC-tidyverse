@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, include = FALSE}
 library("tidyverse")
-gapminder <- read_csv(file = "../Data/gapminder-FiveYearData.csv")
+gapminder <- gapminder::gapminder
 ```
 
 # Dataframe Manipulation with `dplyr`
@@ -197,19 +197,22 @@ gapminder_country_summary <- gapminder %>%
 gapminder_country_summary
 ```
 
-Next, we use a database for mapping coordinates (`install.packages("maps")`) to align with the average life expectancy data from above. We can directly use the output and pipe it into `ggplot()`! 
+Next, we will re-use a map introduced in `ggplot` lesson to align with the average life expectancy data from above. We can merge this data with out own, by ensuring the map data has a _common variables_ as our statistics data file from gapminder. In this case, our world map has a column called `NAME` that corresponds with a column in the gapminder data called `country`, so we just indicate this in the `by` argument and merge the two data sets together. We can then plot different aesthetics on the map, based on the data from gampinder.
 
 ```{r}
-map_data("world") %>% 
-  rename(country = region) %>% 
-  left_join(gapminder_country_summary, by = "country") %>% 
-  ggplot() +
-  geom_polygon(aes(x = long, y = lat, group = group, fill = mean_lifeExp)) +
-  scale_fill_gradient(low = "blue", high = "red") +
-  coord_equal()
+# install.packages("rnaturalearth")
+world_map <- rnaturalearth::ne_countries(returnclass = "sf")
+gapminder_map <- right_join(gapminder_country_summary, world_map, by=c("country"="name"))
+
+ggplot(gapminder_map) +
+  geom_sf(aes(fill = mean_lifeExp))+
+  scale_fill_viridis_c()+
+  theme_void()+
+  coord_sf()
 ```
 
 Note that "grey" countries are not part of `gapminder` or appear under a different name and hence only appear as `NA`'s.
+
 
 # Key Points
 

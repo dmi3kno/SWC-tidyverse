@@ -453,13 +453,13 @@ ggplot(data = gapminder) +
 
 The graph produced in the previous section looks quite good, but it requires a reader to follow the time aspect of the data by tracing the changes across panels. This may be better illustrated by "animating" the time dimension of the data and playing the twelve charts in front of user one after another.
 
-```{r, fig.show = "animate", ffmpeg.format = 'gif'}
+```{r}
 # devtools::install_github("thomasp85/gganimate")
 library(gganimate)
 
-p <- ggplot(data = gapminder) + 
-  geom_point(mapping = aes(x = gdpPercap/10^3, y = lifeExp, size=pop/10^6, color=continent)) +
-  geom_text(mapping = aes(x = 40, y = 30), label=as.character(gapminder$year), size = 16, color="grey") +
+ggplot(data = gapminder, aes(x = gdpPercap/10^3, y = lifeExp, size=pop/10^6, color=continent)) + 
+  geom_point() +
+  geom_text(mapping = aes(x = 40, y = 30, label=as.character(floor(year))), size = 16, color="grey") +
   scale_x_log10() +
   labs(title="Life Expectancy vs GDP per capita over time",
        subtitle="In the past 50 years, life expectancy has improved in most countries of the world",
@@ -470,9 +470,9 @@ p <- ggplot(data = gapminder) +
        size="Population, mln") +
   theme_bw() +
   # here comes a gganimate function
-  transition_time(year)
+  transition_time(year)+
+  ease_aes('linear')
 
-animate(p)
 
 ```
 
@@ -504,6 +504,7 @@ When you save the notebook, an HTML file containing the code and output will be 
 
 
 ## Plotting maps
+
 When you are working on data from different countries, it might also be an idea to actually use maps to convey your data in a familiar way. `ggplot2` has a new geom called `geom_sf` what will help you plot maps and use aethetics in the same way as in other `geoms`.
 
 We have downloaded world data file from [thematicmappin.org](http://thematicmapping.org/downloads/world_borders.php), called a `shapefile` and will use this to create maps. Inthis case, we use the entire folder that was downloaded as a source, and a package in `R` called `sf` know how to read this as a map coordinate system.
@@ -516,19 +517,11 @@ We have downloaded world data file from [thematicmappin.org](http://thematicmapp
 #      geom_sf(data =  world) +
 #      theme_bw()
 
-world_map <- sf::st_read("data/TM_WORLD_BORDERS-0.3/", quiet = TRUE)
+#world_map <- sf::st_read("data/TM_WORLD_BORDERS-0.3/TM_WORLD_BORDERS-0.3.shp", quiet = TRUE)
+world_map <- rnaturalearth::ne_countries(returnclass = "sf")
+
 ggplot(world_map) +
-  geom_sf(aes(fill = AREA))
-
-```
-
-We can merge this data with out own, by ensuring the map data has a _common variables_ as our statistics data file from gapminder. In this case, our world map has a column called `NAME` that corresponds with a column in the gapminder data called `country`, so we just create a duplicate column in world_map called country, and merge the two data sets together. We can then plot different aesthetics on the map, based on the data from gampinder.
-
-```{r}
-world_map$country = world_map$NAME
-gapminder_map = left_join(gapminder, world_map)
-
-ggplot(gapminder_map) +
-  geom_sf(aes(fill = lifeExp))
-
+  geom_sf(aes(fill = pop_est))+
+  scale_fill_viridis_c()+
+  theme_bw()
 ```
