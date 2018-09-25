@@ -70,7 +70,7 @@ More information about the package and the data is available in help. Just type 
 
 ## Creating the first plot
 
-> Here's a question that we would like to answer using `gapminder` data: Do people in rich countries live longer then people in poor countries? The answer may be quite intuitive, but we will continue our investigation further: how does the relationship between GDP per capita and Life expectancy look like? Is this relationship linear? Non-linear? Are there exceptions to the general rule (outliers)?
+> Here's a question that we would like to answer using `gapminder` data: Do people in rich countries live longer than people in poor countries? The answer may be quite intuitive, but we will continue our investigation further: how does the relationship between GDP per capita and Life expectancy look like? Is this relationship linear? Non-linear? Are there exceptions to the general rule (outliers)?
 
 To plot `gapminder`, run the following code in the R-chunk or in console. The following code will put `gdpPercap` on the x-axis and `lifeExp` on the y-axis:
 
@@ -186,7 +186,7 @@ There's one more useful aesthetic property of the graph which is good for visual
 
 ### Assignment
 > 
-> - Blow your mind by visualizing five(!) dimensions in the same graph. Modify the previous example mapping year to color and shape to continent. What can you say about those Asian outliers: are those belonging to small or large countries? Are they from earlier or later time periods? 
+> - Blow your mind by visualizing five(!) dimensions in the same graph. Modify the previous example mapping year to color and shape to continent. What can you say about those Asian outliers: do those belong to small or large countries? Are they from earlier or later time periods? 
 >
 
 ### Solution
@@ -198,16 +198,16 @@ ggplot(data = gapminder) +
 
 ## Non-data linked properties
 
-Combining too many aesthetics in the same graph can make it quite busy. However, you can always make remove certain aesthetic properties and use several graphs to highlight different aspects of data.
+Combining too many aesthetics in the same graph can make it quite busy. However, you can always remove certain aesthetic properties and use several graphs to highlight different aspects of data.
 
-Until now, we explored different aesthetic properties of a graph mapped to certain variables. What if you want to recolor or use certain shape to plot all datapoints? Well, that means that such color or shape will no longer be *mapped* to any data, so you need to supply it to `geom_` function as a separate argument (outside of the `mapping`). Here's our initial graph with all colors colored in blue.
+Until now, we explored different aesthetic properties of a graph mapped to certain variables. What if you want to recolor or use a certain shape to plot all datapoints? Well, that means that such color or shape will no longer be *mapped* to any data, so you need to supply it to `geom_` function as a separate argument (outside of the `mapping`). Here's our initial graph with all colors colored in blue.
 
 ```{r}
 ggplot(data = gapminder) + 
   geom_point(mapping = aes(x = gdpPercap, y = lifeExp), alpha=0.1, size=2, color="blue")
 ```
 
-Once more, observe that the color is now not mapped to any particular variable from the `gapminder` dataset and applies equally to all datapoints, therefore it is ourside the `mapping` argument and is not wrapped into `aes()` function. Note that unmapped colors are supplied as characters (in quotes), size is a number (size of point in mm) and shape is the ordinal index of the shape in R's internal vocabulary (where square is 0, circle is 1, triangle is 2 and small filled circle is 20). Explore different shapes by varying the shape number between 0..25 or refer to `ggplot2` documentation, called [vignettes] (http://docs.ggplot2.org/current/vignettes/ggplot2-specs.html), for details. This document can be also called from within R by calling `vignette("ggplot2-specs")`. 
+Once more, observe that the color is now not mapped to any particular variable from the `gapminder` dataset and applies equally to all datapoints, therefore it is outside the `mapping` argument and is not wrapped into `aes()` function. Note that unmapped colors are supplied as characters (in quotes), size is a number (size of point in mm) and shape is the ordinal index of the shape in R's internal vocabulary (where square is 0, circle is 1, triangle is 2 and small filled circle is 20). Explore different shapes by varying the shape number between 0..25 or refer to `ggplot2` documentation, called [vignettes] (http://docs.ggplot2.org/current/vignettes/ggplot2-specs.html), for details. This document can be also called from within R by calling `vignette("ggplot2-specs")`. 
 
 ## **Challenge 4.** {.tabset .tabset-fade .tabset-pills}
 
@@ -283,7 +283,7 @@ ggplot(data = gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp, color=co
   geom_smooth(method="lm")
 ```
 
-Notice, that we also used new visual property called `alpha` to increase transparency of the data points and make trend lines stand out. `alpha` property can also be used as a mapping aesthetic, i.e. transparency can be made to vary depending on the value of certain variable.
+Notice, that we also used a new visual property called `alpha` to increase transparency of the data points and make trend lines stand out. `alpha` property can also be used as a mapping aesthetic, i.e. transparency can be made to vary depending on the value of certain variable.
 
 ## **Challenge 5.** {.tabset .tabset-fade .tabset-pills}
 
