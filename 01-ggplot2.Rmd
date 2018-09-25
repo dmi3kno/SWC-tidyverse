@@ -453,7 +453,7 @@ ggplot(data = gapminder) +
 
 The graph produced in the previous section looks quite good, but it requires a reader to follow the time aspect of the data by tracing the changes across panels. This may be better illustrated by "animating" the time dimension of the data and playing the twelve charts in front of user one after another.
 
-```{r}
+```{r, cache=TRUE}
 # devtools::install_github("thomasp85/gganimate")
 library(gganimate)
 
