@@ -1326,9 +1326,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type="text/css">
 .main-container {
@@ -1353,21 +1351,82 @@ img {
 button.code-folding-btn:focus {
   outline: none;
 }
+summary {
+  display: list-item;
+}
 </style>
 
 
 
-<div class="container-fluid main-container">
-
 <!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
 <script>
 $(document).ready(function () {
   window.buildTabsets("TOC");
 });
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
 </script>
 
 <!-- code folding -->
-
 
 
 
@@ -1462,6 +1521,16 @@ div.tocify {
 
 </style>
 
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
 <div class="col-xs-12 col-sm-4 col-md-3">
@@ -1479,21 +1548,25 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">R for Reproducible Scientific Analysis</h1>
-<h4 class="date"><em>25 September 2018</em></h4>
+<h4 class="date">25 September 2018</h4>
 
 </div>
 
 
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>## -- Attaching packages -------------------------------------------------------------------------------------------------------------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.0.0          v purrr   0.2.5     
-## v tibble  1.4.2.9005     v dplyr   0.7.6     
-## v tidyr   0.8.1          v stringr 1.3.1     
-## v readr   1.1.1          v forcats 0.3.0</code></pre>
-<pre><code>## -- Conflicts ----------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre class="r"><code># install.packages(&quot;jsonlite&quot;)
+# install.packages(&quot;remotes&quot;)
+# remotes::install_github(&quot;dmi3kno/googlesheets&quot;)
+library(tidyverse)</code></pre>
+<pre><code>## -- Attaching packages ------------------------------------------------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.1.1     v purrr   0.3.2
+## v tibble  2.1.1     v dplyr   0.8.1
+## v tidyr   0.8.3     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts ---------------------------------------------------- tidyverse_conflicts() --
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>gapminder &lt;- gapminder::gapminder</code></pre>
+<pre class="r"><code>#gapminder &lt;- gapminder::gapminder
+library(gapminder)</code></pre>
 <div id="introduction-to-lists" class="section level2">
 <h2>Introduction to lists</h2>
 <p>We would like to go beyond the few columns provided in the <code>gapminder</code> dataset and seek additional data that could allow us do other types of analyses and/or look at the data in new dimensions.</p>
@@ -1504,22 +1577,26 @@ div.tocify {
 #lst &lt;- jsonlite::fromJSON(str_c(&quot;[&quot;, str_extract(txt, &quot;\\{.+\\}&quot;),&quot;]&quot;), simplifyVector = FALSE)[[1]]
 #write_lines(jsonlite::toJSON(lst), &quot;gapminder_data_table.json&quot;)
 
-gap_lst &lt;- jsonlite::fromJSON(&quot;https://raw.githubusercontent.com/dmi3kno/SWC-tidyverse/master/gapminder_data_table.json&quot;)
+#gap_lst &lt;- jsonlite::fromJSON(&quot;https://raw.githubusercontent.com/dmi3kno/SWC-tidyverse/master/gapminder_data_table.json&quot;)
+
+gap_lst &lt;- jsonlite::fromJSON(&quot;https://bit.ly/gapminderlist&quot;)
 
 typeof(gap_lst)</code></pre>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<p>There are several ways of subsetting a list. Some of these methods were covered in pre-read. List nodes may be named. Names are optional, but sometimes they make navigation easier.</p>
-<pre class="r"><code>gap_lst %&gt;% head() %&gt;% 
-  str(max.level = 2)
-
-gap_lst[3]
-gap_lst[[3]]
-gap_lst$phAwcNAVuyj0TAlJeCEzcGQ
-gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName</code></pre>
-<p>As we already know, list is a special type of vector. It is a vector, able to contain other vectors, also called a “recurring vector”. Lists have length.</p>
+<p>As we already know, list is a special type of vector. Lists have length.</p>
 <pre class="r"><code>length(gap_lst)</code></pre>
 <pre><code>## [1] 519</code></pre>
-<p>Most important/useful feature of lists, is that they can have “repeating” branches, e.g. branches that contain similar entities. In our case each branch in the main list contains a list of 5 elements (5 “leaves”). The name of the elements itself is a googlesheet code. If we want to extract one particular leaf from every branch, we need to “iterate” over the branches, visiting every one of then and selecting an element of interest.</p>
+<p>There are several ways of subsetting a list. Some of these methods were covered in pre-read. List nodes may be named. Names are optional, but sometimes they make navigation easier.</p>
+<p>Print method of lists is not most user-friendly, as it tries to output the whole list to the console. Throughout this lesson we will use <code>head()</code> and <code>tail()</code> throughout to conserve screen space. Remember to remove these functions when you want the whole list (e.g. when assigning output to a variable).</p>
+<pre class="r"><code>gap_lst %&gt;% head() %&gt;% 
+  str()
+
+gap_lst[3] %&gt;% str()
+gap_lst[[3]] %&gt;% str()</code></pre>
+<p>List elements may be named. The names of the top-level elements of <code>gap_lst</code> are a googlesheet codes. We will use <code>$</code> notation, which is a special notation for named lists (you can also use it to create new elements in the list).</p>
+<pre class="r"><code>gap_lst$phAwcNAVuyj0TAlJeCEzcGQ
+gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName</code></pre>
+<p>Most important/useful feature of lists, is that they can contain other vectors (lists are called “recurring vector”), e.g. list has branches that contain similar entities. In our case each branch in the main list contains a list of 5 elements (5 “leaves”). If we want to extract one particular leaf from every branch, we need to “iterate” over the branches, visiting every one of then and selecting an element of interest.</p>
 <pre class="r"><code>gap_lst %&gt;% 
   map_chr(&quot;indicatorName&quot;) %&gt;% 
   head()</code></pre>
@@ -1535,8 +1612,8 @@ gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName</code></pre>
 ##                                 &quot;Life expectancy (years)&quot; 
 ##                                   tFOn62dEO9QCyIKK6kgSYRQ 
 ##                                    &quot;Aid given (2007 US$)&quot;</code></pre>
-<p>The function <code>map</code> is equivalent to for-loop. Normally map expects a list as first argument and a function as a second argument. One of the cool features of <code>map</code> is that we can also we pass string as second argument. In this case it acts as “accessor” - required elements get extracted from the list. The resulting type is controled by the suffix after the function name. For example, if we want to receive character vector, we can pass <code>map_chr</code>. For integers it would be <code>map_int</code>, for real numbers <code>map_dbl</code>. Most generic type of function is <code>map</code> without suffix, which always returns a list.</p>
-<p>Just remember that <code>map</code> can be used to extract an element of the iterated sequence. It visits each element of original vector (each child) and looks for nodes among grand-children. It can look by name or by index.</p>
+<p>The function <code>map</code> is equivalent to for-loop. Normally <code>map</code> expects a list as first argument and a function as a second argument. One of the cool features of <code>map</code> is that we can also we pass string as second argument. In this case it acts as “accessor” - required elements get extracted from the list. Just remember that <code>map</code> can be used to extract an element of the iterated sequence. It visits each element of original vector (each child) and looks for nodes among grand-children. It can look by name or by index.</p>
+<p>The resulting type is controled by the suffix after the function name. For example, if we want to receive character vector, we can pass <code>map_chr</code>. For integers it would be <code>map_int</code>, for real numbers <code>map_dbl</code>. Most generic type of function is <code>map</code> without suffix, which always returns a list.</p>
 </div>
 <div id="assignment-1" class="section level2 tabset tabset-fade tabset-pills">
 <h2>Assignment 1</h2>
@@ -1545,20 +1622,28 @@ gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName</code></pre>
 <blockquote>
 <ul>
 <li>Extract all googlesheet IDs. What function can help you with this task?</li>
-<li>Extract a vector of data providers. What are the most used data providers? <em>Tip: You may find <code>table</code> function useful</em></li>
+<li>Extract a vector of data providers. What are the most common data providers? <em>Tip: You may find <code>table</code> function useful</em></li>
 </ul>
 </blockquote>
 </div>
 <div id="answer" class="section level3">
 <h3>Answer</h3>
-<pre class="r"><code>names(gap_lst) %&gt;% head</code></pre>
+<pre class="r"><code>names(gap_lst) %&gt;% head()</code></pre>
 <pre><code>## [1] &quot;phAwcNAVuyj0TAlJeCEzcGQ&quot;                     
 ## [2] &quot;phAwcNAVuyj1gkNuUEXOGag&quot;                     
 ## [3] &quot;phAwcNAVuyj1jiMAkmq1iMg&quot;                     
 ## [4] &quot;0ArfEDsV3bBwCcGhBd2NOQVZ1eWowNVpSNjl1c3lRSWc&quot;
 ## [5] &quot;phAwcNAVuyj2tPLxKvvnNPA&quot;                     
 ## [6] &quot;tFOn62dEO9QCyIKK6kgSYRQ&quot;</code></pre>
-<pre class="r"><code>gap_lst %&gt;% map_chr(4) %&gt;% table() %&gt;% sort() %&gt;% tail</code></pre>
+<pre class="r"><code>gap_lst %&gt;% map_chr(4) %&gt;% table() %&gt;% sort() %&gt;% tail()</code></pre>
+<pre><code>## .
+##         World Health Organization                   Various sources 
+##                                28                                29 
+##                            Lancet            UN Population Division 
+##                                40                                40 
+## International Labour Organization                        World Bank 
+##                                55                                74</code></pre>
+<pre class="r"><code>gap_lst %&gt;% map_chr(&quot;dataprovider&quot;) %&gt;% table() %&gt;% sort() %&gt;% tail()</code></pre>
 <pre><code>## .
 ##         World Health Organization                   Various sources 
 ##                                28                                29 
@@ -1570,7 +1655,7 @@ gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName</code></pre>
 </div>
 <div id="using-map-for-iteration" class="section level2">
 <h2>Using <code>map</code> for iteration</h2>
-<p>Each element in original <code>gap_lst</code> was also a list. It stored various information about the googlesheet files. Think about this list as a list of files with various information about each file. We know that each of them has the same length. But if that would not be the case, how could we check? Well, we could visit each branch and call <code>length()</code> function on it.</p>
+<p>Each element in original <code>gap_lst</code> was also a list. It stores various information about the googlesheet files. Think about it as a list of files with various information about each file. Since each of the elements is a list, it should have its own length. How long is each of these lists? Well, we could visit each “branch” and call <code>length()</code> function on it.</p>
 <pre class="r"><code>gap_lst[[1]] %&gt;% length()</code></pre>
 <pre><code>## [1] 5</code></pre>
 <pre class="r"><code>gap_lst[[2]] %&gt;% length()</code></pre>
@@ -1591,17 +1676,18 @@ gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName</code></pre>
 ##                                            5 
 ##                      tFOn62dEO9QCyIKK6kgSYRQ 
 ##                                            5</code></pre>
-<p>The suffix after the name of the function specifies expected return type. In this case we say that we want to iterate over the elements of the <code>gap_lst</code> and apply function <code>length</code> to each of them. The result, we expect to be an integer vector (since length is measured in whole numbers). This ensures type-stability. There are similar variants of <code>map</code> function for returning other base types: logical (<code>map_lgl</code>), real(<code>map_dbl</code>) and character(<code>map_chr</code>). Most generic function of all is <code>map</code> itself. It always returns a list.</p>
+<p>The suffix after the name of the function specifies expected return type. In this case we say that we want to iterate over the elements of the <code>gap_lst</code> and apply function <code>length</code> to each of them. The result, we expect to be an integer vector (since length is measured in whole numbers). This ensures type-stability. There are similar variants of <code>map</code> function for returning other base types: logical (<code>map_lgl</code>), real(<code>map_dbl</code>) and character(<code>map_chr</code>). Most generic function of all is <code>map</code> itself, it always returns a list.</p>
 </div>
 <div id="transposing-lists" class="section level2">
 <h2>Transposing lists</h2>
 <p>We can transpose the list using the function <code>transpose</code>. You can think of this operation as “filpping” the relationship betwen parents and children: children become parents and vice versa. Let see how long is the list now. <code>transpose</code> is very often followed by another useful function <code>simplify</code>, which basically tries to convert lists to vectors, where possible. <code>simplify_all</code> will do it for every element of a list.</p>
 <pre class="r"><code>gap_lst_trans &lt;- transpose(gap_lst) %&gt;% simplify_all()
+# gap_lst_trans %&gt;% View()
 length(gap_lst_trans)</code></pre>
 <pre><code>## [1] 5</code></pre>
 <p>As you might have noticed, we are dealing with “named” vectors. These are special type of vectors where each element carries a name. Sometimes it is useful, but very often it just makes print out really noisy. In our case names are repeated in each vector as result of <code>transpose</code> opertation we did on the original list.</p>
-<div id="lifehack-1-take-over-adams-job" class="section level3">
-<h3>Lifehack 1: Take over Adam’s job</h3>
+<div id="lifehack-1-naming-things" class="section level3">
+<h3>Lifehack 1: Naming things</h3>
 <blockquote>
 <p>You can name things by composing a vector of names corresponding to the vector of things you want to name and then declare former to be the <code>names</code> of the latter. Be careful! The names will stick!</p>
 <p>You can undo your spell by calling <code>unname</code>. Remember that names are sticky, so you will have to override (overwrite). Be careful: certain things shall not be unnamed (such as columns in a dataframe).</p>
@@ -1620,8 +1706,12 @@ heights</code></pre>
 <pre class="r"><code>heights &lt;- unname(heights)
 heights</code></pre>
 <pre><code>## [1] 182 119 120</code></pre>
-<p>Lets try to extract googlesheet IDs and add them as separate element to our list. We will use <code>$</code> notation, which is a special notation for named lists. You can also use it to create new elements in the list.</p>
-<p>Note that each of the vector in the list is now of equal length. This condition is enough to call our list a data frame. We will remove the names from the vectors using unname function and return the result in the tibble format.</p>
+<p>Lets try to extract googlesheet IDs and add them as separate element to our list. We can use <code>$</code> notation here.</p>
+<p>Note that each of the vector in the list is now of equal length. This condition is enough to call our list a data frame.</p>
+<blockquote>
+<p>Recall that dataframe is a list of vectors of equal lengths.</p>
+</blockquote>
+<p>We will remove the names from the vectors using unname function and return the result in the tibble format.</p>
 <pre class="r"><code># named vector
 gap_lst_trans$indicatorName %&gt;% head</code></pre>
 <pre><code>##                                   phAwcNAVuyj0TAlJeCEzcGQ 
@@ -1644,8 +1734,44 @@ gap_lst_trans$indicatorName %&gt;% head</code></pre>
 ## [5] &quot;phAwcNAVuyj2tPLxKvvnNPA&quot;                     
 ## [6] &quot;tFOn62dEO9QCyIKK6kgSYRQ&quot;</code></pre>
 <pre class="r"><code>gap_lst_trans$googlesheet_id &lt;- names(gap_lst_trans$indicatorName)
-gap_lst_df &lt;- map_df(gap_lst_trans, unname)</code></pre>
-<p>Transposed list is a little more useable Lets practice some more with applying functions to lists. We can create, so called “anonimous functions” but defining a function body right there in the .f argument of the <code>map</code> function. This way we save us some typing and effort of naming. This makes sense if we are pretty sure we will not have to reuse the same function ever again. Here’s a function for calculating average length of the words in each element of transposed list.</p>
+gap_lst_df &lt;- map_df(gap_lst_trans, unname)
+gap_lst_df</code></pre>
+<pre><code>## # A tibble: 519 x 6
+##    indicatorName category subcategory dataprovider dataprovider_li~
+##    &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;           
+##  1 Children per~ &quot;&quot;       &quot;&quot;          Various sou~ http://www.gapm~
+##  2 CO2 emission~ &quot;&quot;       &quot;&quot;          CDIAC (Carb~ http://cdiac.or~
+##  3 Income per p~ &quot;&quot;       &quot;&quot;          Various sou~ http://spreadsh~
+##  4 Child mortal~ &quot;&quot;       &quot;&quot;          Various sou~ http://spreadsh~
+##  5 Life expecta~ &quot;&quot;       &quot;&quot;          Various sou~ http://spreadsh~
+##  6 Aid given (2~ Economy  Aid given   OECD QWIDS   http://www.oecd~
+##  7 Aid given pe~ Economy  Aid given   OECD QWIDS   http://www.oecd~
+##  8 Aid given (%~ Economy  Aid given   OECD QWIDS   http://www.oecd~
+##  9 Water and sa~ Economy  Aid given   OECD QWIDS   http://www.oecd~
+## 10 Economical i~ Economy  Aid given   OECD QWIDS   http://www.oecd~
+## # ... with 509 more rows, and 1 more variable: googlesheet_id &lt;chr&gt;</code></pre>
+</div>
+</div>
+<div id="applying-functions-to-lists" class="section level2">
+<h2>Applying functions to lists</h2>
+<p>Transposed list is a little more useable. Lets practice some more with applying functions to lists. We can create, so called “anonimous functions” but defining a function body right there in the .f argument of the <code>map</code> function. This way we save us some typing and effort of naming. This makes sense if we are pretty sure we will not have to reuse the same function ever again. Here’s a function for calculating average length of the words in each element of transposed list.</p>
+<pre class="r"><code>nchar(&quot;You&quot;)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>nchar(c(&quot;You&quot;, &quot;me&quot;))</code></pre>
+<pre><code>## [1] 3 2</code></pre>
+<pre class="r"><code>c(&quot;You&quot;, &quot;me&quot;, &quot;us&quot;, &quot;them&quot;) %&gt;% nchar() %&gt;% mean()</code></pre>
+<pre><code>## [1] 2.75</code></pre>
+<pre class="r"><code>avg_char_length &lt;- function(x){
+  mean(nchar(x))
+}
+
+c(&quot;You&quot;, &quot;me&quot;, &quot;us&quot;, &quot;them&quot;) %&gt;% avg_char_length()</code></pre>
+<pre><code>## [1] 2.75</code></pre>
+<pre class="r"><code>gap_lst_trans %&gt;% map_dbl(avg_char_length)</code></pre>
+<pre><code>##     indicatorName          category       subcategory      dataprovider 
+##         38.585742          8.606936         15.408478         18.210019 
+## dataprovider_link    googlesheet_id 
+##         47.998073         27.940270</code></pre>
 <pre class="r"><code>gap_lst_trans %&gt;% map_dbl(function(x) mean(nchar(x)))</code></pre>
 <pre><code>##     indicatorName          category       subcategory      dataprovider 
 ##         38.585742          8.606936         15.408478         18.210019 
@@ -1659,7 +1785,6 @@ gap_lst_df &lt;- map_df(gap_lst_trans, unname)</code></pre>
 <p>First option is to write a function exactly how one would write a regular function, except without naming it. It is a good idea if you dont intend to reuse it elsewhere and therefore would like to avoid naming it (one of the two hardest things in programming).</p>
 <p>Second option utilizes a shortcut notation involving a <code>~</code> sign. It also has “reserved” argument name(s) <code>.x</code>, <code>.y</code>. and <code>.z</code> for first, second and third argument, respectively. Having these shortcuts allow us to indicate where we want the iterated data to “land” in our formula. This is particularly useful in case of multiple arguments utilized in <code>map2_</code> functions, which allow iteration over two vectors simultaneously.</p>
 </div>
-</div>
 <div id="assignment-2" class="section level2 tabset tabset-fade tabset-pills">
 <h2>Assignment 2</h2>
 <div id="question-1" class="section level3">
@@ -1668,7 +1793,7 @@ gap_lst_df &lt;- map_df(gap_lst_trans, unname)</code></pre>
 <p>Remember that tibbles are exalted lists. Exploit that property to anser the following questions:</p>
 <ul>
 <li>How many columns in <code>gapminder</code> dataset are numeric?</li>
-<li>Count &quot;&quot; values in each column of <code>gap_lst_df</code></li>
+<li>Count &quot;&quot; values in each column of <code>gap_lst_df</code>. <em>Tip: string ’’ has zero characters</em></li>
 </ul>
 </blockquote>
 </div>
@@ -1680,6 +1805,12 @@ gap_lst_df &lt;- map_df(gap_lst_trans, unname)</code></pre>
 <pre><code>## [1] 4</code></pre>
 <pre class="r"><code>gap_lst_df %&gt;% 
   map_int(~sum(.x==&quot;&quot;))</code></pre>
+<pre><code>##     indicatorName          category       subcategory      dataprovider 
+##                 0                 5                20                 0 
+## dataprovider_link    googlesheet_id 
+##                 0                 0</code></pre>
+<pre class="r"><code>gap_lst_df %&gt;% 
+  map_int(~sum(nchar(.x)==0))</code></pre>
 <pre><code>##     indicatorName          category       subcategory      dataprovider 
 ##                 0                 5                20                 0 
 ## dataprovider_link    googlesheet_id 
@@ -1697,7 +1828,7 @@ is_even(26)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>is_even(31)</code></pre>
 <pre><code>## [1] FALSE</code></pre>
-<p>This pretty simple function has only one argument that we decided to call <code>x</code>. It is a good idea to make argument names a little bit more expressive, unless a function is pretty generic, in which case <code>x</code> is a reasonably common and well-accepted name for an argument, in our case a character input. Note that because we used vectorized operation inside our function, this function will also work on vectors.</p>
+<p>This pretty simple function has only one argument that we decided to call <code>x</code>. It is a good idea to make argument names a little bit more expressive, unless a function is pretty generic, in which case <code>x</code> is a reasonably common and well-accepted name for an argument (in our case a character input). Note, that because we used vectorized operation inside our function, this function will also work on vectors.</p>
 <pre class="r"><code>is_even(1:5)</code></pre>
 <pre><code>## [1] FALSE  TRUE FALSE  TRUE FALSE</code></pre>
 <p>Now that we are cetain our function is vectorized, we can use it to create new columns in a data frame (tibble). Remember that in order to create new column we can use the function <code>mutate</code></p>
@@ -1726,7 +1857,7 @@ is_even(26)</code></pre>
 <ul>
 <li>Write a function for calculating leap years.</li>
 </ul>
-<p>Wikipedia: Every year that is exactly divisible by four is a leap year, except for years that are exactly divisible by 100, but these centurial years are leap years if they are exactly divisible by 400. For example, the years 1700, 1800, and 1900 were not leap years, but the years 1600 and 2000 were</p>
+<p>Wikipedia: Every year that is exactly divisible by four is a leap year (<code>x%%4==0</code>), except for years that are exactly divisible by 100 (<code>x%%100!=0</code>), but these centurial years are leap years if they are exactly divisible by 400 (<code>x%%400==0</code>). For example, the years 1700, 1800, and 1900 were not leap years, but the years 1600 and 2000 were</p>
 <ul>
 <li>Add a column to gapminder indicating if the year is a leap year</li>
 </ul>
@@ -1762,7 +1893,7 @@ is_leap_year(1700)</code></pre>
 </div>
 <div id="map-reduce" class="section level2">
 <h2>Map-reduce</h2>
-<p>Whenver you are working with lists, you might want to apply a function to “reduce” or “collapse” a set of values to a single value using a function. Say you got a list of numbers and you would like to add them up. Or you have a list of logicals and you would like to check if at least one of them is <code>TRUE</code>. In these cases you may want to use <code>reduce</code>. Reduce is fundamentally different from vectorized functions that we all are familiar with by now in how it performs desired operation on the data. It starts from element #1 and performs the desired operation with element #2. The result is processed together with element #3 and so on. Effectively, it is performing a “chain” operation, where result of previous iteration is input into the next one.</p>
+<p>Whenver you are working with lists, you might want to apply a function to “reduce” or “collapse” a set of values to a single value using a function (say you got a list of numbers and you would like to add them up). Or you have a list of logicals and you would like to check if at least one of them is <code>TRUE</code>. In these cases you may want to use <code>reduce</code>. Reduce is fundamentally different from vectorized functions that we all are familiar with by now in how it performs desired operation on the data. It starts from element #1 and performs the desired operation with element #2. The result is processed together with element #3 and so on. Effectively, it is performing a “chain” operation, where result of previous iteration is input into the next one.</p>
 <pre class="r"><code>c(FALSE, TRUE, FALSE, FALSE) %&gt;% any()</code></pre>
 <pre><code>## [1] TRUE</code></pre>
 <pre class="r"><code>c(FALSE, TRUE, FALSE, FALSE) %&gt;% all()</code></pre>
@@ -1785,31 +1916,12 @@ geo_sheet &lt;- gs_url(&quot;https://docs.google.com/spreadsheets/d/1qHalit8sXC0
 <pre><code>## Sheet-identifying info appears to be a browser URL.
 ## googlesheets will attempt to extract sheet key from the URL.</code></pre>
 <pre><code>## Putative key: 1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o</code></pre>
-<pre><code>## Auto-refreshing stale OAuth token.</code></pre>
 <pre><code>## Sheet successfully identified: &quot;Data Geographies - v1 - by Gapminder&quot;</code></pre>
-<pre class="r"><code>gs_key(&quot;1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o&quot;)</code></pre>
+<pre class="r"><code>x&lt;- gs_key(&quot;1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o&quot;)</code></pre>
 <pre><code>## Sheet successfully identified: &quot;Data Geographies - v1 - by Gapminder&quot;</code></pre>
-<pre><code>##                   Spreadsheet title: Data Geographies - v1 - by Gapminder
-##                  Spreadsheet author: ola.rosling
-##   Date of googlesheets registration: 2018-09-27 08:23:13 GMT
-##     Date of last spreadsheet update: 2018-09-07 11:11:38 GMT
-##                          visibility: private
-##                         permissions: r
-##                             version: new
-## 
-## Contains 5 worksheets:
-## (Title): (Nominal worksheet extent as rows x columns)
-## ABOUT: 2820 x 11
-## List of countries etc: 1000 x 26
-## List of regions: 1000 x 26
-## World: 1000 x 26
-## Geo Names: 1005 x 26
-## 
-## Key: 1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o
-## Browser URL: https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/</code></pre>
 <pre class="r"><code>geo_sheet %&gt;% 
-  gs_read(ws=&quot;List of countries etc&quot;)</code></pre>
-<pre><code>## Accessing worksheet titled 'List of countries etc'.</code></pre>
+  gs_read(ws=&quot;list-of-countries-etc&quot;)</code></pre>
+<pre><code>## Accessing worksheet titled &#39;list-of-countries-etc&#39;.</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   geo = col_character(),
@@ -1850,7 +1962,7 @@ geo_sheet &lt;- gs_url(&quot;https://docs.google.com/spreadsheets/d/1qHalit8sXC0
 <h3>Question</h3>
 <blockquote>
 <ul>
-<li>Write a function for downloading selected sheets from googlesheets and writing to csv files. Is your function vectorized?</li>
+<li>Write a function for downloading Data from googlesheets and writing to csv files. The function will take a google key, retrieve sheet information using <code>gs_key</code>, read the sheet named “Data” with <code>gs_read</code> and write the content into a csv file named like <code>paste0(x, &quot;.csv&quot;)</code>, where <code>x</code> is your google sheet key.</li>
 </ul>
 </blockquote>
 </div>
@@ -1859,13 +1971,13 @@ geo_sheet &lt;- gs_url(&quot;https://docs.google.com/spreadsheets/d/1qHalit8sXC0
 <pre class="r"><code>save_gs &lt;- function(x){
   key &lt;- gs_key(x, lookup = FALSE)
   sheet &lt;- gs_read(key, ws=&quot;Data&quot;)
-  write_csv(sheet, glue::glue(&quot;{x}.csv&quot;))
+  write_csv(sheet, paste0(x, &quot;.csv&quot;))
 }
 
 fert_key &lt;- &quot;1oq3r8W7ajenKFgoAYoOf2MXeTWWNPpudR-Fo5m2-o30&quot;
 save_gs(fert_key)</code></pre>
 <pre><code>## Worksheets feed constructed with public visibility</code></pre>
-<pre><code>## Accessing worksheet titled 'Data'.</code></pre>
+<pre><code>## Accessing worksheet titled &#39;Data&#39;.</code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   .default = col_double(),
@@ -1877,27 +1989,25 @@ save_gs(fert_key)</code></pre>
 <div id="scaling-up-the-knowledge" class="section level2">
 <h2>Scaling up the knowledge</h2>
 <blockquote>
-<p>Use <code>View()</code> in Rstudio to locate indicators from the list below. As you click on the element of interest, Rstudio will tip you how to extract it. Use that method or write your own statement for extracting that element.</p>
+<p>Use any of the known to you methods to extract google sheet ids for the following files:</p>
 <ul>
-<li>total fertility (located in category “Other” and subcategory “Other”)</li>
-<li>infant mortality (Health-Other),</li>
-<li>CO2 emissions per person (Other-Other), and</li>
-<li>GINI index (Economy - Poverty &amp; Inequality)</li>
+<li>Children per woman (total fertility) - (category = &quot;&quot; and subcategory = &quot;&quot;)</li>
+<li>Infant mortality (rate per 1,000 births) - (category = “Health” and subcategory=&quot;&quot;),</li>
+<li>CO2 emissions (tonnes per person) (category = &quot;&quot; and subcategory = &quot;&quot;), and</li>
+<li>Inequality index (Gini) - (category = “Economy” and subcategory= “Poverty &amp; Inequality”)</li>
 </ul>
-<p>Retrieve indicator name and googlesheet ID as a list of two items. Combine the four list objects into a single list and give it a name <code>gap_indicators</code></p>
+<p>Combine four googlesheet keys into a singe vector and create another vector with names of the variables you want the data from these sheets to end up in (e.g. “fert” or “mort”)</p>
 </blockquote>
-<p>Below is the example code for combining two files and joining them to <code>gapminder</code> dataset. Extend this code to be able to join any number of files from gapminder.org website. You will need to use the <code>gap_lst_df</code> we created earlier.</p>
+<p>Below is the example code for combining two files and joining them to <code>gapminder</code> dataset. Extend this code to be able to join any number of files from gapminder.org website. You can use the <code>gap_lst_df</code> we created earlier.</p>
 <pre class="r"><code>library(tidyverse)
-gapminder &lt;- gapminder::gapminder
-
-keys &lt;- tribble( ~key, ~var_name,
-  &quot;1oq3r8W7ajenKFgoAYoOf2MXeTWWNPpudR-Fo5m2-o30&quot;, &quot;fert&quot;,
-  &quot;1OHMMuHbSFKDolNHXsmgHYlkjSKfAZyyY1P-ddMu_Fz0&quot;, &quot;infantMort&quot;)
-
+library(gapminder)
 library(googlesheets)
 
+keys &lt;- c(&quot;phAwcNAVuyj0TAlJeCEzcGQ&quot;,&quot;phAwcNAVuyj0NpF2PTov2Cw&quot;,&quot;phAwcNAVuyj1gkNuUEXOGag&quot;,&quot;pyj6tScZqmEcjeKHnZq6RIg&quot;)
+vars &lt;- c(&quot;fert&quot;, &quot;mort&quot;, &quot;emissions&quot;, &quot;gini&quot;)
+
 importSheet &lt;- function(key, var_name){
-  sheet &lt;- gs_key(key, lookup = FALSE)
+  sheet &lt;- gs_key_old(key, lookup = FALSE)
   sheet_df &lt;- gs_read(sheet)
   names(sheet_df)[1] &lt;- &quot;country&quot;
   sheet_df_long &lt;- sheet_df %&gt;% 
@@ -1907,8 +2017,7 @@ importSheet &lt;- function(key, var_name){
   sheet_df_long
 }
 
-gapminder_plus &lt;- keys %&gt;% split(.$key)  %&gt;%  
-  map(~importSheet(.$key, .$var_name)) %&gt;% 
+gapminder_plus &lt;- map2(keys,vars, importSheet) %&gt;% 
   reduce(full_join, by=c(&quot;country&quot;, &quot;year&quot;)) %&gt;% 
   right_join(gapminder, by=c(&quot;country&quot;, &quot;year&quot;))
 

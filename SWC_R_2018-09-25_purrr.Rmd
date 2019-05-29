@@ -17,8 +17,13 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+# install.packages("jsonlite")
+# install.packages("remotes")
+# remotes::install_github("dmi3kno/googlesheets")
 library(tidyverse)
-gapminder <- gapminder::gapminder
+#gapminder <- gapminder::gapminder
+library(gapminder)
+
 ```
 ## Introduction to lists
 
@@ -34,34 +39,41 @@ Here's a list of files hosted on GAPMINDER website in json format.
 #lst <- jsonlite::fromJSON(str_c("[", str_extract(txt, "\\{.+\\}"),"]"), simplifyVector = FALSE)[[1]]
 #write_lines(jsonlite::toJSON(lst), "gapminder_data_table.json")
 
-gap_lst <- jsonlite::fromJSON("https://raw.githubusercontent.com/dmi3kno/SWC-tidyverse/master/gapminder_data_table.json")
+#gap_lst <- jsonlite::fromJSON("https://raw.githubusercontent.com/dmi3kno/SWC-tidyverse/master/gapminder_data_table.json")
+
+gap_lst <- jsonlite::fromJSON("https://bit.ly/gapminderlist")
 
 typeof(gap_lst)
 
 ```
 
-There are several ways of subsetting a list. Some of these methods were covered in pre-read. List nodes may be named. Names are optional, but sometimes they make navigation easier. 
-
-```{r, eval=FALSE}
-
-gap_lst %>% head() %>% 
-  str(max.level = 2)
-
-gap_lst[3]
-gap_lst[[3]]
-gap_lst$phAwcNAVuyj0TAlJeCEzcGQ
-gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName
-
-```
-
-As we already know, list is a special type of vector. It is a vector, able to contain other vectors, also called a "recurring vector". Lists have length.
+As we already know, list is a special type of vector.  Lists have length. 
 
 ```{r}
 length(gap_lst)
 ```
 
+There are several ways of subsetting a list. Some of these methods were covered in pre-read. List nodes may be named. Names are optional, but sometimes they make navigation easier. 
 
-Most important/useful feature of lists, is that they can have "repeating" branches, e.g. branches that contain similar entities. In our case each branch in the main list contains a list of 5 elements (5 "leaves"). The name of the elements itself is a googlesheet code. If we want to extract one particular leaf from every branch, we need to "iterate" over the branches, visiting every one of then and selecting an element of interest.
+Print method of lists is not most user-friendly, as it tries to output the whole list to the console. Throughout this lesson we will use `head()` and `tail()` throughout to conserve screen space. Remember to remove these functions when you want the whole list (e.g. when assigning output to a variable).
+
+```{r, eval=FALSE}
+gap_lst %>% head() %>% 
+  str()
+
+gap_lst[3] %>% str()
+gap_lst[[3]] %>% str()
+```
+
+List elements may be named. The names of the top-level elements of `gap_lst` are a googlesheet codes. We will use `$` notation, which is a special notation for named lists (you can also use it to create new elements in the list). 
+
+```{r, eval=FALSE}
+gap_lst$phAwcNAVuyj0TAlJeCEzcGQ
+gap_lst$phAwcNAVuyj0TAlJeCEzcGQ$indicatorName
+
+```
+
+Most important/useful feature of lists, is that they can contain other vectors (lists are called "recurring vector"), e.g. list has branches that contain similar entities. In our case each branch in the main list contains a list of 5 elements (5 "leaves"). If we want to extract one particular leaf from every branch, we need to "iterate" over the branches, visiting every one of then and selecting an element of interest.
 
 ```{r}
 gap_lst %>% 
@@ -69,29 +81,29 @@ gap_lst %>%
   head()
 ```
 
-The function `map` is equivalent to for-loop. Normally map expects a list as first argument and a function as a second argument. One of the cool features of `map` is that we can also we pass string as second argument. In this case it acts as "accessor" - required elements get extracted from the list. The resulting type is controled by the suffix after the function name. For example, if we want to receive character vector, we can pass `map_chr`. For integers it would be `map_int`, for real numbers `map_dbl`. Most generic type of function is `map` without suffix, which always returns a list. 
+The function `map` is equivalent to for-loop. Normally `map` expects a list as first argument and a function as a second argument. One of the cool features of `map` is that we can also we pass string as second argument. In this case it acts as "accessor" - required elements get extracted from the list. Just remember that `map` can be used to extract an element of the iterated sequence. It visits each element of original vector (each child) and looks for nodes among grand-children. It can look by name or by index.
 
-Just remember that `map` can be used to extract an element of the iterated sequence. It visits each element of original vector (each child) and looks for nodes among grand-children. It can look by name or by index.
+The resulting type is controled by the suffix after the function name. For example, if we want to receive character vector, we can pass `map_chr`. For integers it would be `map_int`, for real numbers `map_dbl`. Most generic type of function is `map` without suffix, which always returns a list. 
 
 ## Assignment 1 {.tabset .tabset-fade .tabset-pills}
 
 ### Question
 >
 > - Extract all googlesheet IDs. What function can help you with this task?
-> - Extract a vector of data providers. What are the most used data providers? *Tip: You may find `table` function useful*
+> - Extract a vector of data providers. What are the most common data providers? *Tip: You may find `table` function useful*
 
 ### Answer
 
 ```{r}
+names(gap_lst) %>% head()
 
-names(gap_lst) %>% head
-gap_lst %>% map_chr(4) %>% table() %>% sort() %>% tail
-
+gap_lst %>% map_chr(4) %>% table() %>% sort() %>% tail()
+gap_lst %>% map_chr("dataprovider") %>% table() %>% sort() %>% tail()
 ```
 
 ## Using `map` for iteration
 
-Each element in original `gap_lst` was also a list. It stored various information about the googlesheet files. Think about this list as a list of files with various information about each file. We know that each of them has the same length. But if that would not be the case, how could we check? Well, we could visit each branch and call `length()` function on it.
+Each element in original `gap_lst` was also a list. It stores various information about the googlesheet files. Think about it as a list of files with various information about each file. Since each of the elements is a list, it should have its own length. How long is each of these lists? Well, we could visit each "branch" and call `length()` function on it.
 
 ```{r}
 gap_lst[[1]] %>% length()
@@ -107,7 +119,7 @@ We can iterate over elements of `gap_lst` and apply the same `length()` function
 map_int(gap_lst, length) %>% head()
 ```
 
-The suffix after the name of the function specifies expected return type. In this case we say that we want to iterate over the elements of the `gap_lst` and apply function `length` to each of them. The result, we expect to be an integer vector (since length is measured in whole numbers). This ensures type-stability. There are similar variants of `map` function for returning other base types: logical (`map_lgl`), real(`map_dbl`) and character(`map_chr`). Most generic function of all is `map` itself. It always returns a list.
+The suffix after the name of the function specifies expected return type. In this case we say that we want to iterate over the elements of the `gap_lst` and apply function `length` to each of them. The result, we expect to be an integer vector (since length is measured in whole numbers). This ensures type-stability. There are similar variants of `map` function for returning other base types: logical (`map_lgl`), real(`map_dbl`) and character(`map_chr`). Most generic function of all is `map` itself, it always returns a list.
 
 
 ## Transposing lists
@@ -116,12 +128,13 @@ We can transpose the list using the function `transpose`. You can think of this 
 
 ```{r}
 gap_lst_trans <- transpose(gap_lst) %>% simplify_all()
+# gap_lst_trans %>% View()
 length(gap_lst_trans)
 ```
 
 As you might have noticed, we are dealing with "named" vectors. These are special type of vectors where each element carries a name. Sometimes it is useful, but very often it just makes print out really noisy. In our case names are repeated in each vector as result of `transpose` opertation we did on the original list. 
 
-### Lifehack 1: Take over Adam's job
+### Lifehack 1: Naming things
 
 > You can name things by composing a vector of names corresponding to the vector of things you want to name and then declare former to be the `names` of the latter. Be careful! The names will stick!
 >
@@ -140,9 +153,13 @@ heights <- unname(heights)
 heights
 ```
 
-Lets try to extract googlesheet IDs and add them as separate element to our list. We will use `$` notation, which is a special notation for named lists. You can also use it to create new elements in the list.
+Lets try to extract googlesheet IDs and add them as separate element to our list. We can use `$` notation here.
 
-Note that each of the vector in the list is now of equal length. This condition is enough to call our list a data frame. We will remove the names from the vectors using unname function and return the result in the tibble format.
+Note that each of the vector in the list is now of equal length. This condition is enough to call our list a data frame.
+
+> Recall that dataframe is a list of vectors of equal lengths.
+
+We will remove the names from the vectors using unname function and return the result in the tibble format.
 
 ```{r}
 # named vector
@@ -150,11 +167,29 @@ gap_lst_trans$indicatorName %>% head
 names(gap_lst_trans$indicatorName) %>% head
 gap_lst_trans$googlesheet_id <- names(gap_lst_trans$indicatorName)
 gap_lst_df <- map_df(gap_lst_trans, unname)
+gap_lst_df
 ```
 
-Transposed list is a little more useable Lets practice some more with applying functions to lists. We can create, so called "anonimous functions" but defining a function body right there in the .f argument of the `map` function. This way we save us some typing and effort of naming. This makes sense if we are pretty sure we will not have to reuse the same function ever again. Here's a function for calculating average length of the words in each element of transposed list. 
+## Applying functions to lists
+
+Transposed list is a little more useable. Lets practice some more with applying functions to lists. We can create, so called "anonimous functions" but defining a function body right there in the .f argument of the `map` function. This way we save us some typing and effort of naming. This makes sense if we are pretty sure we will not have to reuse the same function ever again. Here's a function for calculating average length of the words in each element of transposed list. 
 
 ```{r}
+nchar("You")
+
+nchar(c("You", "me"))
+
+c("You", "me", "us", "them") %>% nchar() %>% mean()
+
+
+avg_char_length <- function(x){
+  mean(nchar(x))
+}
+
+c("You", "me", "us", "them") %>% avg_char_length()
+
+gap_lst_trans %>% map_dbl(avg_char_length)
+
 gap_lst_trans %>% map_dbl(function(x) mean(nchar(x)))
 gap_lst_trans %>% map_dbl(~ mean(nchar(.x)))
 ```
@@ -169,7 +204,7 @@ Second option utilizes a shortcut notation involving a `~` sign. It also has "re
 > Remember that tibbles are exalted lists. Exploit that property to anser the following questions:
 >
 > - How many columns in `gapminder` dataset are numeric?
-> - Count "" values in each column of `gap_lst_df`
+> - Count "" values in each column of `gap_lst_df`. *Tip: string '' has zero characters*
 
 ### Answer
 
@@ -182,6 +217,8 @@ gapminder %>%
 gap_lst_df %>% 
   map_int(~sum(.x==""))
 
+gap_lst_df %>% 
+  map_int(~sum(nchar(.x)==0))
 ```
 
 ## Writing your own function
@@ -197,7 +234,7 @@ is_even(26)
 is_even(31)
 ```
 
-This pretty simple function has only one argument that we decided to call `x`. It is a good idea to make argument names a little bit more expressive, unless a function is pretty generic, in which case `x` is a reasonably common and well-accepted name for an argument, in our case a character input. Note that because we used vectorized operation inside our function, this function will also work on vectors.
+This pretty simple function has only one argument that we decided to call `x`. It is a good idea to make argument names a little bit more expressive, unless a function is pretty generic, in which case `x` is a reasonably common and well-accepted name for an argument (in our case a character input). Note, that because we used vectorized operation inside our function, this function will also work on vectors.
 
 ```{r}
 is_even(1:5)
@@ -216,7 +253,7 @@ gapminder %>%
 >
 > - Write a function for calculating leap years. 
 >
-> Wikipedia: Every year that is exactly divisible by four is a leap year, except for years that are exactly divisible by 100, but these centurial years are leap years if they are exactly divisible by 400. For example, the years 1700, 1800, and 1900 were not leap years, but the years 1600 and 2000 were
+> Wikipedia: Every year that is exactly divisible by four is a leap year (`x%%4==0`), except for years that are exactly divisible by 100 (`x%%100!=0`), but these centurial years are leap years if they are exactly divisible by 400 (`x%%400==0`). For example, the years 1700, 1800, and 1900 were not leap years, but the years 1600 and 2000 were
 > 
 > - Add a column to gapminder indicating if the year is a leap year
 
@@ -238,7 +275,7 @@ gapminder %>%
 
 ## Map-reduce
 
-Whenver you are working with lists, you might want to apply a function to "reduce" or "collapse" a set of values to a single value using a function. Say you got a list of numbers and you would like to add them up. Or you have a list of logicals and you would like to check if at least one of them is `TRUE`. In these cases you may want to use `reduce`. Reduce is fundamentally different from vectorized functions that we all are familiar with by now in how it performs desired operation on the data. It starts from element #1 and performs the desired operation with element #2. The result is processed together with element #3 and so on. Effectively, it is performing a "chain" operation, where result of previous iteration is input into the next one. 
+Whenver you are working with lists, you might want to apply a function to "reduce" or "collapse" a set of values to a single value using a function (say you got a list of numbers and you would like to add them up). Or you have a list of logicals and you would like to check if at least one of them is `TRUE`. In these cases you may want to use `reduce`. Reduce is fundamentally different from vectorized functions that we all are familiar with by now in how it performs desired operation on the data. It starts from element #1 and performs the desired operation with element #2. The result is processed together with element #3 and so on. Effectively, it is performing a "chain" operation, where result of previous iteration is input into the next one. 
 
 ```{r}
 c(FALSE, TRUE, FALSE, FALSE) %>% any()
@@ -266,10 +303,10 @@ library(googlesheets)
 
 geo_sheet <- gs_url("https://docs.google.com/spreadsheets/d/1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o/")
 
-gs_key("1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o")
+x<- gs_key("1qHalit8sXC0R8oVXibc2wa2gY7bkwGzOybEMTWp-08o")
 
 geo_sheet %>% 
-  gs_read(ws="List of countries etc")
+  gs_read(ws="list-of-countries-etc")
 
 ```
 ## More functions
@@ -278,7 +315,7 @@ geo_sheet %>%
 
 ### Question
 >
-> - Write a function for downloading selected sheets from googlesheets and writing to csv files. Is your function vectorized?
+> - Write a function for downloading Data from googlesheets and writing to csv files. The function will take a google key, retrieve sheet information using `gs_key`, read the sheet named "Data" with `gs_read` and write the content into a csv file named like `paste0(x, ".csv")`, where `x` is your google sheet key.
 
 ### Answer
 
@@ -286,7 +323,7 @@ geo_sheet %>%
 save_gs <- function(x){
   key <- gs_key(x, lookup = FALSE)
   sheet <- gs_read(key, ws="Data")
-  write_csv(sheet, glue::glue("{x}.csv"))
+  write_csv(sheet, paste0(x, ".csv"))
 }
 
 fert_key <- "1oq3r8W7ajenKFgoAYoOf2MXeTWWNPpudR-Fo5m2-o30"
@@ -296,30 +333,27 @@ save_gs(fert_key)
 
 ## Scaling up the knowledge
 
-> Use `View()` in Rstudio to locate indicators from the list below. As you click on the element of interest, Rstudio will tip you how to extract it. Use that method or write your own statement for extracting that element. 
+> Use any of the known to you methods to extract google sheet ids for the following files: 
 > 
-> - total fertility (located in category "Other" and subcategory "Other")
-> - infant mortality (Health-Other),
-> - CO2 emissions per person (Other-Other), and
-> - GINI index (Economy -	Poverty & Inequality)
+> - Children per woman (total fertility) -  (category = "" and subcategory = "")
+> - Infant mortality (rate per 1,000 births)	-  (category = "Health" and subcategory=""),
+> - CO2 emissions (tonnes per person) (category = "" and subcategory = ""), and
+> - Inequality index (Gini)	- (category = "Economy" and subcategory= "Poverty & Inequality")
 > 
-> Retrieve indicator name and googlesheet ID as a list of two items.
-> Combine the four list objects into a single list and give it a name `gap_indicators`
+> Combine four googlesheet keys into a singe vector and create another vector with names of the variables you want the data from these sheets to end up in (e.g. "fert" or "mort")
 
-Below is the example code for combining two files and joining them to `gapminder` dataset. Extend this code to be able to join any number of files from gapminder.org website. You will need to use the `gap_lst_df` we created earlier.
+Below is the example code for combining two files and joining them to `gapminder` dataset. Extend this code to be able to join any number of files from gapminder.org website. You can use the `gap_lst_df` we created earlier.
 
 ```{r, error=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
-gapminder <- gapminder::gapminder
-
-keys <- tribble( ~key, ~var_name,
-  "1oq3r8W7ajenKFgoAYoOf2MXeTWWNPpudR-Fo5m2-o30", "fert",
-  "1OHMMuHbSFKDolNHXsmgHYlkjSKfAZyyY1P-ddMu_Fz0", "infantMort")
-
+library(gapminder)
 library(googlesheets)
 
+keys <- c("phAwcNAVuyj0TAlJeCEzcGQ","phAwcNAVuyj0NpF2PTov2Cw","phAwcNAVuyj1gkNuUEXOGag","pyj6tScZqmEcjeKHnZq6RIg")
+vars <- c("fert", "mort", "emissions", "gini")
+
 importSheet <- function(key, var_name){
-  sheet <- gs_key(key, lookup = FALSE)
+  sheet <- gs_key_old(key, lookup = FALSE)
   sheet_df <- gs_read(sheet)
   names(sheet_df)[1] <- "country"
   sheet_df_long <- sheet_df %>% 
@@ -329,8 +363,7 @@ importSheet <- function(key, var_name){
   sheet_df_long
 }
 
-gapminder_plus <- keys %>% split(.$key)  %>%  
-  map(~importSheet(.$key, .$var_name)) %>% 
+gapminder_plus <- map2(keys,vars, importSheet) %>% 
   reduce(full_join, by=c("country", "year")) %>% 
   right_join(gapminder, by=c("country", "year"))
 
