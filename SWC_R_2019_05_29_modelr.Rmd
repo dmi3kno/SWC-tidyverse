@@ -1,0 +1,169 @@
+---
+title: "R for Reproducible Scientific Analysis: Many models"
+output:
+  html_document:
+    toc: true
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+  html_notebook: default
+date: "25 September 2018"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+library(tidyverse)
+library(modelr)
+library(gapminder)
+library(broom)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+gapminder
+
+gapminder %>% 
+  ggplot(mapping = aes(x=year, y=lifeExp, group=country))+
+  geom_line(alpha=0.4)
+```
+
+```{r}
+no <- gapminder %>% filter(country=="Norway")
+
+no %>% 
+  ggplot(mapping = aes(year, lifeExp))+
+  geom_line()+
+  labs(title="Full data")
+
+no_mod <- lm(lifeExp ~ year, data=no)
+
+no %>% 
+  add_predictions(no_mod) %>% 
+  ggplot(mapping=aes(year, pred))+
+  geom_line()+
+  labs(title="Linear trend")
+
+
+no %>% 
+  add_residuals(no_mod) %>% 
+  ggplot(mapping=aes(year, resid))+
+  geom_line()+
+  labs(title="Remaining pattern")
+```
+
+
+```{r}
+by_country <- gapminder %>% 
+  group_by(country, continent) %>% 
+  nest()
+
+by_country
+
+by_country[["data"]][[1]]
+```
+
+```{r}
+make_country_model <- function(df){
+  lm(lifeExp ~ year, data=df)
+}
+
+models <- map(by_country$data, make_country_model)
+
+by_country <- by_country %>% 
+  mutate(model=map(data, make_country_model))
+
+by_country
+```
+
+```{r}
+by_country <- by_country %>% 
+  mutate(
+    resids = map2(data, model, add_residuals)
+  )
+by_country
+```
+
+```{r}
+resid_df <- unnest(by_country, resids)
+resid_df
+
+resid_df %>% 
+  ggplot(aes(year, resid)) +
+    geom_line(aes(group = country), alpha = 0.4) + 
+    geom_smooth()
+
+resid_df %>% 
+  ggplot(aes(year, resid)) +
+    geom_line(aes(group = country), alpha = 0.4) + 
+  facet_wrap(~continent)
+```
+
+```{r}
+glance(no_mod)
+
+by_country %>% 
+  mutate(model_glance=map(model, glance)) %>% 
+  unnest(model_glance)
+
+
+model_df <- by_country %>% 
+  mutate(model_glance=map(model, glance)) %>% 
+  unnest(model_glance, .drop = TRUE)
+
+model_df
+
+model_df %>% 
+  arrange(r.squared)
+
+model_df %>% 
+  ggplot(aes(continent, r.squared, color=continent))+
+  geom_jitter()
+
+```
+
+```{r}
+bad_fit <- model_df %>% 
+  filter(r.squared<0.5)
+
+gapminder %>% 
+  semi_join(bad_fit, by="country") %>% 
+  ggplot(aes(year, lifeExp, color=country))+
+  geom_line()+
+  facet_wrap( ~continent)
+
+#install.packages("rnaturalearth")
+
+world <- rnaturalearth::ne_countries(scale="medium", returnclass = "sf")
+
+world %>% 
+  left_join(bad_fit, by=c("sovereignt"="country")) %>% 
+  ggplot()+
+  geom_sf(aes(fill=r.squared))+
+  scale_fill_viridis_c(option = "inferno", trans="sqrt")
+
+model_df_iso <- model_df %>% 
+  left_join(country_codes)
+
+world %>% 
+  left_join(model_df_iso, by=c("sov_a3"="iso_alpha")) %>% 
+  ggplot()+
+  geom_sf(aes(fill=r.squared))+
+  scale_fill_viridis_c(option = "inferno")+
+  coord_sf(crs=3035)
+
+```
+

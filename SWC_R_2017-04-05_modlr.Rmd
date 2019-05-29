@@ -1,0 +1,48 @@
+---
+title: "R for Reproducable Scientific Analysis"
+author: "18 January 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(broom)
+library(modelr)
+gapminder_plus <- read_csv("data/gapminder_plus.csv")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r}
+library(purrr)
+
+crossv_kfold(gapminder_plus, k=5) %>% 
+  mutate(model= map(train, ~lm(lifeExp ~ gdpPercap, data=.x)),
+         pred = map2(model, test, ~augment(.x, newdata=.y))) %>% 
+  unnest(pred) %>% 
+  mutate(.error=.fitted-lifeExp)
+
+cv_models <-  cv_df$train %>% map(~lm(lifeExp ~ gdpPercap, data=.x))
+
+map2_dbl(cv_models, cv_df$train, rmse) 
+map2_dbl(cv_models, cv_df$test, rmse) 
+
+models <- map(cv2$train, ~ lm(mpg ~ wt, data = .))
+errs <- map2_dbl(models, cv2$test, rmse)
+hist(errs)
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
